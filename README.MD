@@ -37,6 +37,10 @@ Taxonomy refers to taxonomy of statistical information ( bulletins, articles, da
 
 [Taxonomy Landing Page] and [Product Page] are taxonomy pages that classify statistics. Along with classification , these pages also displays contents of various statistics and links to other non-statistics pages (Methodology, About Us Pages, etc...)
 
+#####Taxonomy Landing Page
+
+#####Product Page
+
 ###Statistic
 Statistics are periodically published releases of statistical information including Statistical Bulletins, Articles, Compendium, Datasets, Timeseries and Data Slices.  Time Series and Data Slices contain [Statistical Data](#statistical-data)
 
