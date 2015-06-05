@@ -4,7 +4,7 @@ THIS IS A WORK IN PROCESS:
 ONS Content Library
 =========================== 
 
-Content Library contains Java object representation of content types that is published by [Florence](https://github.com/ONSdigital/florence) and [Zebedee](https://github.com/Carboni/zebedee) and displayed on Babbage (ONS Website). This flow happens by serialisation/deserialisation of these objects into json documents.
+Content Library contains Java object representation of content types that is published by [Florence](https://github.com/ONSdigital/florence) and [Zebedee](https://github.com/Carboni/zebedee) and displayed on [Babbage (ONS Website to be)](https://github.com/ONSdigital/babbage). This flow happens by serialisation/deserialisation of these objects into json documents.
 
 The library aims to centeralize object notation and allow these different ends use same object notation (either as a json document or java object). Which in turn should make manipulation of contents easier at all ends and compatible.
 
