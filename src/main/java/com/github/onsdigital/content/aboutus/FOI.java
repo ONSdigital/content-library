@@ -16,4 +16,8 @@ public class FOI extends Content {
     public FOI(String name, URI uri, AboutUsBrowsePage parent) {
         super(name, uri, ContentType.foi, parent);
     }
+
+    private FOI() {
+
+    }
 }

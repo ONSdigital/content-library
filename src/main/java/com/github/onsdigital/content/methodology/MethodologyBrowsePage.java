@@ -13,4 +13,8 @@ public class MethodologyBrowsePage extends Content {
     public MethodologyBrowsePage(String name, URI uri, HomePage parent) {
         super(name, uri, ContentType.methodology_browse_page, parent);
     }
+
+    private MethodologyBrowsePage() {
+
+    }
 }

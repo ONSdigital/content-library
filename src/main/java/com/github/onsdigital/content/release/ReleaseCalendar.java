@@ -13,4 +13,8 @@ public class ReleaseCalendar extends Content {
     public ReleaseCalendar(String name, URI uri, ContentType type, Content parentContent) {
         super(name, uri, type, parentContent);
     }
+
+    private ReleaseCalendar() {
+
+    }
 }

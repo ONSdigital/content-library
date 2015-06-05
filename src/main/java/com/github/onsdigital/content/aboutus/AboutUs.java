@@ -12,4 +12,8 @@ public class AboutUs extends Content {
     public AboutUs(String name, URI uri, AboutUsBrowsePage parent) {
         super(name, uri, ContentType.about_us, parent);
     }
+
+    private AboutUs() {
+
+    }
 }

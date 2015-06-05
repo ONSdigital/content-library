@@ -7,7 +7,7 @@ package com.github.onsdigital.content.partial.markdown;
  * @author david
  */
 
-public class Section {
+public class MarkdownSection {
     public String title;
     public String markdown;
 }

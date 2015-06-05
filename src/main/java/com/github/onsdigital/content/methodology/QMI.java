@@ -22,4 +22,8 @@ public class QMI extends Content {
     public QMI(String name, URI uri, MethodologyBrowsePage parent) {
         super(name, uri, ContentType.qmi, parent);
     }
+
+    private QMI() {
+
+    }
 }

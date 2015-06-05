@@ -2,7 +2,7 @@ package com.github.onsdigital.content.taxonomy.home;
 
 import com.github.onsdigital.content.base.ContentType;
 import com.github.onsdigital.content.taxonomy.home.base.TaxonomyHome;
-import com.github.onsdigital.content.partial.link.Reference;
+import com.github.onsdigital.content.partial.reference.ContentReference;
 
 import java.net.URI;
 import java.util.List;
@@ -15,10 +15,16 @@ import java.util.List;
 public class TaxonomyLandingPage extends TaxonomyHome {
 
     //Sections is not particularly a good name. Used for compatibility with Alpha website
-    public List<Reference<TaxonomyHome>> sections;
+    public List<ContentReference<TaxonomyHome>> sections;
 
     public TaxonomyLandingPage(String name, URI uri, String summary, TaxonomyHome parent) {
         super(name, uri, ContentType.taxonomy_browse_page, parent);
         this.summary = summary;
     }
+
+
+    private TaxonomyLandingPage() {
+
+    }
+
 }

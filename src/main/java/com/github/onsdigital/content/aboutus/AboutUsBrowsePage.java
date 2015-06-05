@@ -13,4 +13,8 @@ public class AboutUsBrowsePage extends Content {
     public AboutUsBrowsePage(String name, URI uri, Content parent) {
         super(name, uri, ContentType.about_us_browse_page, parent);
     }
+
+    private AboutUsBrowsePage() {
+        
+    }
 }

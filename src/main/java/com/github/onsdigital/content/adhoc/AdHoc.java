@@ -17,4 +17,8 @@ public class AdHoc extends Content {
     public AdHoc(String name, URI uri, Content parent) {
         super(name, uri, ContentType.adhoc, parent);
     }
+
+    private AdHoc() {
+
+    }
 }

@@ -12,7 +12,7 @@ import java.util.Date;
  */
 public class ReleasePage extends Content {
 
-    //Metadata
+    /*Metadata*/
     public Contact contact;
     public Date releaseDate;
     public Date nextReleaseDate;
@@ -21,5 +21,9 @@ public class ReleasePage extends Content {
     public ReleasePage(String name, URI uri, String summary, ContentType type, Content parent) {
         super(name, uri, type, parent);
         this.summary = summary;
+    }
+
+    private ReleasePage() {
+
     }
 }

@@ -14,16 +14,20 @@ import java.util.Date;
  * <p>
  * Represents statistics that gets published, released and become a part of living taxonomy. Bulletin, Article, Timeseries, Dataset, etc.
  */
-public abstract class Publication extends Content {
+public abstract class Statistic extends Content {
 
-    //Metadata
+    /*Metadata*/
     public boolean nationalStatistic;
     public Contact contact;
     public Date releaseDate;
     public Date nextReleaseDate;
 
-    public Publication(String name, URI uri, String summary, ContentType type, TaxonomyHome parent) {
+    public Statistic(String name, URI uri, String summary, ContentType type, TaxonomyHome parent) {
         super(name, uri, type, parent);
         this.summary = summary;
+    }
+
+    protected Statistic() {
+
     }
 }

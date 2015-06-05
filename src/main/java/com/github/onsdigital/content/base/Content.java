@@ -19,8 +19,7 @@ public abstract class Content {
 
     private ContentType type;
 
-    //Metadata files refers to this field as "title" , although for compatibility with alpha it is kept as "name"
-    public String name;
+    public String title;
 
     public URI uri;
 
@@ -32,26 +31,27 @@ public abstract class Content {
     public List<ContentLink> breadCrumb;
 
     /**
-     * Public constructor to enforce necessary information to be passed into object.
-     * Which in turn should eliminate coding errors involving not setting required information at development time.
+     * Public constructor enforces required information for setting up the hierarchy and location to be passed into objects.
+     * Which in turn should eliminate coding errors involving missing information at development time.
      * <p>
-     * serialize/deserialize utils on the other hand uses hidden constructors (via Reflection)
+     * serialize/deserialize utils on the other hand should use private constructors (via Reflection)
      * <p>
      * Objects should still be asserted for missing information after Deserializing
      *
-     * @param name
-     * @param uri
-     * @param parent
+     * @param name Name/Title of this content
+     * @param uri Uri of the content
+     * @param parent Parent content which gives access to this content, should be null for homepage
      */
     public Content(String name, URI uri, ContentType type, Content parent) {
-        this.name = name;
+        this.title = name;
         this.uri = uri;
         this.type = type;
         buildBreadcrumb(parent);
     }
 
-    /* Internal logic, not subject to serialise/deserialize operation*/
+    protected Content() {
 
+    }
 
     private void buildBreadcrumb(Content parent) {
         breadCrumb = new ArrayList<ContentLink>();

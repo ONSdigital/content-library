@@ -11,11 +11,13 @@ import java.net.URI;
  */
 public class DataSlice extends StatisticalData {
 
-    //Metadata
-    public String cdid;
+    /*Metadata*/
 
     public DataSlice(String cdid, String name, URI uri, String summary, ContentType type, ProductPage parent) {
-        super(name, uri, summary, type, parent);
-        this.cdid = cdid;
+        super(cdid, name, uri, summary, type, parent);
+    }
+
+    private DataSlice() {
+
     }
 }

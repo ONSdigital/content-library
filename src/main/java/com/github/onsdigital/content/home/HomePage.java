@@ -12,7 +12,7 @@ import java.util.List;
  * <p>
  * Object mapping for homepage of the website
  * <p>
- * HomePage is considered as the root level Taxonomy page. It also contains links and references to static, non-taxonomy contents (Methodology, Release, About Us pages , etc.)
+ * HomePage is considered as the root of Taxonomy. It also contains links and references to static, non-taxonomy contents (Methodology, Release, About Us pages , etc.)
  */
 public class HomePage extends Content {
 

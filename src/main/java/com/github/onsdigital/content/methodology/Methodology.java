@@ -11,10 +11,15 @@ import java.net.URI;
  */
 public class Methodology extends Content {
 
+    /*Metadata*/
     public Contact contact;
 
     public Methodology(String name, URI uri, String summary, MethodologyBrowsePage parent) {
         super(name, uri, ContentType.methodology, parent);
         this.summary = summary;
+    }
+
+    private Methodology() {
+
     }
 }
