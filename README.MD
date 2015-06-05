@@ -13,35 +13,32 @@ The library creates an object hiearchy, interlinking and referencing between dif
 Another benefit of a common content library is ( hopefully ), a common terminology and naming convention between different ends of the project (publishing, migrating, website, etc.)
 
 
-#Naming convention
+##Naming convention and content types
 
 All content types are generically referred as content.
 
 1. [Home Page](#home-page)
 2. [Taxonomy](#taxonomy)
-	2.1. [Taxonomy Home](#taxonomy-home)
- 			[Taxonomy Landing Page](#taxonomy-landing)
- 			[Product Page](#product-page)
- 		[Statistic](#statistic)
- 			[Statistical Bulletin](#bulletin)
- 			[Article](#article)
- 			[Dataset](#dataset)
- 			[Compendium](#dataset)
- 			[Statistical Data](#statistics)
- 				[Time Series](#time-series)
- 				[Data Slice](#data-slice)
 3. [Methodology](#methodology)
 4. [Abou Us Pages](#about-us)
+5. [About Templates](#about-templates)
+6. [Development Notes](#development-notes)
  
 
 ##Home Page
 
-Home page contains links and references to taxonomy nodes and  other non-statistic content types (static pages ?)
+Home page contains links and references to taxonomy nodes and  other non-statistical content types (static pages ?)
 
 ##Taxonomy
 
-Taxonomy refers to taxonomy of periodic publications containing statistical information ( bulletins, articles, datasets, timeseries, data slices, compendium). There are two types of taxonomy nodes [Taxonomy Home](#taxonomy-home) and [Publication](#publication)
+Taxonomy refers to taxonomy of statistical information ( bulletins, articles, datasets, compendium,  timeseries and data slices). There are two types of taxonomy nodes [Taxonomy Home](#taxonomy-home) and [Statistic](#statistic)
 
 ###Taxonomy Home
 
-###Publication
+[Taxonomy Landing Page] and [Product Page] are taxonomy pages that classify statistics. Along with classification , these pages also displays contents of various statistics and links to other non-statistics pages (Methodology, About Us Pages, etc...)
+
+###Statistic
+Statistics are periodically published releases of statistical information including Statistical Bulletins, Articles, Compendium, Datasets, Timeseries and Data Slices.  Time Series and Data Slices contain [Statistical Data](#statistical-data)
+
+####Statistical Data
+Refers to statistics that has data in it (Time Series, Data Slices)
