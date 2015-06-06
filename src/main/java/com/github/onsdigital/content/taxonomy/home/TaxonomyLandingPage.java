@@ -18,7 +18,7 @@ public class TaxonomyLandingPage extends TaxonomyHome {
     public List<ContentReference<TaxonomyHome>> sections;
 
     public TaxonomyLandingPage(String name, URI uri, String summary, TaxonomyHome parent) {
-        super(name, uri, ContentType.taxonomy_browse_page, parent);
+        super(name, uri, ContentType.taxonomy_landing_page, parent);
         this.summary = summary;
     }
 

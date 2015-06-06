@@ -1,8 +1,11 @@
 package com.github.onsdigital.content.base;
 
 import com.github.onsdigital.content.partial.link.ContentLink;
+import com.github.onsdigital.content.serialiser.ContentSerialiser;
 
 import java.net.URI;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,6 +54,27 @@ public abstract class Content {
 
     protected Content() {
 
+    }
+
+
+    /**
+     * Serialises object into json document as String.
+     *
+     * @return json
+     */
+    public String toJson() {
+        return new ContentSerialiser().serialise(this);
+    }
+
+
+    /**
+     * Serialises object into json document as String. Formats date fields with given date pattern
+     *
+     * @param datePattern
+     * @return json
+     */
+    public String toJson(String datePattern) {
+        return new ContentSerialiser(datePattern).serialise(this);
     }
 
     private void buildBreadcrumb(Content parent) {

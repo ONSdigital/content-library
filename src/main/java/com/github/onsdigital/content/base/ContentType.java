@@ -13,7 +13,7 @@ package com.github.onsdigital.content.base;
 public enum ContentType {
 
     home_page,
-    taxonomy_browse_page,
+    taxonomy_landing_page,
     product_page,
     bulletin,
     article,
