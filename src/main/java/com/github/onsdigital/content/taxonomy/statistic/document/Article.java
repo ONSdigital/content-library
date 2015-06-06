@@ -1,4 +1,4 @@
-package com.github.onsdigital.content.taxonomy.statistic;
+package com.github.onsdigital.content.taxonomy.statistic.document;
 
 import com.github.onsdigital.content.base.ContentType;
 import com.github.onsdigital.content.partial.link.ContentLink;
@@ -6,6 +6,7 @@ import com.github.onsdigital.content.partial.reference.ContentReference;
 import com.github.onsdigital.content.taxonomy.statistic.base.Statistic;
 import com.github.onsdigital.content.taxonomy.home.ProductPage;
 import com.github.onsdigital.content.taxonomy.statistic.data.base.StatisticalData;
+import com.github.onsdigital.content.taxonomy.statistic.document.base.StatisticalDocument;
 
 import java.net.URI;
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.List;
 /**
  * Created by bren on 04/06/15.
  */
-public class Article extends Statistic {
+public class Article extends StatisticalDocument {
 
     /*Metadata*/
     public String _abstract;
@@ -21,7 +22,6 @@ public class Article extends Statistic {
 
 
     /*Body*/
-    public ContentLink<StatisticalData> data;//Data in the article
     public List<ContentReference<Article>> relatedArticles;
 
 

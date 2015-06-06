@@ -2,8 +2,8 @@ package com.github.onsdigital.content.taxonomy.home;
 
 import com.github.onsdigital.content.base.ContentType;
 import com.github.onsdigital.content.taxonomy.home.base.TaxonomyHome;
-import com.github.onsdigital.content.taxonomy.statistic.Article;
-import com.github.onsdigital.content.taxonomy.statistic.Bulletin;
+import com.github.onsdigital.content.taxonomy.statistic.document.Article;
+import com.github.onsdigital.content.taxonomy.statistic.document.Bulletin;
 import com.github.onsdigital.content.taxonomy.statistic.Dataset;
 import com.github.onsdigital.content.taxonomy.statistic.data.base.StatisticalData;
 import com.github.onsdigital.content.partial.reference.ContentReference;
