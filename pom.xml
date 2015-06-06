@@ -2,7 +2,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.github.onsdigital</groupId>
     <artifactId>content-library</artifactId>
-    <version>0.0.1</version>
+    <version>0.0.2-SNAPSHOT</version>
     <name>Ons Content Library</name>
     <description>ONS content-object mapping library</description>
     <url>https://github.com/ONSdigital/content-library</url>
