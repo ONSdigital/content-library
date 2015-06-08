@@ -32,7 +32,7 @@ public class Release extends Content {
 
 
     public Release(ProductPage productPage, URI uri) {
-        super(productPage.title, uri, ContentType.release, new ReleaseCalendar());
+        super(productPage.name, uri, ContentType.release, new ReleaseCalendar());
         this.summary = productPage.summary;
     }
 

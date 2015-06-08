@@ -13,6 +13,7 @@ public class StatisticsReference extends  ContentReference<Statistics>  {
 
     public StatisticsReference(Statistics statistics) {
         super(statistics);
+        this.releaseDate = statistics.releaseDate;
     }
 
 

@@ -15,8 +15,7 @@ import java.net.URI;
  * @author david
  * @author bren
  */
-public abstract class TaxonomyPage extends Content {
-
+public class TaxonomyPage extends Content implements  Comparable<TaxonomyPage>  {
 
     public int index;
 
@@ -40,8 +39,14 @@ public abstract class TaxonomyPage extends Content {
         super(name, uri, type, new HomePage());
     }
 
-
     protected TaxonomyPage() {
 
     }
+
+
+    @Override
+    public int compareTo(TaxonomyPage o) {
+        return Integer.compare(this.index, o.index);
+    }
+
 }

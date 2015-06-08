@@ -124,8 +124,8 @@ public class TimeSeries extends StatisticalData implements  Comparable<TimeSerie
 
         // We don't have metadata for all of the datasets,so
         // this provides a basic fallback by setting the CDID as the title:
-        if (StringUtils.isBlank(title)) {
-            title = cdid;
+        if (StringUtils.isBlank(name)) {
+            name = cdid;
         }
     }
 

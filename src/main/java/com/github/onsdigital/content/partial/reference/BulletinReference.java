@@ -12,10 +12,14 @@ import com.github.onsdigital.content.statistic.document.Bulletin;
  */
 public class BulletinReference extends ContentReference<Bulletin> {
 
-    public String[] headlines;
+    public String headline1;
+    public String headline2;
+    public String headline3;
 
     public BulletinReference(Bulletin bulletin) {
         super(bulletin);
-        this.headlines = bulletin.headlines;
+        this.headline1 = bulletin.headline1;
+        this.headline2 = bulletin.headline2;
+        this.headline3 = bulletin.headline3;
     }
 }

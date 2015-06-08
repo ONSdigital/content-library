@@ -15,7 +15,9 @@ import java.util.List;
 public class Bulletin extends StatisticalDocument {
 
     /*Metadata*/
-    public String[] headlines = new String[3];
+    public String headline1;
+    public String headline2;
+    public String headline3;
 
     public List<BulletinReference> relatedBulletins = new ArrayList<>();
 

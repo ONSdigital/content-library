@@ -8,6 +8,6 @@ package com.github.onsdigital.content.partial.markdown;
  */
 
 public class MarkdownSection {
-    public String title;
+    public String name;
     public String markdown;
 }

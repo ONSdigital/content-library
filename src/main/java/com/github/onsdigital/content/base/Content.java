@@ -1,12 +1,9 @@
 package com.github.onsdigital.content.base;
 
-import com.github.onsdigital.content.home.HomePage;
 import com.github.onsdigital.content.partial.link.ContentLink;
 import com.github.onsdigital.content.serialiser.ContentSerialiser;
 
 import java.net.URI;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,7 +19,7 @@ public abstract class Content {
 
     public ContentType type;
 
-    public String title;
+    public String name;
 
     public URI uri;
 
@@ -31,7 +28,7 @@ public abstract class Content {
     //Since gson library will not serialise null data into json file, summary won't appear in content types with no summary
     public String summary;
 
-    public List<ContentLink> breadCrumb;
+    public List<ContentLink> breadcrumb;
 
     /**
      * Public constructor enforces required information for setting up the hierarchy and location to be passed into objects.
@@ -47,7 +44,7 @@ public abstract class Content {
      */
 
     public Content(String title, URI uri, ContentType type, Content parent) {
-        this.title = title;
+        this.name = title;
         this.uri = uri;
         this.type = type;
         buildBreadcrumb(parent);
@@ -80,11 +77,11 @@ public abstract class Content {
 
     //TODO: content generator code should be altered. This method should  encapsulate breadcrumb building logic as a private method
     public void buildBreadcrumb(Content parent) {
-        breadCrumb = new ArrayList<ContentLink>();
+        breadcrumb = new ArrayList<ContentLink>();
         //parent content is null for home page
         if (parent != null) {
-            breadCrumb.addAll(parent.breadCrumb);
-            breadCrumb.add(new ContentLink(parent));
+            breadcrumb.addAll(parent.breadcrumb);
+            breadcrumb.add(new ContentLink(parent));
         }
     }
 

@@ -9,19 +9,36 @@ import java.net.URI;
  * <p>
  * Link to contents. Contains the uri and title of linked content
  */
-public class ContentLink<T extends Content> {
+public class ContentLink<T extends Content> implements  Comparable<ContentLink> {
 
-    public String title;
+    public String name;
     public URI uri;
 
-    //Create breadcrumb item  that links to given content
+    //Index used for ordering
+    public Integer index;
+
     public ContentLink(T content) {
-        this.title = content.title;
+        this(content, null);
+    }
+
+
+    public ContentLink(T content, Integer index) {
+        this.index = index;
+        this.name = content.name;
         this.uri = content.uri;
     }
 
     //For use of serialise utils
     private ContentLink() {
 
+    }
+
+    @Override
+    public int compareTo(ContentLink o) {
+        //nulls last or first
+        if (this.index == null) {
+            return -1;
+        }
+        return Integer.compare(this.index, o.index);
     }
 }
