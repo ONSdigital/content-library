@@ -1,20 +1,24 @@
-package com.github.onsdigital.content.taxonomy.home.base;
+package com.github.onsdigital.content.taxonomy.base;
 
 import com.github.onsdigital.content.base.Content;
 import com.github.onsdigital.content.base.ContentType;
+import com.github.onsdigital.content.home.HomePage;
+import com.github.onsdigital.content.taxonomy.TaxonomyLandingPage;
 
 import java.net.URI;
 
 /**
  * Created by bren on 04/06/15.
  * <p>
- * Represents a home page in the taxonomy - T1-T3.
+ * Represents a taxonomy page.
  *
  * @author david
  * @author bren
  */
-public class TaxonomyHome extends Content {
+public abstract class TaxonomyPage extends Content {
 
+
+    public int index;
 
     /**
      * Public constructor enforces required information for setting up the hierarchy and location to be passed into objects.
@@ -26,14 +30,18 @@ public class TaxonomyHome extends Content {
      *
      * @param name   Name/Title of this content
      * @param uri    Uri of the content
-     * @param parent Parent content which gives access to this content
+     * @param parent Content which will appear as parent of this content on breadcrumb
      */
-    public TaxonomyHome(String name, URI uri, ContentType type, TaxonomyHome parent) {
-        super(name, uri, type, parent);
+    public TaxonomyPage(String name, URI uri, ContentType type, TaxonomyPage  parent) {
+        super(name, uri, type, parent == null ? new HomePage() : parent);
+    }
+
+    public TaxonomyPage(String name, URI uri, ContentType type) {
+        super(name, uri, type, new HomePage());
     }
 
 
-    protected TaxonomyHome() {
+    protected TaxonomyPage() {
 
     }
 }

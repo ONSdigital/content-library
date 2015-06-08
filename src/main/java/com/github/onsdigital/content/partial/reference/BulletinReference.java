@@ -1,6 +1,6 @@
 package com.github.onsdigital.content.partial.reference;
 
-import com.github.onsdigital.content.taxonomy.statistic.document.Bulletin;
+import com.github.onsdigital.content.statistic.document.Bulletin;
 
 /**
  * Created by bren on 05/06/15.

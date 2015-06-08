@@ -11,13 +11,24 @@ import com.github.onsdigital.content.partial.link.ContentLink;
  * This class represents references to other content type on any content page that displays summary information along with title of referred content.
  * But not the actual data of referred content
  */
-public class ContentReference<T extends Content> {
+public class ContentReference<T extends Content> extends  ContentLink implements  Comparable<ContentReference> {
 
-    public ContentLink link;
     public String summary;
+    //Index used for ordering
+    public Integer index;
 
     public ContentReference(T content) {
-        this.link = new ContentLink(content);
+        this(content, null);
+    }
+
+    public ContentReference(T content, Integer index) {
+        super(content);
         this.summary = content.summary;
     }
+
+    @Override
+    public int compareTo(ContentReference o) {
+        return Integer.compare(this.index, o.index);
+    }
+
 }

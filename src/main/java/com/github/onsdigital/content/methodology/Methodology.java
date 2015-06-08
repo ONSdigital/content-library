@@ -3,8 +3,13 @@ package com.github.onsdigital.content.methodology;
 import com.github.onsdigital.content.base.Content;
 import com.github.onsdigital.content.base.ContentType;
 import com.github.onsdigital.content.partial.Contact;
+import com.github.onsdigital.content.partial.link.ContentLink;
+import com.github.onsdigital.content.partial.markdown.MarkdownSection;
+import com.github.onsdigital.content.statistic.data.base.StatisticalData;
 
 import java.net.URI;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by bren on 04/06/15.
@@ -13,6 +18,18 @@ public class Methodology extends Content {
 
     /*Metadata*/
     public Contact contact;
+
+    /*Body*/
+    public List<MarkdownSection> sections = new ArrayList<>();
+    public List<MarkdownSection> accordion = new ArrayList<>();
+    public ContentLink<StatisticalData> data;//Data in the article
+
+
+    /*Migration Data*/
+    public String theme;
+    public String level2;
+    public String level3;
+
 
     public Methodology(String name, URI uri, String summary, MethodologyBrowsePage parent) {
         super(name, uri, ContentType.methodology, parent);

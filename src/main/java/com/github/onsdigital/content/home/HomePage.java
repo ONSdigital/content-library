@@ -3,7 +3,6 @@ package com.github.onsdigital.content.home;
 import com.github.onsdigital.content.base.Content;
 import com.github.onsdigital.content.base.ContentType;
 import com.github.onsdigital.content.partial.HomeSection;
-import com.github.onsdigital.content.taxonomy.home.base.TaxonomyHome;
 
 import java.net.URI;
 import java.util.List;
@@ -13,9 +12,9 @@ import java.util.List;
  * <p>
  * Object mapping for homepage of the website
  * <p>
- * HomePage is considered as the root of Taxonomy. It also contains links and references to static, non-taxonomy contents (Methodology, Release, About Us pages , etc.)
+ * HomePage is considered as the root of Taxonomy. It also contains links and references to non-statistics contents (Methodology, Release, About Us pages , etc.)
  */
-public class HomePage extends TaxonomyHome {
+public class HomePage extends Content {
 
     private transient static final URI HOME_URI = URI.create("/");
     private transient static final String NAME = "Home";

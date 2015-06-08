@@ -2,6 +2,7 @@ package com.github.onsdigital.content.release;
 
 import com.github.onsdigital.content.base.Content;
 import com.github.onsdigital.content.base.ContentType;
+import com.github.onsdigital.content.home.HomePage;
 
 import java.net.URI;
 
@@ -10,11 +11,11 @@ import java.net.URI;
  */
 public class ReleaseCalendar extends Content {
 
-    public ReleaseCalendar(String name, URI uri, ContentType type, Content parentContent) {
-        super(name, uri, type, parentContent);
+    private transient static final String RELEASE_CALENDAR = "Release Calendar";
+    private transient static final URI RELEASE_CALENDAR_URI = URI.create("/releasecalendar");
+
+    public ReleaseCalendar() {
+        super(RELEASE_CALENDAR, RELEASE_CALENDAR_URI, ContentType.release_calendar, new HomePage());
     }
 
-    private ReleaseCalendar() {
-
-    }
 }

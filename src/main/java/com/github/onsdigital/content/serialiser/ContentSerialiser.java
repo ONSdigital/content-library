@@ -48,11 +48,11 @@ public class ContentSerialiser {
     }
 
     private GsonBuilder createBuilder() {
-        return new GsonBuilder().setDateFormat(DEFAULT_DATE_PATTERN);
+        return createBuilder( DEFAULT_DATE_PATTERN);
     }
 
     private GsonBuilder createBuilder(String datePattern) {
-        return new GsonBuilder().setDateFormat(datePattern);
+        return new GsonBuilder().setDateFormat(datePattern).setPrettyPrinting();
     }
 
 

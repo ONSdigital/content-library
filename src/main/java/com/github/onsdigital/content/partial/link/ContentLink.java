@@ -11,12 +11,12 @@ import java.net.URI;
  */
 public class ContentLink<T extends Content> {
 
-    public String name;
+    public String title;
     public URI uri;
 
     //Create breadcrumb item  that links to given content
     public ContentLink(T content) {
-        this.name = content.title;
+        this.title = content.title;
         this.uri = content.uri;
     }
 

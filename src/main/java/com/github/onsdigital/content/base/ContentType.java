@@ -15,7 +15,7 @@ public enum ContentType {
     home_page,
     taxonomy_landing_page,
     product_page,
-    bulletin,
+    bulletin ,
     article,
     timeseries,
     data_slice,
@@ -28,7 +28,10 @@ public enum ContentType {
     about_us,
     foi,
     adhoc,
-    dataset; //TODO:To be changed with complex pages. Keeping in for alpha content temporarily
+    dataset,
+    release,
+    release_calendar,
+    unknown; //TODO:To be changed with complex pages. Keeping in for alpha content temporarily
 
     //TODO: Add all content types
 }

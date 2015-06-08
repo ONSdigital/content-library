@@ -1,5 +1,6 @@
 package com.github.onsdigital.content.base;
 
+import com.github.onsdigital.content.home.HomePage;
 import com.github.onsdigital.content.partial.link.ContentLink;
 import com.github.onsdigital.content.serialiser.ContentSerialiser;
 
@@ -16,11 +17,10 @@ import java.util.List;
  * <p>
  * Content on the website forms a logical hierarchy with homepage being the root of this hierarchy.
  * The hierarchy is shown as a breadcrumb on every page.
- *
  */
 public abstract class Content {
 
-    private ContentType type;
+    public ContentType type;
 
     public String title;
 
@@ -41,12 +41,13 @@ public abstract class Content {
      * <p>
      * Objects should still be asserted for missing information after Deserializing
      *
-     * @param name Name/Title of this content
-     * @param uri Uri of the content
-     * @param parent Parent content which gives access to this content, should be null for homepage
+     * @param title   Name/Title of this content
+     * @param uri    Uri of the content
+     * @param parent Content which will appear as parent of this content on breadcrumb
      */
-    public Content(String name, URI uri, ContentType type, Content parent) {
-        this.title = name;
+
+    public Content(String title, URI uri, ContentType type, Content parent) {
+        this.title = title;
         this.uri = uri;
         this.type = type;
         buildBreadcrumb(parent);
@@ -77,11 +78,12 @@ public abstract class Content {
         return new ContentSerialiser(datePattern).serialise(this);
     }
 
-    private void buildBreadcrumb(Content parent) {
+    //TODO: content generator code should be altered. This method should  encapsulate breadcrumb building logic as a private method
+    public void buildBreadcrumb(Content parent) {
         breadCrumb = new ArrayList<ContentLink>();
-        breadCrumb.addAll(parent.breadCrumb);
         //parent content is null for home page
         if (parent != null) {
+            breadCrumb.addAll(parent.breadCrumb);
             breadCrumb.add(new ContentLink(parent));
         }
     }

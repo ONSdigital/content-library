@@ -1,12 +1,9 @@
-package com.github.onsdigital.content.taxonomy.statistic.document;
+package com.github.onsdigital.content.statistic.document;
 
 import com.github.onsdigital.content.base.ContentType;
-import com.github.onsdigital.content.partial.link.ContentLink;
 import com.github.onsdigital.content.partial.reference.ContentReference;
-import com.github.onsdigital.content.taxonomy.statistic.base.Statistic;
-import com.github.onsdigital.content.taxonomy.home.ProductPage;
-import com.github.onsdigital.content.taxonomy.statistic.data.base.StatisticalData;
-import com.github.onsdigital.content.taxonomy.statistic.document.base.StatisticalDocument;
+import com.github.onsdigital.content.taxonomy.ProductPage;
+import com.github.onsdigital.content.statistic.document.base.StatisticalDocument;
 
 import java.net.URI;
 import java.util.List;
