@@ -1,6 +1,7 @@
 package com.github.onsdigital.content.partial;
 
 import com.github.onsdigital.content.partial.link.ContentLink;
+import com.github.onsdigital.content.partial.reference.ContentReference;
 import com.github.onsdigital.content.statistic.data.base.StatisticalData;
 import com.github.onsdigital.content.taxonomy.TaxonomyLandingPage;
 
@@ -14,15 +15,15 @@ public class HomeSection implements Comparable<HomeSection> {
 
 
     public Integer index; //Used for ordering of sections on homepage
-    public ContentLink<TaxonomyLandingPage> theme;
-    public ContentLink<StatisticalData> statistics;
+    public ContentReference<TaxonomyLandingPage> theme;
+    public ContentReference<StatisticalData> statistics;
 
-    public HomeSection(ContentLink<TaxonomyLandingPage> themeReference, ContentLink<StatisticalData> statistics) {
+    public HomeSection(ContentReference<TaxonomyLandingPage> themeReference, ContentReference<StatisticalData> statistics) {
         this(themeReference, statistics, null);
     }
 
 
-    public HomeSection(ContentLink<TaxonomyLandingPage> themeLink, ContentLink<StatisticalData> statistics, Integer index) {
+    public HomeSection(ContentReference<TaxonomyLandingPage> themeLink, ContentReference<StatisticalData> statistics, Integer index) {
         this.theme = themeLink;
         this.statistics = statistics;
         this.index = index;

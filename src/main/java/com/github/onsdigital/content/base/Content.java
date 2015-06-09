@@ -1,6 +1,7 @@
 package com.github.onsdigital.content.base;
 
 import com.github.onsdigital.content.partial.link.ContentLink;
+import com.github.onsdigital.content.partial.reference.ContentReference;
 import com.github.onsdigital.content.serialiser.ContentSerialiser;
 
 import java.net.URI;
@@ -28,7 +29,7 @@ public abstract class Content {
     //Since gson library will not serialise null data into json file, summary won't appear in content types with no summary
     public String summary;
 
-    public List<ContentLink> breadcrumb;
+    public List<ContentReference> breadcrumb;
 
     public Content(ContentType type) {
         this.type = type;
@@ -55,11 +56,11 @@ public abstract class Content {
     }
 
     public void buildBreadcrumb(Content parent) {
-        breadcrumb = new ArrayList<ContentLink>();
+        breadcrumb = new ArrayList<ContentReference>();
         //parent content is null for home page
         if (parent != null) {
             breadcrumb.addAll(parent.breadcrumb);
-            breadcrumb.add(new ContentLink(parent));
+            breadcrumb.add(new ContentReference(parent));
         }
     }
 

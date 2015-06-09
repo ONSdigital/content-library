@@ -14,15 +14,22 @@ import com.github.onsdigital.content.partial.link.ContentLink;
 public class ContentReference<T extends Content> extends  ContentLink {
 
     public String summary;
-    public String name;
+    public String title;
 
     public ContentReference() {
 
     }
 
     public ContentReference(T content) {
-        super(content);
-        this.summary = content.summary;
+        this(content, null);
+    }
+
+
+
+    public ContentReference(T content, Integer index) {
+        super(content, index);
         this.uri = content.uri;
+        this.title = content.title;
+        this.summary = content.summary;
     }
 }

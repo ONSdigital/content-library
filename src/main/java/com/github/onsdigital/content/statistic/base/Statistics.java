@@ -23,4 +23,5 @@ public abstract class Statistics extends Content {
     public Statistics(ContentType type) {
         super(type);
     }
+
 }

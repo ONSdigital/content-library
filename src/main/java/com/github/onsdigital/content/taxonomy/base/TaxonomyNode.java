@@ -11,19 +11,13 @@ import com.github.onsdigital.content.base.ContentType;
  * @author david
  * @author bren
  */
-public abstract class TaxonomyNode extends Content implements  Comparable<TaxonomyNode>  {
+public class TaxonomyNode extends Content implements  Comparable<TaxonomyNode>  {
 
-    public transient Integer index;
+    public Integer index;
 
     public TaxonomyNode(ContentType contentType) {
-        this(null, contentType);
-    }
-
-    public TaxonomyNode(Integer index, ContentType contentType) {
         super(contentType);
-        this.index = index;
     }
-
 
     @Override
     public int compareTo(TaxonomyNode o) {
