@@ -22,7 +22,7 @@ public class HomePage extends Content {
     public List<HomeSection> sections;
 
     public HomePage() {
-        super(NAME, HOME_URI, ContentType.home_page, null);
+        super(ContentType.home_page);
     }
 
 }

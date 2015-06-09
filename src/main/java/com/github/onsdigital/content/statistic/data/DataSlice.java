@@ -2,11 +2,9 @@ package com.github.onsdigital.content.statistic.data;
 
 import com.github.onsdigital.content.base.ContentType;
 import com.github.onsdigital.content.partial.link.ContentLink;
-import com.github.onsdigital.content.taxonomy.ProductPage;
 import com.github.onsdigital.content.statistic.Dataset;
 import com.github.onsdigital.content.statistic.data.base.StatisticalData;
 
-import java.net.URI;
 import java.util.List;
 
 /**
@@ -21,11 +19,7 @@ public class DataSlice extends StatisticalData {
     public List<ContentLink<Dataset>> relatedDatasets;
 
 
-    public DataSlice(String cdid, String name, URI uri, String summary, ContentType type, ProductPage parent) {
-        super(cdid, name, uri, summary, type, parent);
-    }
-
-    private DataSlice() {
-
+    public DataSlice(ContentType type) {
+        super(type);
     }
 }

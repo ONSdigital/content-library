@@ -19,9 +19,9 @@ public enum ContentType {
     article,
     timeseries,
     data_slice,
-    compendium_browse_page,
+    compendium_landing_page,
     compendium,
-    methodology_browse_page,
+    methodology_landing_page,
     methodology,
     qmi,
     about_us_browse_page,
@@ -31,6 +31,7 @@ public enum ContentType {
     dataset,
     release,
     release_calendar,
+    list_page, //???
     unknown; //TODO:To be changed with complex pages. Keeping in for alpha content temporarily
 
     //TODO: Add all content types

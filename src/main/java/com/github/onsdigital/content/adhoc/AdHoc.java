@@ -14,11 +14,7 @@ public class AdHoc extends Content {
     public Date releaseDate;
     public int reference;
 
-    public AdHoc(String name, URI uri, Content parent) {
-        super(name, uri, ContentType.adhoc, parent);
-    }
-
-    private AdHoc() {
-
+   public AdHoc(String name, URI uri) {
+        super(ContentType.adhoc);
     }
 }

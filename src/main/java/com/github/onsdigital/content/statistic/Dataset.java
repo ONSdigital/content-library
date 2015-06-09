@@ -27,12 +27,7 @@ public class Dataset extends Statistics {
     public String description;
 
 
-    public Dataset(String datasetId, String name, URI uri, String summary, ProductPage productPage) {
-        super(name, uri, summary, ContentType.dataset, productPage);
-        this.datasetId = datasetId;
-    }
-
-    private Dataset() {
-
+    public Dataset() {
+        super(ContentType.dataset);
     }
 }

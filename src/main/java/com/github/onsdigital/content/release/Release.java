@@ -30,12 +30,7 @@ public class Release extends Content {
     public List<ContentReference<Bulletin>> bulletins = new ArrayList<ContentReference<Bulletin>>();
     public List<ContentReference<Dataset>> datasets = new ArrayList<ContentReference<Dataset>>();
 
-
-    public Release(ProductPage productPage, URI uri) {
-        super(productPage.name, uri, ContentType.release, new ReleaseCalendar());
-        this.summary = productPage.summary;
-    }
-
-    private Release() {
+    public Release() {
+        super(ContentType.release);
     }
 }

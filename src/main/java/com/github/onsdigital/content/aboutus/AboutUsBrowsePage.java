@@ -10,11 +10,8 @@ import java.net.URI;
  */
 public class AboutUsBrowsePage extends Content {
 
-    public AboutUsBrowsePage(String name, URI uri, Content parent) {
-        super(name, uri, ContentType.about_us_browse_page, parent);
+    public AboutUsBrowsePage(String name, URI uri) {
+        super(ContentType.about_us_browse_page);
     }
 
-    private AboutUsBrowsePage() {
-        
-    }
 }

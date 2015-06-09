@@ -13,11 +13,7 @@ public class FOI extends Content {
 
     public Date releaseDate;
 
-    public FOI(String name, URI uri, AboutUsBrowsePage parent) {
-        super(name, uri, ContentType.foi, parent);
-    }
-
-    private FOI() {
-
+    public FOI() {
+        super(ContentType.foi);
     }
 }

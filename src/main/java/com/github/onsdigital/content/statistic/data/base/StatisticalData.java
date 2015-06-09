@@ -43,11 +43,8 @@ public abstract class StatisticalData extends Statistics {
 
     public List<ContentLink<Methodology>> methodology;
 
-    public StatisticalData(String cdid, String name, URI uri, String summary, ContentType type, ProductPage parent) {
-        super(name, uri, summary, type, parent);
+    public StatisticalData(ContentType type) {
+        super(type);
     }
 
-    protected StatisticalData() {
-
-    }
 }

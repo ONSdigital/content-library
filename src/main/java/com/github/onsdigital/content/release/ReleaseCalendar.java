@@ -15,7 +15,9 @@ public class ReleaseCalendar extends Content {
     private transient static final URI RELEASE_CALENDAR_URI = URI.create("/releasecalendar");
 
     public ReleaseCalendar() {
-        super(RELEASE_CALENDAR, RELEASE_CALENDAR_URI, ContentType.release_calendar, new HomePage());
+        super(ContentType.release_calendar);
+        this.title = RELEASE_CALENDAR;
+        this.uri =  RELEASE_CALENDAR_URI;
     }
 
 }

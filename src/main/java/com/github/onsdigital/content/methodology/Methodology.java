@@ -25,18 +25,12 @@ public class Methodology extends Content {
     public ContentLink<StatisticalData> data;//Data in the article
 
 
-    /*Migration Data*/
-    public String theme;
-    public String level2;
-    public String level3;
+    /*Migration Data - Only at time of migration*/
+    public transient String theme;
+    public transient String level2;
+    public transient String level3;
 
-
-    public Methodology(String name, URI uri, String summary, MethodologyBrowsePage parent) {
-        super(name, uri, ContentType.methodology, parent);
-        this.summary = summary;
-    }
-
-    private Methodology() {
-
+    public Methodology() {
+        super(ContentType.methodology);
     }
 }

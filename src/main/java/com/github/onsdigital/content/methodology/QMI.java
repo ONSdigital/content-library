@@ -19,11 +19,8 @@ public class QMI extends Content {
     public int sampleSize;
     public Date lastRevised;
 
-    public QMI(String name, URI uri, MethodologyBrowsePage parent) {
-        super(name, uri, ContentType.qmi, parent);
+    public QMI() {
+        super(ContentType.qmi);
     }
 
-    private QMI() {
-
-    }
 }

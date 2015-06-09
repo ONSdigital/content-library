@@ -5,7 +5,7 @@ import com.github.onsdigital.content.statistic.data.base.StatisticalData;
 import com.github.onsdigital.content.taxonomy.TaxonomyLandingPage;
 
 /**
- * Represents sections on homepage with references to a level 2 page and a timeseries page
+ * Represents sections on homepage with references to a landing page and a timeseries page
  *
  * @author Bren
  */

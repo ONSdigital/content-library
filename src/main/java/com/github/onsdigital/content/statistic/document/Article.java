@@ -2,10 +2,8 @@ package com.github.onsdigital.content.statistic.document;
 
 import com.github.onsdigital.content.base.ContentType;
 import com.github.onsdigital.content.partial.reference.ContentReference;
-import com.github.onsdigital.content.taxonomy.ProductPage;
 import com.github.onsdigital.content.statistic.document.base.StatisticalDocument;
 
-import java.net.URI;
 import java.util.List;
 
 /**
@@ -22,12 +20,8 @@ public class Article extends StatisticalDocument {
     public List<ContentReference<Article>> relatedArticles;
 
 
-    public Article(String name, URI uri, String summary, ProductPage productPage) {
-        super(name, uri, summary, ContentType.article, productPage);
+    public Article() {
+        super(ContentType.article);
     }
 
-
-    private Article() {
-
-    }
 }

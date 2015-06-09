@@ -22,21 +22,16 @@ public abstract class StatisticalDocument extends Statistics {
     /*Body*/
     public List<MarkdownSection> sections = new ArrayList<>();
     public List<MarkdownSection> accordion = new ArrayList<>();
-    public ContentLink<StatisticalData> data;//Data in the article
+    public ContentLink<StatisticalData> data;//Link to data in the article
 
 
     /*Migration Data*/
-    public String theme;
-    public String level2;
-    public String level3;
+    public transient String theme;
+    public transient String level2;
+    public transient String level3;
 
 
-    public StatisticalDocument(String name, URI uri, String summary, ContentType type, ProductPage parent) {
-        super(name, uri, summary, type, parent);
-    }
-
-
-    protected StatisticalDocument() {
-
+    public StatisticalDocument(ContentType contentType) {
+        super(contentType);
     }
 }

@@ -1,7 +1,6 @@
 package com.github.onsdigital.content.statistic;
 
 import com.github.onsdigital.content.base.ContentType;
-import com.github.onsdigital.content.taxonomy.CompendiumBrowsePage;
 import com.github.onsdigital.content.statistic.base.Statistics;
 
 import java.net.URI;
@@ -13,11 +12,8 @@ public class Compendium extends Statistics {
 
     //TODO: Complete compendium object model. Content not quite clear yet
 
-    public Compendium(String name, URI uri, String summary, CompendiumBrowsePage parent) {
-        super(name, uri, summary, ContentType.compendium, parent);
+    public Compendium(String name, URI uri, String summary) {
+        super(ContentType.compendium);
     }
 
-    private Compendium() {
-
-    }
 }

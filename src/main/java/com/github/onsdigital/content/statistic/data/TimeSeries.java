@@ -3,7 +3,6 @@ package com.github.onsdigital.content.statistic.data;
 import com.github.onsdigital.content.base.ContentType;
 import com.github.onsdigital.content.partial.link.ContentLink;
 import com.github.onsdigital.content.statistic.data.timeseries.TimeseriesValue;
-import com.github.onsdigital.content.taxonomy.ProductPage;
 import com.github.onsdigital.content.statistic.data.base.StatisticalData;
 import org.apache.commons.lang3.StringUtils;
 
@@ -71,14 +70,9 @@ public class TimeSeries extends StatisticalData implements  Comparable<TimeSerie
 
 
 
-    public TimeSeries(String cdid, String name, URI uri, String summary, ProductPage parent) {
-        super(cdid,name, uri, summary, ContentType.timeseries, parent);
+    public TimeSeries() {
+        super(ContentType.timeseries);
     }
-
-    private TimeSeries() {
-
-    }
-
 
 
     public void add(TimeseriesValue value) {
@@ -124,8 +118,8 @@ public class TimeSeries extends StatisticalData implements  Comparable<TimeSerie
 
         // We don't have metadata for all of the datasets,so
         // this provides a basic fallback by setting the CDID as the title:
-        if (StringUtils.isBlank(name)) {
-            name = cdid;
+        if (StringUtils.isBlank(title)) {
+            title = cdid;
         }
     }
 

@@ -17,9 +17,9 @@ import java.util.List;
  */
 public abstract class Content {
 
-    public ContentType type;
+    private ContentType type;
 
-    public String name;
+    public String title;
 
     public URI uri;
 
@@ -30,30 +30,9 @@ public abstract class Content {
 
     public List<ContentLink> breadcrumb;
 
-    /**
-     * Public constructor enforces required information for setting up the hierarchy and location to be passed into objects.
-     * Which in turn should eliminate coding errors involving missing information at development time.
-     * <p>
-     * serialize/deserialize utils on the other hand should use private constructors (via Reflection)
-     * <p>
-     * Objects should still be asserted for missing information after Deserializing
-     *
-     * @param title   Name/Title of this content
-     * @param uri    Uri of the content
-     * @param parent Content which will appear as parent of this content on breadcrumb
-     */
-
-    public Content(String title, URI uri, ContentType type, Content parent) {
-        this.name = title;
-        this.uri = uri;
+    public Content(ContentType type) {
         this.type = type;
-        buildBreadcrumb(parent);
     }
-
-    protected Content() {
-
-    }
-
 
     /**
      * Serialises object into json document as String.
@@ -75,7 +54,6 @@ public abstract class Content {
         return new ContentSerialiser(datePattern).serialise(this);
     }
 
-    //TODO: content generator code should be altered. This method should  encapsulate breadcrumb building logic as a private method
     public void buildBreadcrumb(Content parent) {
         breadcrumb = new ArrayList<ContentLink>();
         //parent content is null for home page
@@ -85,4 +63,7 @@ public abstract class Content {
         }
     }
 
+    public ContentType getType() {
+        return type;
+    }
 }
