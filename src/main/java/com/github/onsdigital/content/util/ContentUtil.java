@@ -1,4 +1,4 @@
-package com.github.onsdigital.content.serialiser;
+package com.github.onsdigital.content.util;
 
 import com.github.onsdigital.content.base.Content;
 import com.google.gson.Gson;
@@ -18,8 +18,6 @@ import java.io.InputStreamReader;
  *
  */
 public class ContentUtil {
-
-    private static final String DEFAULT_DATE_PATTERN = "d MMMM yyyy";
 
     /**
      * Returns json string for given object
@@ -68,7 +66,7 @@ public class ContentUtil {
         if (StringUtils.isNotBlank(datePattern)) {
             builder.setDateFormat(datePattern);
         } else {
-            builder.setDateFormat(DEFAULT_DATE_PATTERN);
+            builder.setDateFormat(ContentConstants.DEFAULT_DATE_PATTERN);
         }
         return builder.create();
     }

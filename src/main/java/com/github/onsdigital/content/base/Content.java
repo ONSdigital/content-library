@@ -1,7 +1,7 @@
 package com.github.onsdigital.content.base;
 
 import com.github.onsdigital.content.partial.reference.ContentReference;
-import com.github.onsdigital.content.serialiser.ContentUtil;
+import com.github.onsdigital.content.util.ContentUtil;
 
 import java.net.URI;
 import java.util.ArrayList;

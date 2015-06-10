@@ -1,6 +1,6 @@
 package com.github.onsdigital.content.statistic.data.timeseries;
 
-import com.github.onsdigital.content.serialiser.ContentUtil;
+import com.github.onsdigital.content.util.ContentUtil;
 import com.github.onsdigital.content.statistic.data.TimeSeries;
 import org.apache.commons.lang3.StringUtils;
 

@@ -8,7 +8,7 @@ public class TestContentTypeResolver {
 
     @Test
     public void testInitializeContentResolve() {
-        new ContentTypeResolver();
+        new TestContentTypeResolver();
     }
 
 

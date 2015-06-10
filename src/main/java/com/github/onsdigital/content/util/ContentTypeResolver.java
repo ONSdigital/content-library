@@ -1,4 +1,4 @@
-package com.github.onsdigital.content.serialiser;
+package com.github.onsdigital.content.util;
 
 import com.github.onsdigital.content.base.Content;
 import com.github.onsdigital.content.base.ContentType;
@@ -20,9 +20,7 @@ class ContentTypeResolver implements JsonDeserializer<Content> {
     private static Map<ContentType, Class> contentClasses = new HashMap<ContentType, Class>();
 
     static {
-
         registerContentTypes();
-
     }
 
     @Override

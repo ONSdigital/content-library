@@ -3,6 +3,7 @@ package com.github.onsdigital.content.home;
 import com.github.onsdigital.content.base.ContentType;
 import com.github.onsdigital.content.partial.HomeSection;
 import com.github.onsdigital.content.taxonomy.base.TaxonomyNode;
+import com.github.onsdigital.content.util.ContentConstants;
 
 import java.net.URI;
 import java.util.List;
@@ -16,15 +17,13 @@ import java.util.List;
  */
 public class HomePage extends TaxonomyNode {
 
-    private transient static final URI HOME_URI = URI.create("/");
-    private transient static final String NAME = "Home";
     private transient static final String SUMMARY = "The UK's largest independent producer of official statistics and the recognised national statistical institute of the UK.";
 
     public List<HomeSection> sections;
 
     public HomePage() {
-        this.uri = HOME_URI;
-        this.title = NAME;
+        this.uri = ContentConstants.HOME_URI;
+        this.title = ContentConstants.HOME_TITLE;
         this.summary = SUMMARY;
         buildBreadcrumb(null);
     }
