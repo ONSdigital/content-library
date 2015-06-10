@@ -9,7 +9,7 @@ import java.net.URI;
  * <p>
  * Link to contents. Contains the uri and title of linked content
  */
-public class ContentLink<T extends Content> implements Comparable<ContentLink> {
+public class ContentLink<T extends Content> implements Comparable<ContentLink>, Cloneable {
 
     public URI uri;
     //Index used for ordering
@@ -40,6 +40,11 @@ public class ContentLink<T extends Content> implements Comparable<ContentLink> {
         this.uri = content.uri;
     }
 
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
 
     @Override
     public int compareTo(ContentLink o) {

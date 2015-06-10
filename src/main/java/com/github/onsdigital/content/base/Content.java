@@ -1,7 +1,7 @@
 package com.github.onsdigital.content.base;
 
 import com.github.onsdigital.content.partial.reference.ContentReference;
-import com.github.onsdigital.content.serialiser.ContentSerialiser;
+import com.github.onsdigital.content.serialiser.ContentUtil;
 
 import java.net.URI;
 import java.util.ArrayList;
@@ -15,9 +15,9 @@ import java.util.List;
  * Content on the website forms a logical hierarchy with homepage being the root of this hierarchy.
  * The hierarchy is shown as a breadcrumb on every page.
  */
-public abstract class Content {
+public abstract class Content implements Cloneable {
 
-    private  ContentType type;
+    private ContentType type;
 
     public String title;
 
@@ -41,18 +41,7 @@ public abstract class Content {
      * @return json
      */
     public String toJson() {
-        return new ContentSerialiser().serialise(this);
-    }
-
-
-    /**
-     * Serialises object into json document as String. Formats date fields with given date pattern
-     *
-     * @param datePattern
-     * @return json
-     */
-    public String toJson(String datePattern) {
-        return new ContentSerialiser(datePattern).serialise(this);
+        return ContentUtil.serialise(this);
     }
 
     public void buildBreadcrumb(Content parent) {
@@ -62,6 +51,11 @@ public abstract class Content {
             breadcrumb.addAll(parent.breadcrumb);
             breadcrumb.add(new ContentReference(parent));
         }
+    }
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return ContentUtil.clone(this);
     }
 
     public abstract ContentType getType();

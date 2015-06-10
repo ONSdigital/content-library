@@ -1,5 +1,6 @@
 package com.github.onsdigital.content.statistic.data.timeseries;
 
+import com.github.onsdigital.content.serialiser.ContentUtil;
 import com.github.onsdigital.content.statistic.data.TimeSeries;
 import org.apache.commons.lang3.StringUtils;
 
@@ -9,7 +10,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-public class TimeseriesValue implements Comparable<TimeseriesValue> {
+public class TimeseriesValue implements Comparable<TimeseriesValue>, Cloneable {
 
 	// Display values:
 
@@ -106,6 +107,11 @@ public class TimeseriesValue implements Comparable<TimeseriesValue> {
 		}
 
 		return result;
+	}
+
+	@Override
+	public Object clone() throws CloneNotSupportedException {
+		return ContentUtil.clone(this);
 	}
 
 	@Override

@@ -3,10 +3,11 @@ package com.github.onsdigital.content.serialiser;
 import com.github.onsdigital.content.base.Content;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import org.apache.commons.lang3.ObjectUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.StringReader;
 
 /**
  * Created by bren on 06/06/15.
@@ -16,31 +17,19 @@ import java.io.StringReader;
  * Uses d MMMM yyy as default date format for date fields. (e.g. 1 January 2015, 10 February 2015)
  *
  */
-public class ContentSerialiser {
+public class ContentUtil {
 
     private static final String DEFAULT_DATE_PATTERN = "d MMMM yyyy";
-
-    private GsonBuilder gsonBuilder = new GsonBuilder().setPrettyPrinting();
-
-    public ContentSerialiser() {
-        this(DEFAULT_DATE_PATTERN);
-    }
-
-
-    public ContentSerialiser(String datePattern) {
-        gsonBuilder.setDateFormat(datePattern);
-    }
-
 
     /**
      * Returns json string for given object
      * @return
      */
-    public String serialise(Object object) {
+    public static String serialise(Object object) {
         return gson().toJson(object);
     }
 
-    public <O extends Object> O deserialise(String json, Class<O> type) {
+    public static <O extends Object> O deserialise(String json, Class<O> type) {
         return gson().fromJson(json, type);
     }
 
@@ -50,8 +39,7 @@ public class ContentSerialiser {
      * @param stream json stream
      * @return
      */
-    public Content deserialise(InputStream stream) {
-        gsonBuilder.registerTypeAdapter(Content.class, new ContentTypeResolver());
+    public static Content deserialise(InputStream stream) {
         return gson().fromJson(new InputStreamReader(stream), Content.class);
     }
 
@@ -61,18 +49,32 @@ public class ContentSerialiser {
      * @param json
      * @return
      */
-    public Content deserialise(String json) {
-        gsonBuilder.registerTypeAdapter(Content.class, new ContentTypeResolver());
+    public static Content deserialise(String json) {
         return gson().fromJson(json, Content.class);
     }
 
-    public <O extends Content> O deserialise(InputStream stream, Class<O> type) {
+    public static <O extends Content> O  deserialise(InputStream stream, Class<O> type) {
         return gson().fromJson(new InputStreamReader(stream), type);
     }
 
 
-    private Gson gson() {
-        return gsonBuilder.create();
+    public static <O extends  Cloneable> O clone(O o) {
+        Cloneable cloneable = o;
+        return ObjectUtils.clone(o);
+    }
+
+    private static Gson gson(String datePattern) {
+        GsonBuilder builder = new GsonBuilder().setPrettyPrinting().registerTypeAdapter(Content.class, new ContentTypeResolver());
+        if (StringUtils.isNotBlank(datePattern)) {
+            builder.setDateFormat(datePattern);
+        } else {
+            builder.setDateFormat(DEFAULT_DATE_PATTERN);
+        }
+        return builder.create();
+    }
+
+    private static Gson gson() {
+        return gson(null);
     }
 
 }
