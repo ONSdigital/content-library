@@ -3,7 +3,6 @@ package com.github.onsdigital.content.aboutus;
 import com.github.onsdigital.content.base.Content;
 import com.github.onsdigital.content.base.ContentType;
 
-import java.net.URI;
 import java.util.Date;
 
 /**
@@ -13,7 +12,8 @@ public class FOI extends Content {
 
     public Date releaseDate;
 
-    public FOI() {
-        super(ContentType.foi);
+    @Override
+    public ContentType getType() {
+        return ContentType.foi;
     }
 }

@@ -3,10 +3,8 @@ package com.github.onsdigital.content.statistic;
 import com.github.onsdigital.content.base.ContentType;
 import com.github.onsdigital.content.partial.DownloadSection;
 import com.github.onsdigital.content.partial.markdown.MarkdownSection;
-import com.github.onsdigital.content.taxonomy.ProductPage;
 import com.github.onsdigital.content.statistic.base.Statistics;
 
-import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,7 +25,9 @@ public class Dataset extends Statistics {
     public String description;
 
 
-    public Dataset() {
-        super(ContentType.dataset);
+    @Override
+    public ContentType getType() {
+        return ContentType.dataset;
     }
+
 }

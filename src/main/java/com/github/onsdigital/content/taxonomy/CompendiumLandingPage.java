@@ -7,10 +7,14 @@ import com.github.onsdigital.content.taxonomy.base.TaxonomyNode;
  * Created by bren on 04/06/15.
  */
 public class CompendiumLandingPage extends TaxonomyNode {
-
     //TODO: Complete compendium object model. Content not quite clear yet
-    public CompendiumLandingPage() {
-        super(ContentType.compendium_landing_page);
+
+
+    @Override
+    public ContentType getType() {
+        return ContentType.compendium_landing_page;
     }
+
+
 
 }

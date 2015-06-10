@@ -19,7 +19,9 @@ public class DataSlice extends StatisticalData {
     public List<ContentLink<Dataset>> relatedDatasets;
 
 
-    public DataSlice(ContentType type) {
-        super(type);
+    @Override
+    public ContentType getType() {
+        return ContentType.data_slice;
     }
+
 }

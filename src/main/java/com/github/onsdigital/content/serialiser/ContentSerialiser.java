@@ -6,27 +6,29 @@ import com.google.gson.GsonBuilder;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.StringReader;
 
 /**
  * Created by bren on 06/06/15.
  *
- * Several utilities to serialise/deserialize content types.
+ * Several utilities to serialise/deserialize utility with date format supports.
  *
- * Uses d MMM yyy as default date format for date fields. (e.g. 1 Jan 2015, 10 Feb 2015)
+ * Uses d MMMM yyy as default date format for date fields. (e.g. 1 January 2015, 10 February 2015)
  *
  */
 public class ContentSerialiser {
 
-    private static final String DEFAULT_DATE_PATTERN = "d MMM yyyy";
+    private static final String DEFAULT_DATE_PATTERN = "d MMMM yyyy";
 
-    private Gson gson;
+    private GsonBuilder gsonBuilder = new GsonBuilder().setPrettyPrinting();
 
     public ContentSerialiser() {
-        gson = createBuilder().create();
+        this(DEFAULT_DATE_PATTERN);
     }
 
+
     public ContentSerialiser(String datePattern) {
-        gson = createBuilder(datePattern).create();
+        gsonBuilder.setDateFormat(datePattern);
     }
 
 
@@ -35,24 +37,42 @@ public class ContentSerialiser {
      * @return
      */
     public String serialise(Object object) {
-        return gson.toJson(object);
+        return gson().toJson(object);
     }
 
     public <O extends Object> O deserialise(String json, Class<O> type) {
-        return gson.fromJson(json, type);
+        return gson().fromJson(json, type);
     }
 
-    public <O extends Object> O deserialise(InputStream stream, Class<O> type) {
-        return gson.fromJson(new InputStreamReader(stream), type);
+    /**
+     * Resolves content type and deserializes automatically to that implementation. Use if you do not need to know actual class implementation
+     *
+     * @param stream json stream
+     * @return
+     */
+    public Content deserialise(InputStream stream) {
+        gsonBuilder.registerTypeAdapter(Content.class, new ContentTypeResolver());
+        return gson().fromJson(new InputStreamReader(stream), Content.class);
     }
 
-    private GsonBuilder createBuilder() {
-        return createBuilder( DEFAULT_DATE_PATTERN);
+    /**
+     * Resolves content type and deserializes automatically to that implementation. Use if you do not need to know actual class implementation
+     *
+     * @param json
+     * @return
+     */
+    public Content deserialise(String json) {
+        gsonBuilder.registerTypeAdapter(Content.class, new ContentTypeResolver());
+        return gson().fromJson(json, Content.class);
     }
 
-    private GsonBuilder createBuilder(String datePattern) {
-        return new GsonBuilder().setDateFormat(datePattern).setPrettyPrinting();
+    public <O extends Content> O deserialise(InputStream stream, Class<O> type) {
+        return gson().fromJson(new InputStreamReader(stream), type);
     }
 
+
+    private Gson gson() {
+        return gsonBuilder.create();
+    }
 
 }

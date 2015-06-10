@@ -3,7 +3,6 @@ package com.github.onsdigital.content.adhoc;
 import com.github.onsdigital.content.base.Content;
 import com.github.onsdigital.content.base.ContentType;
 
-import java.net.URI;
 import java.util.Date;
 
 /**
@@ -14,7 +13,9 @@ public class AdHoc extends Content {
     public Date releaseDate;
     public int reference;
 
-   public AdHoc(String name, URI uri) {
-        super(ContentType.adhoc);
+
+    @Override
+    public ContentType getType() {
+        return ContentType.adhoc;
     }
 }

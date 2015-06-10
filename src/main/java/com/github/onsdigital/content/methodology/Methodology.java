@@ -7,7 +7,6 @@ import com.github.onsdigital.content.partial.link.ContentLink;
 import com.github.onsdigital.content.partial.markdown.MarkdownSection;
 import com.github.onsdigital.content.statistic.data.base.StatisticalData;
 
-import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,8 +29,9 @@ public class Methodology extends Content {
     public transient String level2;
     public transient String level3;
 
-    public Methodology() {
-        super(ContentType.methodology);
-    }
 
+    @Override
+    public ContentType getType() {
+        return ContentType.methodology;
+    }
 }

@@ -24,8 +24,9 @@ public class Bulletin extends StatisticalDocument {
     public String language;
     public String[] searchKeywords;
 
-
-    public Bulletin() {
-        super(ContentType.bulletin);
+    @Override
+    public ContentType getType() {
+        return ContentType.bulletin;
     }
+
 }

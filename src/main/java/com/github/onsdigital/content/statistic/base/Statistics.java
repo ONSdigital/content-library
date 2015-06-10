@@ -1,7 +1,6 @@
 package com.github.onsdigital.content.statistic.base;
 
 import com.github.onsdigital.content.base.Content;
-import com.github.onsdigital.content.base.ContentType;
 import com.github.onsdigital.content.partial.Contact;
 
 import java.util.Date;
@@ -19,9 +18,5 @@ public abstract class Statistics extends Content {
     public Contact contact;
     public Date releaseDate;
     public Date nextReleaseDate;
-
-    public Statistics(ContentType type) {
-        super(type);
-    }
 
 }

@@ -20,8 +20,9 @@ public class Article extends StatisticalDocument {
     public List<ContentReference<Article>> relatedArticles;
 
 
-    public Article() {
-        super(ContentType.article);
+    @Override
+    public ContentType getType() {
+        return ContentType.article;
     }
 
 }

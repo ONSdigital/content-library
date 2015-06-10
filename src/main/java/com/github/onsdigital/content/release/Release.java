@@ -7,9 +7,7 @@ import com.github.onsdigital.content.partial.reference.ContentReference;
 import com.github.onsdigital.content.statistic.Dataset;
 import com.github.onsdigital.content.statistic.document.Article;
 import com.github.onsdigital.content.statistic.document.Bulletin;
-import com.github.onsdigital.content.taxonomy.ProductPage;
 
-import java.net.URI;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -30,7 +28,9 @@ public class Release extends Content {
     public List<ContentReference<Bulletin>> bulletins = new ArrayList<ContentReference<Bulletin>>();
     public List<ContentReference<Dataset>> datasets = new ArrayList<ContentReference<Dataset>>();
 
-    public Release() {
-        super(ContentType.release);
+    @Override
+    public ContentType getType() {
+        return ContentType.release;
     }
+
 }

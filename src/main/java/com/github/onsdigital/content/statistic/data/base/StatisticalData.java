@@ -1,14 +1,11 @@
 package com.github.onsdigital.content.statistic.data.base;
 
-import com.github.onsdigital.content.base.ContentType;
 import com.github.onsdigital.content.methodology.Methodology;
 import com.github.onsdigital.content.partial.link.ContentLink;
 import com.github.onsdigital.content.statistic.Dataset;
 import com.github.onsdigital.content.statistic.base.Statistics;
 import com.github.onsdigital.content.statistic.document.base.StatisticalDocument;
-import com.github.onsdigital.content.taxonomy.ProductPage;
 
-import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,9 +39,5 @@ public abstract class StatisticalData extends Statistics {
     public List<ContentLink<StatisticalDocument>> relatedDocuments = new ArrayList<>();
 
     public List<ContentLink<Methodology>> methodology;
-
-    public StatisticalData(ContentType type) {
-        super(type);
-    }
 
 }

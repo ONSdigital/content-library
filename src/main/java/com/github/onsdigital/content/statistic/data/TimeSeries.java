@@ -6,7 +6,6 @@ import com.github.onsdigital.content.statistic.data.timeseries.TimeseriesValue;
 import com.github.onsdigital.content.statistic.data.base.StatisticalData;
 import org.apache.commons.lang3.StringUtils;
 
-import java.net.URI;
 import java.text.ParseException;
 import java.util.*;
 import java.util.regex.Pattern;
@@ -67,12 +66,6 @@ public class TimeSeries extends StatisticalData implements  Comparable<TimeSerie
      * into the app with a genuine purpose.
      */
     public List<String> sourceDatasets = new ArrayList<String>();
-
-
-
-    public TimeSeries() {
-        super(ContentType.timeseries);
-    }
 
 
     public void add(TimeseriesValue value) {
@@ -164,5 +157,10 @@ public class TimeSeries extends StatisticalData implements  Comparable<TimeSerie
         return this.cdid.compareTo(o.cdid);
     }
 
+
+    @Override
+    public ContentType getType() {
+        return ContentType.timeseries;
+    }
 
 }

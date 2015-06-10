@@ -1,11 +1,9 @@
 package com.github.onsdigital.content.taxonomy;
 
-import com.github.onsdigital.content.base.Content;
 import com.github.onsdigital.content.base.ContentType;
 import com.github.onsdigital.content.partial.reference.ContentReference;
 import com.github.onsdigital.content.taxonomy.base.TaxonomyNode;
 
-import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,8 +17,8 @@ public class TaxonomyLandingPage extends TaxonomyNode {
     //Sections is not particularly a good name. Used for compatibility with Alpha website
     public List<ContentReference<TaxonomyNode>> sections = new ArrayList<>();
 
-    public TaxonomyLandingPage() {
-        super(ContentType.taxonomy_landing_page);
+    @Override
+    public ContentType getType() {
+        return ContentType.taxonomy_landing_page;
     }
-
 }

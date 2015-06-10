@@ -1,6 +1,5 @@
 package com.github.onsdigital.content.base;
 
-import com.github.onsdigital.content.partial.link.ContentLink;
 import com.github.onsdigital.content.partial.reference.ContentReference;
 import com.github.onsdigital.content.serialiser.ContentSerialiser;
 
@@ -18,7 +17,7 @@ import java.util.List;
  */
 public abstract class Content {
 
-    private ContentType type;
+    private  ContentType type;
 
     public String title;
 
@@ -31,8 +30,9 @@ public abstract class Content {
 
     public List<ContentReference> breadcrumb;
 
-    public Content(ContentType type) {
-        this.type = type;
+
+    public Content() {
+        this.type = getType();
     }
 
     /**
@@ -64,7 +64,5 @@ public abstract class Content {
         }
     }
 
-    public ContentType getType() {
-        return type;
-    }
+    public abstract ContentType getType();
 }

@@ -22,10 +22,13 @@ public class HomePage extends TaxonomyNode {
     public List<HomeSection> sections;
 
     public HomePage() {
-        super(ContentType.home_page);
         this.uri = HOME_URI;
         this.title = NAME;
         buildBreadcrumb(null);
     }
 
+    @Override
+    public ContentType getType() {
+        return ContentType.home_page;
+    }
 }

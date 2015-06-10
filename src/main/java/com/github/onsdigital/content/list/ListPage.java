@@ -8,7 +8,9 @@ public class ListPage extends Content {
     public String h2;
     public String frequency = "Monthly";
 
-    public ListPage() {
-        super(ContentType.list_page);
+
+    @Override
+    public ContentType getType() {
+        return ContentType.list_page;
     }
 }

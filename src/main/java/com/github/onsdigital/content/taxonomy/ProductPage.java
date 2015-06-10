@@ -31,8 +31,8 @@ public class ProductPage extends TaxonomyNode {
 
     public List<ContentReference<Article>> relatedArticles;
 
-    public ProductPage() {
-        super(ContentType.product_page);
+    @Override
+    public ContentType getType() {
+        return ContentType.product_page;
     }
-
 }
