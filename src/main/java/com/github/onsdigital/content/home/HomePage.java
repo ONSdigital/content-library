@@ -18,12 +18,14 @@ public class HomePage extends TaxonomyNode {
 
     private transient static final URI HOME_URI = URI.create("/");
     private transient static final String NAME = "Home";
+    private transient static final String SUMMARY = "The UK's largest independent producer of official statistics and the recognised national statistical institute of the UK.";
 
     public List<HomeSection> sections;
 
     public HomePage() {
         this.uri = HOME_URI;
         this.title = NAME;
+        this.summary = SUMMARY;
         buildBreadcrumb(null);
     }
 
