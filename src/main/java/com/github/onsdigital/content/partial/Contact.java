@@ -1,7 +1,9 @@
 package com.github.onsdigital.content.partial;
 
 
-public class Contact {
+import com.github.onsdigital.content.base.Content;
+
+public class Contact extends Content {
 
     public String name;
     public String email;

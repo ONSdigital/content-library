@@ -1,6 +1,9 @@
 package com.github.onsdigital.content.util;
 
-import com.github.onsdigital.content.base.Content;
+import com.github.onsdigital.content.link.PageReference;
+import com.github.onsdigital.content.page.base.Page;
+import com.github.onsdigital.content.partial.metadata.Metadata;
+import com.github.onsdigital.content.service.ContentService;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.apache.commons.lang3.ObjectUtils;
@@ -8,6 +11,8 @@ import org.apache.commons.lang3.StringUtils;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.URI;
+import java.util.List;
 
 /**
  * Created by bren on 06/06/15.
@@ -37,21 +42,21 @@ public class ContentUtil {
      * @param stream json stream
      * @return
      */
-    public static Content deserialise(InputStream stream) {
-        return gson().fromJson(new InputStreamReader(stream), Content.class);
+    public static Page deserialisePage(InputStream stream) {
+        return gson().fromJson(new InputStreamReader(stream), Page.class);
     }
 
     /**
-     * Resolves content type and deserializes automatically to that implementation. Use if you do not need to know actual class implementation
+     * Resolves page type and deserializes automatically to that implementation. Use if you do not need to know actual class implementation
      *
      * @param json
      * @return
      */
-    public static Content deserialise(String json) {
-        return gson().fromJson(json, Content.class);
+    public static Page deserialisePage(String json) {
+        return gson().fromJson(json, Page.class);
     }
 
-    public static <O extends Content> O  deserialise(InputStream stream, Class<O> type) {
+    public static <O extends Object> O deserialise(InputStream stream, Class<O> type) {
         return gson().fromJson(new InputStreamReader(stream), type);
     }
 
@@ -61,8 +66,32 @@ public class ContentUtil {
         return ObjectUtils.clone(o);
     }
 
+    public static void initializeMetadata(ContentService contentService, List<PageReference> pageReferences) {
+        for (PageReference pageReference : pageReferences) {
+            initializeMetadata(contentService,pageReference);
+        }
+    }
+    public static void initializeFullData(ContentService contentService, List<PageReference> pageReferences) {
+        for (PageReference pageReference : pageReferences) {
+            initializeFullData(contentService, pageReference);
+        }
+    }
+    public static void initializeMetadata(ContentService contentService, PageReference pageReference) {
+        pageReference.metadata = ContentUtil.deserialise(getJson(contentService, pageReference), Metadata.class);
+    }
+
+    public static void initializeFullData(ContentService contentService, PageReference pageReference) {
+        pageReference.fullData = ContentUtil.deserialise(getJson(contentService, pageReference), Page.class);
+    }
+
+    private static InputStream getJson(ContentService contentService, PageReference pageReference) {
+        return contentService.getDataAsString(pageReference.toString());
+    }
+
+
+
     private static Gson gson(String datePattern) {
-        GsonBuilder builder = new GsonBuilder().setPrettyPrinting().registerTypeAdapter(Content.class, new ContentTypeResolver());
+        GsonBuilder builder = new GsonBuilder().setPrettyPrinting().registerTypeAdapter(Page.class, new PageTypeResolver());
         if (StringUtils.isNotBlank(datePattern)) {
             builder.setDateFormat(datePattern);
         } else {
