@@ -28,7 +28,7 @@ public class TimeSeries extends StatisticalData implements  Comparable<TimeSerie
 
 
     /*Body*/
-    public List<Metadata> relatedTimeseries = new ArrayList<>();
+//    public List<Metadata> relatedTimeseries = new ArrayList<>();
     /** This value is displayed beneath the timeseries title: */
     public String additionalText;
 
