@@ -13,7 +13,7 @@ public class NavigationNode extends Metadata {
 
     public transient String fileName;
 
-    public List<NavigationNode> children = new ArrayList<NavigationNode>();
+    public List<NavigationNode> children;
 
     public NavigationNode() {
     }
