@@ -25,7 +25,7 @@ public abstract class Content implements Cloneable {
 
 
     /**
-     * Initializes necessary info for referenced pages. Override this method to implement necessary metadata or data load for a page reference
+     * Initializes and inject referenced pages into this content. Override this method to implement necessary metadata or data load for a page reference
      *
      * @param contentService
      */

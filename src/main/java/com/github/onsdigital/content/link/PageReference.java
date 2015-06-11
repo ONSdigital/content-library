@@ -3,11 +3,9 @@ package com.github.onsdigital.content.link;
 import com.github.onsdigital.content.base.Content;
 import com.github.onsdigital.content.page.base.Page;
 import com.github.onsdigital.content.partial.metadata.Metadata;
-import com.github.onsdigital.content.service.ContentService;
-import com.github.onsdigital.content.util.ContentUtil;
 
-import java.io.InputStream;
 import java.net.URI;
+import java.util.HashMap;
 
 /**
  * Created by bren on 04/06/15.
@@ -23,9 +21,7 @@ public class PageReference extends Content implements Comparable<PageReference> 
     //Index used for ordering
     public Integer index;
 
-    public Metadata metadata;
-
-    public Page fullData;
+    public Page data;
 
     public PageReference() {
 

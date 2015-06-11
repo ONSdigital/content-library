@@ -4,6 +4,9 @@ import com.github.onsdigital.content.page.base.PageType;
 import com.github.onsdigital.content.partial.TimeseriesValue;
 import com.github.onsdigital.content.link.PageReference;
 import com.github.onsdigital.content.page.statistics.data.base.StatisticalData;
+import com.github.onsdigital.content.partial.metadata.Metadata;
+import com.github.onsdigital.content.service.ContentService;
+import com.github.onsdigital.content.util.ContentUtil;
 import org.apache.commons.lang3.StringUtils;
 
 import java.text.ParseException;
@@ -25,7 +28,7 @@ public class TimeSeries extends StatisticalData implements  Comparable<TimeSerie
 
 
     /*Body*/
-    public List<PageReference> relatedTimeseries = new ArrayList<>();
+    public List<Metadata> relatedTimeseries = new ArrayList<>();
     /** This value is displayed beneath the timeseries title: */
     public String additionalText;
 
@@ -153,7 +156,6 @@ public class TimeSeries extends StatisticalData implements  Comparable<TimeSerie
     public int compareTo(TimeSeries o) {
         return this.cdid.compareTo(o.cdid);
     }
-
 
     @Override
     public PageType getType() {

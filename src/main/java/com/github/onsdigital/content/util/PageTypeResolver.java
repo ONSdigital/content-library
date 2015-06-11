@@ -28,6 +28,10 @@ class PageTypeResolver implements JsonDeserializer<Page> {
         JsonObject jsonObject = json.getAsJsonObject();
 
         JsonElement jsonType = jsonObject.get("type");
+        if (jsonType == null) {
+            return null;
+        }
+
         String type = jsonType.getAsString();
 
         try {

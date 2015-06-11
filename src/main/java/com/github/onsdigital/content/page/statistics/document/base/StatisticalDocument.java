@@ -1,9 +1,8 @@
 package com.github.onsdigital.content.page.statistics.document.base;
 
 import com.github.onsdigital.content.page.statistics.base.Statistics;
-import com.github.onsdigital.content.link.PageReference;
 import com.github.onsdigital.content.partial.markdown.MarkdownSection;
-import com.github.onsdigital.content.page.statistics.data.base.StatisticalData;
+import com.github.onsdigital.content.partial.metadata.Metadata;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +18,7 @@ public abstract class StatisticalDocument extends Statistics {
     /*Body*/
     public List<MarkdownSection> sections = new ArrayList<>();
     public List<MarkdownSection> accordion = new ArrayList<>();
-    public PageReference data;//Link to data in the article
+    public Metadata data;//Link to data in the article
 
 
     /*Migration Data*/

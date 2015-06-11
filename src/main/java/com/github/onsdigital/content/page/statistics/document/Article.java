@@ -1,8 +1,8 @@
 package com.github.onsdigital.content.page.statistics.document;
 
-import com.github.onsdigital.content.link.PageReference;
 import com.github.onsdigital.content.page.base.PageType;
 import com.github.onsdigital.content.page.statistics.document.base.StatisticalDocument;
+import com.github.onsdigital.content.partial.metadata.Metadata;
 
 import java.util.List;
 
@@ -17,7 +17,7 @@ public class Article extends StatisticalDocument {
 
 
     /*Body*/
-    public List<PageReference> relatedArticles;
+    public List<Metadata> relatedArticles;
 
 
     @Override

@@ -1,5 +1,6 @@
 package com.github.onsdigital.content.partial;
 
+import com.github.onsdigital.content.base.Content;
 import com.github.onsdigital.content.util.ContentUtil;
 import com.github.onsdigital.content.page.statistics.data.TimeSeries;
 import org.apache.commons.lang3.StringUtils;
@@ -10,7 +11,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-public class TimeseriesValue implements Comparable<TimeseriesValue>, Cloneable {
+public class TimeseriesValue extends Content implements Comparable<TimeseriesValue> {
 
 	// Display values:
 
@@ -29,6 +30,8 @@ public class TimeseriesValue implements Comparable<TimeseriesValue>, Cloneable {
 	 * into the app with a genuine purpose.
 	 */
 	public String sourceDataset;
+
+	public Date updateDate;
 
 	/**
 	 * We don't want to serialise this, but it's useful to keep a cached copy
@@ -107,11 +110,6 @@ public class TimeseriesValue implements Comparable<TimeseriesValue>, Cloneable {
 		}
 
 		return result;
-	}
-
-	@Override
-	public Object clone() throws CloneNotSupportedException {
-		return ContentUtil.clone(this);
 	}
 
 	@Override

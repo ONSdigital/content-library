@@ -3,12 +3,12 @@ package com.github.onsdigital.content.serialiser;
 
 import org.junit.Test;
 
-public class TestContentTypeResolver {
+public class TestPageTypeResolver {
 
 
     @Test
     public void testInitializeContentResolve() {
-        new TestContentTypeResolver();
+        new TestPageTypeResolver();
     }
 
 

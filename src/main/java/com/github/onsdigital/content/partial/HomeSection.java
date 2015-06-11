@@ -5,6 +5,8 @@ import com.github.onsdigital.content.link.PageReference;
 import com.github.onsdigital.content.partial.metadata.Metadata;
 import com.github.onsdigital.content.page.statistics.data.base.StatisticalData;
 import com.github.onsdigital.content.page.taxonomy.TaxonomyLandingPage;
+import com.github.onsdigital.content.service.ContentService;
+import com.github.onsdigital.content.util.ContentUtil;
 
 /**
  * Represents sections on homepage with references to a landing page and a timeseries page
@@ -16,16 +18,16 @@ public class HomeSection extends Content implements Comparable<HomeSection> {
 
 
     public Integer index; //Used for ordering of sections on homepage
-    public PageReference theme;
+    public Metadata theme;
     public PageReference statistics;
 
-    public HomeSection(PageReference themeReference, PageReference statistics) {
+    public HomeSection(Metadata themeReference, PageReference statistics) {
         this(themeReference, statistics, null);
     }
 
 
-    public HomeSection(PageReference themeLink, PageReference statistics, Integer index) {
-        this.theme = themeLink;
+    public HomeSection(Metadata theme, PageReference statistics, Integer index) {
+        this.theme = theme;
         this.statistics = statistics;
         this.index = index;
     }
@@ -38,4 +40,9 @@ public class HomeSection extends Content implements Comparable<HomeSection> {
         return Integer.compare(this.index, o.index);
     }
 
+    @Override
+    public void loadReferences(ContentService contentService) {
+        super.loadReferences(contentService);
+        ContentUtil.initializeFullData(contentService, statistics);
+    }
 }

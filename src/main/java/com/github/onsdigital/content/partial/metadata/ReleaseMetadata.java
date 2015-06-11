@@ -12,9 +12,15 @@ public class ReleaseMetadata extends Metadata {
     public Date releaseDate;
     public Date nextReleaseDate;
 
-    public ReleaseMetadata(Release content) {
-        super(content);
-        this.releaseDate = content.releaseDate;
-        this.nextReleaseDate = content.nextReleaseDate;
+    public ReleaseMetadata() {
+
     }
+
+    public ReleaseMetadata(Release release) {
+        super(release);
+        this.releaseDate = release.releaseDate;
+        this.nextReleaseDate = release.nextReleaseDate;
+
+    }
+
 }

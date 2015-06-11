@@ -16,6 +16,10 @@ public class BulletinMetadata extends Metadata {
     public String headline2;
     public String headline3;
 
+    public BulletinMetadata() {
+
+    }
+
     public BulletinMetadata(Bulletin bulletin) {
         super(bulletin);
         this.headline1 = bulletin.headline1;

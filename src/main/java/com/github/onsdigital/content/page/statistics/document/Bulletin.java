@@ -1,9 +1,8 @@
 package com.github.onsdigital.content.page.statistics.document;
 
-import com.github.onsdigital.content.link.PageReference;
 import com.github.onsdigital.content.page.base.PageType;
-import com.github.onsdigital.content.partial.metadata.BulletinMetadata;
 import com.github.onsdigital.content.page.statistics.document.base.StatisticalDocument;
+import com.github.onsdigital.content.partial.metadata.Metadata;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +17,7 @@ public class Bulletin extends StatisticalDocument {
     public String headline2;
     public String headline3;
 
-    public List<PageReference> relatedBulletins = new ArrayList<>();
+    public List<Metadata> relatedBulletins = new ArrayList<>();
 
     /*Migration fields*/
     public String phone;

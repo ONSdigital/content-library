@@ -11,10 +11,13 @@ public class StatisticsMetadata extends Metadata {
 
     public Date releaseDate;
 
+    public StatisticsMetadata() {
+
+    }
+
     public StatisticsMetadata(Statistics statistics) {
         super(statistics);
         this.releaseDate = statistics.releaseDate;
     }
-
 
 }

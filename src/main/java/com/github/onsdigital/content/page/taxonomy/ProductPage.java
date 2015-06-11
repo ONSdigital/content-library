@@ -8,6 +8,7 @@ import com.github.onsdigital.content.page.statistics.document.Article;
 import com.github.onsdigital.content.page.statistics.document.Bulletin;
 import com.github.onsdigital.content.page.taxonomy.base.TaxonomyPage;
 import com.github.onsdigital.content.partial.metadata.BulletinMetadata;
+import com.github.onsdigital.content.partial.metadata.Metadata;
 import com.github.onsdigital.content.service.ContentService;
 import com.github.onsdigital.content.util.ContentUtil;
 
@@ -22,16 +23,16 @@ public class ProductPage extends TaxonomyPage {
     //Statistic headline, might either be a time series or data slice.
     public PageReference headline;
 
-    public PageReference statsBulletinHeadline;
+    public BulletinMetadata statsBulletinHeadline;
 
     //Statistic items ( time series, data slices )
     public List<PageReference> items;
 
-    public List<PageReference> datasets;
+    public List<Metadata> datasets;
 
-    public List<PageReference> statsBulletins = new ArrayList<>();
+    public List<Metadata> statsBulletins = new ArrayList<>();
 
-    public List<PageReference> relatedArticles;
+    public List<Metadata> relatedArticles;
 
     @Override
     public PageType getType() {
@@ -42,11 +43,8 @@ public class ProductPage extends TaxonomyPage {
     @Override
     public void loadReferences(ContentService contentService) {
         super.loadReferences(contentService);
-        ContentUtil.initializeMetadata(contentService, statsBulletinHeadline);
+
         ContentUtil.initializeFullData(contentService, headline);
         ContentUtil.initializeFullData(contentService, items);
-        ContentUtil.initializeMetadata(contentService, datasets);
-        ContentUtil.initializeMetadata(contentService, statsBulletins);
-        ContentUtil.initializeMetadata(contentService, relatedArticles);
     }
 }

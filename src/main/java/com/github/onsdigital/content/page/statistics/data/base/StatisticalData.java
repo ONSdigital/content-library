@@ -1,10 +1,8 @@
 package com.github.onsdigital.content.page.statistics.data.base;
 
-import com.github.onsdigital.content.page.methodology.Methodology;
-import com.github.onsdigital.content.page.statistics.Dataset;
-import com.github.onsdigital.content.page.statistics.base.Statistics;
-import com.github.onsdigital.content.page.statistics.document.base.StatisticalDocument;
 import com.github.onsdigital.content.link.PageReference;
+import com.github.onsdigital.content.page.statistics.base.Statistics;
+import com.github.onsdigital.content.partial.metadata.Metadata;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,8 +34,8 @@ public abstract class StatisticalData extends Statistics {
     public String description;//Markdown
     public List<String> notes = new ArrayList<String>();//Markdown
 
-    public List<PageReference> relatedDocuments = new ArrayList<>();
+    public List<Metadata> relatedDocuments = new ArrayList<>();
 
-    public List<PageReference> methodology;
+    public List<Metadata> methodology;
 
 }
