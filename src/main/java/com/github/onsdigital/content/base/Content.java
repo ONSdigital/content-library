@@ -1,5 +1,6 @@
 package com.github.onsdigital.content.base;
 
+import com.github.onsdigital.content.service.ContentNotFoundException;
 import com.github.onsdigital.content.service.ContentService;
 import com.github.onsdigital.content.util.ContentUtil;
 
@@ -29,7 +30,7 @@ public abstract class Content implements Cloneable {
      *
      * @param contentService
      */
-    public void loadReferences(ContentService contentService) {
+    public void loadReferences(ContentService contentService) throws ContentNotFoundException {
 
     }
 }

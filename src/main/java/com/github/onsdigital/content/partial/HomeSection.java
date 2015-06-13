@@ -3,8 +3,7 @@ package com.github.onsdigital.content.partial;
 import com.github.onsdigital.content.base.Content;
 import com.github.onsdigital.content.link.PageReference;
 import com.github.onsdigital.content.partial.metadata.Metadata;
-import com.github.onsdigital.content.page.statistics.data.base.StatisticalData;
-import com.github.onsdigital.content.page.taxonomy.TaxonomyLandingPage;
+import com.github.onsdigital.content.service.ContentNotFoundException;
 import com.github.onsdigital.content.service.ContentService;
 import com.github.onsdigital.content.util.ContentUtil;
 
@@ -41,8 +40,8 @@ public class HomeSection extends Content implements Comparable<HomeSection> {
     }
 
     @Override
-    public void loadReferences(ContentService contentService) {
+    public void loadReferences(ContentService contentService) throws ContentNotFoundException {
         super.loadReferences(contentService);
-        ContentUtil.initializeFullData(contentService, statistics);
+        ContentUtil.loadReferences(contentService, statistics);
     }
 }

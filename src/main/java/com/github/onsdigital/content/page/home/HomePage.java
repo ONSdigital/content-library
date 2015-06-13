@@ -3,6 +3,7 @@ package com.github.onsdigital.content.page.home;
 import com.github.onsdigital.content.page.base.PageType;
 import com.github.onsdigital.content.page.taxonomy.base.TaxonomyPage;
 import com.github.onsdigital.content.partial.HomeSection;
+import com.github.onsdigital.content.service.ContentNotFoundException;
 import com.github.onsdigital.content.service.ContentService;
 import com.github.onsdigital.content.util.ContentConstants;
 
@@ -34,7 +35,7 @@ public class HomePage extends TaxonomyPage {
     }
 
     @Override
-    public void loadReferences(ContentService contentService) {
+    public void loadReferences(ContentService contentService) throws ContentNotFoundException {
         super.loadReferences(contentService);
         if (sections == null) {
             return;

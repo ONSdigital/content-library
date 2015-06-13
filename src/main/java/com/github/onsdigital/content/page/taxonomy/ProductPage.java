@@ -2,13 +2,10 @@ package com.github.onsdigital.content.page.taxonomy;
 
 import com.github.onsdigital.content.link.PageReference;
 import com.github.onsdigital.content.page.base.PageType;
-import com.github.onsdigital.content.page.statistics.Dataset;
-import com.github.onsdigital.content.page.statistics.data.base.StatisticalData;
-import com.github.onsdigital.content.page.statistics.document.Article;
-import com.github.onsdigital.content.page.statistics.document.Bulletin;
 import com.github.onsdigital.content.page.taxonomy.base.TaxonomyPage;
 import com.github.onsdigital.content.partial.metadata.BulletinMetadata;
 import com.github.onsdigital.content.partial.metadata.Metadata;
+import com.github.onsdigital.content.service.ContentNotFoundException;
 import com.github.onsdigital.content.service.ContentService;
 import com.github.onsdigital.content.util.ContentUtil;
 
@@ -41,10 +38,10 @@ public class ProductPage extends TaxonomyPage {
 
 
     @Override
-    public void loadReferences(ContentService contentService) {
+    public void loadReferences(ContentService contentService) throws ContentNotFoundException {
         super.loadReferences(contentService);
 
-        ContentUtil.initializeFullData(contentService, headline);
-        ContentUtil.initializeFullData(contentService, items);
+        ContentUtil.loadReferences(contentService, headline);
+        ContentUtil.loadReferences(contentService, items);
     }
 }

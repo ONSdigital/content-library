@@ -75,12 +75,12 @@ public class ContentUtil {
 //        }
 //    }
 
-    public static void initializeFullData(ContentService contentService, List<PageReference> pageReferences) {
+    public static void loadReferences(ContentService contentService, List<PageReference> pageReferences) throws ContentNotFoundException {
         if (pageReferences == null) {
             return;
         }
         for (PageReference reference : pageReferences) {
-            initializeFullData(contentService, reference);
+            loadReferences(contentService, reference);
         }
     }
 
@@ -91,20 +91,21 @@ public class ContentUtil {
 //        pageReference.metadata = ContentUtil.deserialise(getJson(contentService, pageReference), Metadata.class);
 //    }
 
-    public static void initializeFullData(ContentService contentService, PageReference pageReference) {
+    public static void loadReferences(ContentService contentService, PageReference pageReference) throws ContentNotFoundException {
         if (pageReference == null) {
             return;
         }
         pageReference.data = ContentUtil.deserialisePage(getJson(contentService, pageReference));
     }
 
-    private static String getJson(ContentService contentService, PageReference pageReference) {
-        try {
-            return contentService.getDataAsString(pageReference.getUri().toString());
-        } catch (ContentNotFoundException e) {
-            e.printStackTrace();
-            return null;
-        }
+    private static InputStream getJson(ContentService contentService, PageReference pageReference) throws ContentNotFoundException {
+        //TODO: What happens if referenced content not found ?
+//        try {
+//        } catch (ContentNotFoundException e) {
+//            e.printStackTrace();
+//            return null;
+//        }
+        return contentService.readData(pageReference.getUri().toString());
     }
 
 
