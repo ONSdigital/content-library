@@ -1,5 +1,7 @@
 package com.github.onsdigital.content.util;
 
+import org.apache.commons.lang3.time.DateFormatUtils;
+
 import java.net.URI;
 
 /**
@@ -7,7 +9,7 @@ import java.net.URI;
  */
 public class ContentConstants {
 
-    public static final String DEFAULT_DATE_PATTERN = "d MMMM yyyy";
+    public static final String JSON_DATE_PATTERN = DateFormatUtils.ISO_DATE_TIME_ZONE_FORMAT.getPattern();
     public  static final URI HOME_URI = URI.create("/");
     public  static final String HOME_TITLE = "Home";
 

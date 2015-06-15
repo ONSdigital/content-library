@@ -18,7 +18,7 @@ import java.util.List;
  * <p>
  * Several utilities to serialise/deserialize utility with date format supports.
  * <p>
- * Uses d MMMM yyy as default date format for date fields. (e.g. 1 January 2015, 10 February 2015)
+ * Uses ISO Date Time format with time zone as default date format for date fields. (e.g. 1 January 2015, 10 February 2015)
  */
 public class ContentUtil {
 
@@ -42,7 +42,7 @@ public class ContentUtil {
      * @return
      */
     public static Page deserialisePage(InputStream stream) {
-        return createBuilder(ContentConstants.DEFAULT_DATE_PATTERN).registerTypeAdapter(Page.class, new PageTypeResolver()).create().fromJson(new InputStreamReader(stream), Page.class);
+        return createBuilder(ContentConstants.JSON_DATE_PATTERN).registerTypeAdapter(Page.class, new PageTypeResolver()).create().fromJson(new InputStreamReader(stream), Page.class);
     }
 
 
@@ -53,7 +53,7 @@ public class ContentUtil {
      * @return
      */
     public static Page deserialisePage(String json) {
-        return createBuilder(ContentConstants.DEFAULT_DATE_PATTERN).registerTypeAdapter(Page.class, new PageTypeResolver()).create().fromJson(json, Page.class);
+        return createBuilder(ContentConstants.JSON_DATE_PATTERN).registerTypeAdapter(Page.class, new PageTypeResolver()).create().fromJson(json, Page.class);
     }
 
     public static <O extends Object> O deserialise(InputStream stream, Class<O> type) {
@@ -123,7 +123,7 @@ public class ContentUtil {
         if (StringUtils.isNotBlank(datePattern)) {
             builder.setDateFormat(datePattern);
         } else {
-            builder.setDateFormat(ContentConstants.DEFAULT_DATE_PATTERN);
+            builder.setDateFormat(ContentConstants.JSON_DATE_PATTERN);
         }
         return builder;
     }
