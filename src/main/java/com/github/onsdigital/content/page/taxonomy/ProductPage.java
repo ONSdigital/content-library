@@ -20,14 +20,14 @@ public class ProductPage extends TaxonomyPage {
     //Statistic headline, might either be a time series or data slice.
     public PageReference headline;
 
-    public BulletinMetadata statsBulletinHeadline;
+//    public BulletinMetadata statsBulletinHeadline;
 
     //Statistic items ( time series, data slices )
     public List<PageReference> items;
 
     public List<Metadata> datasets;
 
-    public List<Metadata> statsBulletins = new ArrayList<>();
+    public List<BulletinMetadata> statsBulletins = new ArrayList<>();
 
     public List<Metadata> relatedArticles;
 
