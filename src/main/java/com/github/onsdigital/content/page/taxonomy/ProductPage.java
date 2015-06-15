@@ -18,8 +18,11 @@ import java.util.List;
 public class ProductPage extends TaxonomyPage {
 
     //Statistic headline, might either be a time series or data slice.
-    public PageReference headline;
 
+    //First timeseries ( or headline is show as headline now )
+    //    public PageReference headline;
+
+    //First stats bulletin is shown as headline
 //    public BulletinMetadata statsBulletinHeadline;
 
     //Statistic items ( time series, data slices )
@@ -41,7 +44,7 @@ public class ProductPage extends TaxonomyPage {
     public void loadReferences(ContentService contentService) throws ContentNotFoundException {
         super.loadReferences(contentService);
 
-        ContentUtil.loadReferences(contentService, headline);
+//        ContentUtil.loadReferences(contentService, headline);
         ContentUtil.loadReferences(contentService, items);
     }
 }
