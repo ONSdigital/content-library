@@ -27,7 +27,7 @@ public class ProductPage extends TaxonomyPage {
 
     public List<Metadata> datasets;
 
-    public List<Metadata> statsBulletins = new ArrayList<>();
+    public List<BulletinMetadata> statsBulletins = new ArrayList<>();
 
     public List<Metadata> relatedArticles;
 
