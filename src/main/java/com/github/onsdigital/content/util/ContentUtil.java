@@ -4,6 +4,7 @@ import com.github.onsdigital.content.link.PageReference;
 import com.github.onsdigital.content.page.base.Page;
 import com.github.onsdigital.content.service.ContentNotFoundException;
 import com.github.onsdigital.content.service.ContentService;
+import com.google.gson.ExclusionStrategy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.apache.commons.lang3.ObjectUtils;
@@ -120,6 +121,7 @@ public class ContentUtil {
 
     private static GsonBuilder createBuilder(String datePattern) {
         GsonBuilder builder = new GsonBuilder().setPrettyPrinting();
+        builder.serializeNulls();
         if (StringUtils.isNotBlank(datePattern)) {
             builder.setDateFormat(datePattern);
         } else {
