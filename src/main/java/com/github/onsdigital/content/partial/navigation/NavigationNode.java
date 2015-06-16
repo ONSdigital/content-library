@@ -1,10 +1,8 @@
 package com.github.onsdigital.content.partial.navigation;
 
 import com.github.onsdigital.content.page.taxonomy.base.TaxonomyPage;
-import com.github.onsdigital.content.partial.metadata.Metadata;
 
 import java.net.URI;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -12,9 +10,9 @@ import java.util.List;
  */
 public class NavigationNode implements  Comparable<NavigationNode> {
 
-    public String title;
-    public URI uri;
-    public Integer index;
+    private String title;
+    private URI uri;
+    private Integer index;
 
     public transient String fileName;
 
@@ -24,8 +22,9 @@ public class NavigationNode implements  Comparable<NavigationNode> {
     }
 
     public NavigationNode(TaxonomyPage taxonomyPage) {
-        this.uri = taxonomyPage.uri;
-        this.title = taxonomyPage.title;
+        this.uri = taxonomyPage.getUri();
+        this.title = taxonomyPage.getDescription().getTitle();
+        this.index = taxonomyPage.getIndex();
     }
 
     @Override

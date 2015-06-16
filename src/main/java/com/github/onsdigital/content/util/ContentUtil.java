@@ -2,9 +2,9 @@ package com.github.onsdigital.content.util;
 
 import com.github.onsdigital.content.link.PageReference;
 import com.github.onsdigital.content.page.base.Page;
+import com.github.onsdigital.content.page.base.PageDescription;
 import com.github.onsdigital.content.service.ContentNotFoundException;
 import com.github.onsdigital.content.service.ContentService;
-import com.google.gson.ExclusionStrategy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.apache.commons.lang3.ObjectUtils;
@@ -26,18 +26,41 @@ public class ContentUtil {
     /**
      * Returns json string for given object
      *
-     * @return
+     * @return json string
      */
     public static String serialise(Object object) {
         return gson().toJson(object);
     }
 
+
+    /**
+     * Deserialises json string into given Object type
+     *
+     * @param json json to be deserialised
+     * @param type
+     * @return
+     */
     public static <O extends Object> O deserialise(String json, Class<O> type) {
         return gson().fromJson(json, type);
     }
 
+
     /**
-     * Resolves content type and deserializes automatically to that implementation. Use if you do not need to know actual class implementation
+     * Deserialises json stream into given Object type
+     *
+     * @param stream json stream to be deserialised
+     * @param type
+     * @return
+     */
+
+
+    public static <O extends Object> O deserialise(InputStream stream, Class<O> type) {
+        return gson().fromJson(new InputStreamReader(stream), type);
+    }
+
+
+    /**
+     * Resolves page type and deserializes automatically to that implementation. Use if you do not need to know actual class implementation
      *
      * @param stream json stream
      * @return
@@ -57,55 +80,87 @@ public class ContentUtil {
         return createBuilder(ContentConstants.JSON_DATE_PATTERN).registerTypeAdapter(Page.class, new PageTypeResolver()).create().fromJson(json, Page.class);
     }
 
-    public static <O extends Object> O deserialise(InputStream stream, Class<O> type) {
-        return gson().fromJson(new InputStreamReader(stream), type);
-    }
 
-
+    /**
+     * Clones given object and returns a new copy
+     *
+     * @param o   object to be cloned
+     * @param <O> copy of given object
+     * @return
+     */
     public static <O extends Cloneable> O clone(O o) {
         Cloneable cloneable = o;
         return ObjectUtils.clone(o);
     }
 
-//    public static void initializeMetadata(ContentService contentService, List<PageReference> pageReferences) {
-//        if (pageReferences == null) {
-//            return;
-//        }
-//        for (PageReference reference : pageReferences) {
-//            initializeMetadata(contentService, reference);
-//        }
-//    }
 
-    public static void loadReferences(ContentService contentService, List<PageReference> pageReferences) throws ContentNotFoundException {
+    /**
+     * Loads descriptions of referenced pages into reference objects. This will not load whole page data, but only descriptions of referenced pages
+     *
+     * @param contentService
+     * @param pageReferences
+     */
+    public static void loadReferencedPageDescription(ContentService contentService, List<PageReference> pageReferences) {
         if (pageReferences == null) {
             return;
         }
         for (PageReference reference : pageReferences) {
-            loadReferences(contentService, reference);
+            loadReferencedPageDescription(contentService, reference);
         }
     }
 
-//    public static void initializeMetadata(ContentService contentService, PageReference pageReference) {
-//        if (pageReference == null) {
-//            return;
-//        }
-//        pageReference.metadata = ContentUtil.deserialise(getJson(contentService, pageReference), Metadata.class);
-//    }
+    /**
+     * Loads data of referenced pages into reference objects. This will load whole page data including description
+     *
+     * @param contentService
+     * @param pageReferences
+     */
+    public static void loadReferencedPages(ContentService contentService, List<PageReference> pageReferences) throws ContentNotFoundException {
+        if (pageReferences == null) {
+            return;
+        }
+        for (PageReference reference : pageReferences) {
+            loadReferencedPage(contentService, reference);
+        }
+    }
 
-    public static void loadReferences(ContentService contentService, PageReference pageReference) throws ContentNotFoundException {
+    /**
+     * Loads descriptions of referenced page into reference object. This will not load whole page data, but only description of referenced page
+     *
+     * @param contentService
+     * @param pageReference
+     */
+    public static void loadReferencedPageDescription(ContentService contentService, PageReference pageReference) {
         if (pageReference == null) {
             return;
         }
-        pageReference.data = ContentUtil.deserialisePage(getJson(contentService, pageReference));
+        try {
+            pageReference.setPageDescription(ContentUtil.deserialise(getJson(contentService, pageReference), PageDescription.class));
+        } catch (ContentNotFoundException e) {
+            //TODO: If reference not found it will not load. Is that ok ?
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Loads data of referenced page into reference object. This will load whole page data including description
+     *
+     * @param contentService
+     * @param pageReference
+     */
+    public static void loadReferencedPage(ContentService contentService, PageReference pageReference) {
+        if (pageReference == null) {
+            return;
+        }
+        try {
+            pageReference.setData(ContentUtil.deserialisePage(getJson(contentService, pageReference)));
+        } catch (ContentNotFoundException e) {
+            //TODO: If reference not found it will not load. Is that ok ?
+            e.printStackTrace();
+        }
     }
 
     private static InputStream getJson(ContentService contentService, PageReference pageReference) throws ContentNotFoundException {
-        //TODO: What happens if referenced content not found ?
-//        try {
-//        } catch (ContentNotFoundException e) {
-//            e.printStackTrace();
-//            return null;
-//        }
         return contentService.readData(pageReference.getUri().toString());
     }
 

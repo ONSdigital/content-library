@@ -9,5 +9,13 @@ import java.util.List;
  * Created by bren on 10/06/15.
  */
 public class Navigation extends Content {
-    public List<NavigationNode> nodes = new ArrayList<>();
+    private List<NavigationNode> nodes = new ArrayList<>();
+
+    public List<NavigationNode> getNodes() {
+        return nodes;
+    }
+
+    public void setNodes(List<NavigationNode> nodes) {
+        this.nodes = nodes;
+    }
 }

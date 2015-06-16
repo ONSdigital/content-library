@@ -10,7 +10,8 @@ import java.util.Date;
  */
 public class FOI extends Page {
 
-    public Date releaseDate;
+    //TODO: Descriptions for new content type
+    private Date releaseDate;
 
     @Override
     public PageType getType() {

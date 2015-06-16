@@ -8,7 +8,6 @@ import com.github.onsdigital.content.page.base.PageType;
  */
 public class AboutUsBrowsePage extends Page {
 
-
     @Override
     public PageType getType() {
         return PageType.about_us_browse_page;

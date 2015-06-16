@@ -1,8 +1,11 @@
 package com.github.onsdigital.content.page.base;
 
 import com.github.onsdigital.content.base.Content;
-import com.github.onsdigital.content.partial.metadata.Metadata;
+import com.github.onsdigital.content.link.PageReference;
 import com.github.onsdigital.content.partial.navigation.Navigation;
+import com.github.onsdigital.content.service.ContentNotFoundException;
+import com.github.onsdigital.content.service.ContentService;
+import com.github.onsdigital.content.util.ContentUtil;
 
 import java.net.URI;
 import java.util.ArrayList;
@@ -19,32 +22,56 @@ import java.util.List;
 public abstract class Page extends Content {
 
     private PageType type;
+    private URI uri;
+    private List<PageReference> breadcrumb;
 
-    public String title;
+    private PageDescription description;
 
-    //Not all content types has a summary.
-    //Though there is not an immediate common generic type for each content type with summary. Hence summary is here in generic content object
-    //Since gson library will not serialise null data into json file, summary won't appear in content types with no summary
-    public String summary;
-
-    public URI uri;
-
-    public transient Navigation navigation;
-
-    public List<Metadata> breadcrumb;
+    //Every page on the website has navigation, but this is generated on runtime. No need to serialise it into json files
+    private transient Navigation navigation;
 
     public Page() {
         this.type = getType();
     }
 
     public void buildBreadcrumb(Page parent) {
-        breadcrumb = new ArrayList<Metadata>();
+        breadcrumb = new ArrayList<>();
         //parent content is null for home page
         if (parent != null) {
             breadcrumb.addAll(parent.breadcrumb);
-            breadcrumb.add(new Metadata(parent));
+            breadcrumb.add(new PageReference(parent));
         }
     }
 
+    @Override
+    public void loadReferences(ContentService contentService) throws ContentNotFoundException {
+        super.loadReferences(contentService);
+        ContentUtil.loadReferencedPages(contentService, breadcrumb);
+    }
+
     public abstract PageType getType();
+
+    public PageDescription getDescription() {
+        return description;
+    }
+
+    protected void setDescription(PageDescription description) {
+        this.description = description;
+    }
+
+    public URI getUri() {
+        return uri;
+    }
+
+    public void setUri(URI uri) {
+        this.uri = uri;
+    }
+
+    public Navigation getNavigation() {
+        return navigation;
+    }
+
+    public void setNavigation(Navigation navigation) {
+        this.navigation = navigation;
+    }
 }

@@ -10,6 +10,22 @@ import com.github.onsdigital.content.base.Content;
  */
 
 public class MarkdownSection extends Content {
-    public String title;
-    public String markdown;
+    private String title;
+    private String markdown;
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getMarkdown() {
+        return markdown;
+    }
+
+    public void setMarkdown(String markdown) {
+        this.markdown = markdown;
+    }
 }

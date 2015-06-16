@@ -1,10 +1,13 @@
 package com.github.onsdigital.content.page.statistics.data.base;
 
 import com.github.onsdigital.content.link.PageReference;
+import com.github.onsdigital.content.page.base.PageDescription;
 import com.github.onsdigital.content.page.statistics.base.Statistics;
-import com.github.onsdigital.content.partial.metadata.Metadata;
+import com.github.onsdigital.content.page.statistics.base.StatisticsDescription;
+import com.github.onsdigital.content.service.ContentNotFoundException;
+import com.github.onsdigital.content.service.ContentService;
+import com.github.onsdigital.content.util.ContentUtil;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -12,30 +15,42 @@ import java.util.List;
  */
 public abstract class StatisticalData extends Statistics {
 
-    /*Metadata*/
-    public String cdid;
-
-    // We provide a minimal default for the unit, otherwise highcharts shows
-    // "undefined":
-    public String unit = "";
-    public String preUnit = "";
-
-
-    /**
-     * Where a statistic comes from. Typically "Office for National Statistics"
-     */
-    //TODO: Read this piece of info from metadata
-    public String source = "Office for National Statistics";
-
-
     /*Body*/
-    public List<PageReference> relatedDatasets;
+    private List<PageReference> relatedDatasets;
+    private List<String> notes;//Markdown
+    private List<PageReference> relatedDocuments;
+    private List<PageReference> methodology;
 
-    public String description;//Markdown
-    public List<String> notes = new ArrayList<String>();//Markdown
+    @Override
+    public void loadReferences(ContentService contentService) throws ContentNotFoundException {
+        super.loadReferences(contentService);
+        ContentUtil.loadReferencedPageDescription(contentService, relatedDatasets);
+        ContentUtil.loadReferencedPageDescription(contentService, relatedDocuments);
+        ContentUtil.loadReferencedPageDescription(contentService, methodology);
+    }
 
-    public List<Metadata> relatedDocuments = new ArrayList<>();
+    @Override
+    public StatisticalDataDescription getDescription() {
+        return (StatisticalDataDescription) super.getDescription();
+    }
 
-    public List<Metadata> methodology;
+    public void setDescription(StatisticalDataDescription description) {
+        super.setDescription(description);
+    }
 
+    public List<PageReference> getRelatedDocuments() {
+        return relatedDocuments;
+    }
+
+    public void setRelatedDocuments(List<PageReference> relatedDocuments) {
+        this.relatedDocuments = relatedDocuments;
+    }
+
+    public List<String> getNotes() {
+        return notes;
+    }
+
+    public void setNotes(List<String> notes) {
+        this.notes = notes;
+    }
 }

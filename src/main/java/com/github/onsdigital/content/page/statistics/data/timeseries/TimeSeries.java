@@ -1,12 +1,8 @@
-package com.github.onsdigital.content.page.statistics.data;
+package com.github.onsdigital.content.page.statistics.data.timeseries;
 
 import com.github.onsdigital.content.page.base.PageType;
-import com.github.onsdigital.content.partial.TimeseriesValue;
-import com.github.onsdigital.content.link.PageReference;
 import com.github.onsdigital.content.page.statistics.data.base.StatisticalData;
-import com.github.onsdigital.content.partial.metadata.Metadata;
-import com.github.onsdigital.content.service.ContentService;
-import com.github.onsdigital.content.util.ContentUtil;
+import com.github.onsdigital.content.partial.TimeseriesValue;
 import org.apache.commons.lang3.StringUtils;
 
 import java.text.ParseException;
@@ -14,25 +10,6 @@ import java.util.*;
 import java.util.regex.Pattern;
 
 public class TimeSeries extends StatisticalData implements  Comparable<TimeSeries> {
-
-    /*Metadata*/
-    public String seasonalAdjustment;
-
-    //Below fields appear on references to time series on other content types
-    public String date;
-    public String number;
-    public String mainMeasure;
-
-    /** This value is displayed in the "(i)" tooltips next to timeseries title. */
-    public String keyNote;
-
-
-    /*Body*/
-//    public List<Metadata> relatedTimeseries = new ArrayList<>();
-    /** This value is displayed beneath the timeseries title: */
-    public String additionalText;
-
-    /*Data*/
 
     // Regexes (what might the plural be?)
     public static Pattern year = Pattern.compile("\\d{4}");
@@ -66,7 +43,6 @@ public class TimeSeries extends StatisticalData implements  Comparable<TimeSerie
      * into the app with a genuine purpose.
      */
     public List<String> sourceDatasets = new ArrayList<String>();
-
 
     public void add(TimeseriesValue value) {
 
@@ -102,18 +78,11 @@ public class TimeSeries extends StatisticalData implements  Comparable<TimeSerie
         }
     }
 
-
     public void setCdid(String cdid) {
-        if (StringUtils.isBlank(cdid)) {
-            throw new IllegalArgumentException("Blank CDID");
+        if (getDescription() == null) {
+            setDescription(new TimeseriesDescription());
         }
-        this.cdid = StringUtils.trim(cdid);
-
-        // We don't have metadata for all of the datasets,so
-        // this provides a basic fallback by setting the CDID as the title:
-        if (StringUtils.isBlank(title)) {
-            title = cdid;
-        }
+        getDescription().setCdid(StringUtils.trim(cdid));
     }
 
     public void setScaleFactor(double multiply) {
@@ -129,13 +98,13 @@ public class TimeSeries extends StatisticalData implements  Comparable<TimeSerie
 
     @Override
     public String toString() {
-        return cdid;
+        return getCdid();
     }
 
     @Override
     public int hashCode() {
-        if (cdid != null) {
-            return cdid.toLowerCase().hashCode();
+        if (getDescription() != null && getCdid() != null) {
+            return getCdid().toLowerCase().hashCode();
         } else {
             return 0;
         }
@@ -149,17 +118,34 @@ public class TimeSeries extends StatisticalData implements  Comparable<TimeSerie
         if (!TimeSeries.class.isAssignableFrom(obj.getClass())) {
             return false;
         }
-        return StringUtils.equalsIgnoreCase(((TimeSeries) obj).cdid, cdid);
+        return StringUtils.equalsIgnoreCase(((TimeSeries) obj).getCdid(), getCdid());
     }
 
     @Override
     public int compareTo(TimeSeries o) {
-        return this.cdid.compareTo(o.cdid);
+        return getCdid().compareTo(o.getCdid());
     }
 
     @Override
     public PageType getType() {
         return PageType.timeseries;
+    }
+
+    @Override
+    public TimeseriesDescription getDescription() {
+        return (TimeseriesDescription) super.getDescription();
+    }
+
+    public void setDescription(TimeseriesDescription description) {
+        super.setDescription(description);
+    }
+
+    public String getCdid() {
+        TimeseriesDescription description = getDescription();
+        if (description != null) {
+            return description.getCdid();
+        }
+        return null;
     }
 
 }

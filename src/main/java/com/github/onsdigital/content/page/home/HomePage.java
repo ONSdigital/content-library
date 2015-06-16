@@ -1,5 +1,6 @@
 package com.github.onsdigital.content.page.home;
 
+import com.github.onsdigital.content.page.base.PageDescription;
 import com.github.onsdigital.content.page.base.PageType;
 import com.github.onsdigital.content.page.taxonomy.base.TaxonomyPage;
 import com.github.onsdigital.content.partial.HomeSection;
@@ -20,13 +21,16 @@ public class HomePage extends TaxonomyPage {
 
     private transient static final String SUMMARY = "The UK's largest independent producer of official statistics and the recognised national statistical institute of the UK.";
 
-    public List<HomeSection> sections;
+    private List<HomeSection> sections;
 
     public HomePage() {
-        this.uri = ContentConstants.HOME_URI;
-        this.title = ContentConstants.HOME_TITLE;
-        this.summary = SUMMARY;
+        setUri(ContentConstants.HOME_URI);
+        PageDescription description = new PageDescription();
+        description.setTitle(ContentConstants.HOME_TITLE);
+        description.setSummary(SUMMARY);
+        setDescription(description);
         buildBreadcrumb(null);
+
     }
 
     @Override
@@ -44,5 +48,13 @@ public class HomePage extends TaxonomyPage {
             section.loadReferences(contentService);
         }
 
+    }
+
+    public List<HomeSection> getSections() {
+        return sections;
+    }
+
+    public void setSections(List<HomeSection> sections) {
+        this.sections = sections;
     }
 }

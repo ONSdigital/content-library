@@ -10,12 +10,27 @@ import java.util.Date;
  */
 public class AdHoc extends Page {
 
-    public Date releaseDate;
-    public int reference;
-
+    private Date releaseDate;
+    private int reference;
 
     @Override
     public PageType getType() {
         return PageType.adhoc;
+    }
+
+    public Date getReleaseDate() {
+        return releaseDate;
+    }
+
+    public void setReleaseDate(Date releaseDate) {
+        this.releaseDate = releaseDate;
+    }
+
+    public int getReference() {
+        return reference;
+    }
+
+    public void setReference(int reference) {
+        this.reference = reference;
     }
 }

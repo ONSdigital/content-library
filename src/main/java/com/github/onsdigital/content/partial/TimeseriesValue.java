@@ -1,8 +1,7 @@
 package com.github.onsdigital.content.partial;
 
 import com.github.onsdigital.content.base.Content;
-import com.github.onsdigital.content.util.ContentUtil;
-import com.github.onsdigital.content.page.statistics.data.TimeSeries;
+import com.github.onsdigital.content.page.statistics.data.timeseries.TimeSeries;
 import org.apache.commons.lang3.StringUtils;
 
 import java.text.ParseException;

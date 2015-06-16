@@ -20,7 +20,7 @@ class PageTypeResolver implements JsonDeserializer<Page> {
     private static Map<PageType, Class> contentClasses = new HashMap<PageType, Class>();
 
     static {
-        registerContentTypes();
+        registerPageTypes();
     }
 
     @Override
@@ -45,8 +45,8 @@ class PageTypeResolver implements JsonDeserializer<Page> {
     }
 
 
-    private static void registerContentTypes() {
-        System.out.println("Resolving content types");
+    private static void registerPageTypes() {
+        System.out.println("Resolving page types");
         try {
 
             ConfigurationBuilder configurationBuilder = new ConfigurationBuilder().addUrls(PageTypeResolver.class.getProtectionDomain().getCodeSource().getLocation());

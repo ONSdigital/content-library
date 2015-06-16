@@ -1,6 +1,7 @@
 package com.github.onsdigital.content.page.release;
 
 import com.github.onsdigital.content.page.base.Page;
+import com.github.onsdigital.content.page.base.PageDescription;
 import com.github.onsdigital.content.page.base.PageType;
 import com.github.onsdigital.content.util.ContentConstants;
 
@@ -10,10 +11,10 @@ import com.github.onsdigital.content.util.ContentConstants;
 public class ReleaseCalendar extends Page {
 
     public ReleaseCalendar() {
-        this.title = ContentConstants.RELEASE_CALENDAR_TITLE;
-        this.uri =  ContentConstants.RELEASE_CALENDAR_URI;
+        setUri(ContentConstants.RELEASE_CALENDAR_URI);
+        PageDescription description = new PageDescription();
+        description.setTitle(ContentConstants.RELEASE_CALENDAR_TITLE);
     }
-
 
     @Override
     public PageType getType() {

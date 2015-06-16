@@ -2,15 +2,14 @@ package com.github.onsdigital.content.link;
 
 import com.github.onsdigital.content.base.Content;
 import com.github.onsdigital.content.page.base.Page;
-import com.github.onsdigital.content.partial.metadata.Metadata;
+import com.github.onsdigital.content.page.base.PageDescription;
 
 import java.net.URI;
-import java.util.HashMap;
 
 /**
  * Created by bren on 04/06/15.
  * <p>
- * Reference to page contents. Contains the uri to referenced page and also provides a mechanism to lazy load a metadata or full data of  referred page
+ * Reference to pages. Contains the uri to referenced page and also provides a mechanism to lazy load the description or full data of  referred page
  */
 public class PageReference extends Content implements Comparable<PageReference> {
 
@@ -19,16 +18,14 @@ public class PageReference extends Content implements Comparable<PageReference> 
      */
     private URI uri;
     //Index used for ordering
-    public Integer index;
+    private Integer index;
+    //Description or full page may be lazy loaded
+    private PageDescription pageDescription;
+    private Page data;
 
-    public Page data;
-
-    public PageReference() {
-
-    }
 
     /**
-     * Creates the link and initializes all necessary fields with given content
+     * Creates the reference and initializes all necessary fields with given page
      *
      * @param page
      */
@@ -37,14 +34,14 @@ public class PageReference extends Content implements Comparable<PageReference> 
     }
 
     /**
-     * Creates the link and initializes all necessary fields with given content
+     * Creates the reference to given page using only uri of the page
      *
      * @param page
      * @param index Index used for odering of links when set
      */
     public PageReference(Page page, Integer index) {
         this.index = index;
-        this.uri = page.uri;
+        setUri(page.getUri());
     }
 
     @Override
@@ -58,5 +55,25 @@ public class PageReference extends Content implements Comparable<PageReference> 
 
     public URI getUri() {
         return uri;
+    }
+
+    public void setUri(URI uri) {
+        this.uri = uri;
+    }
+
+    public PageDescription getPageDescription() {
+        return pageDescription;
+    }
+
+    public void setPageDescription(PageDescription pageDescription) {
+        this.pageDescription = pageDescription;
+    }
+
+    public Page getData() {
+        return data;
+    }
+
+    public void setData(Page data) {
+        this.data = data;
     }
 }

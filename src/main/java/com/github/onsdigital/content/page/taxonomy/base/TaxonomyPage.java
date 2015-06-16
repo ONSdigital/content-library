@@ -1,6 +1,7 @@
 package com.github.onsdigital.content.page.taxonomy.base;
 
 import com.github.onsdigital.content.page.base.Page;
+import com.github.onsdigital.content.page.base.PageDescription;
 
 /**
  * Created by bren on 04/06/15.
@@ -10,13 +11,28 @@ import com.github.onsdigital.content.page.base.Page;
  * @author david
  * @author bren
  */
-public abstract class TaxonomyPage extends Page implements  Comparable<TaxonomyPage>  {
+public abstract class TaxonomyPage extends Page implements Comparable<TaxonomyPage>  {
 
-    public Integer index;
+    private Integer index;
 
     @Override
     public int compareTo(TaxonomyPage o) {
+        if (this.index == null) {
+            return -1;
+        }
         return Integer.compare(this.index, o.index);
     }
 
+    public Integer getIndex() {
+        return index;
+    }
+
+    public void setIndex(Integer index) {
+        this.index = index;
+    }
+
+    @Override
+    public void setDescription(PageDescription description) {
+        super.setDescription(description);
+    }
 }

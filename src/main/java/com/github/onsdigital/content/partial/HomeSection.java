@@ -2,7 +2,7 @@ package com.github.onsdigital.content.partial;
 
 import com.github.onsdigital.content.base.Content;
 import com.github.onsdigital.content.link.PageReference;
-import com.github.onsdigital.content.partial.metadata.Metadata;
+import com.github.onsdigital.content.page.base.PageDescription;
 import com.github.onsdigital.content.service.ContentNotFoundException;
 import com.github.onsdigital.content.service.ContentService;
 import com.github.onsdigital.content.util.ContentUtil;
@@ -16,17 +16,19 @@ import com.github.onsdigital.content.util.ContentUtil;
 public class HomeSection extends Content implements Comparable<HomeSection> {
 
 
-    public Integer index; //Used for ordering of sections on homepage
-    public Metadata theme;
-    public PageReference statistics;
+    private Integer index; //Used for ordering of sections on homepage
+    private PageReference theme;
+    private PageReference statistics;
 
-    public HomeSection(Metadata themeReference, PageReference statistics) {
+    public HomeSection() {
+    }
+
+    public HomeSection(PageReference themeReference, PageReference statistics) {
         this(themeReference, statistics, null);
     }
 
-
-    public HomeSection(Metadata theme, PageReference statistics, Integer index) {
-        this.theme = theme;
+    public HomeSection(PageReference themeReference, PageReference statistics, Integer index) {
+        this.theme = themeReference;
         this.statistics = statistics;
         this.index = index;
     }
@@ -42,6 +44,6 @@ public class HomeSection extends Content implements Comparable<HomeSection> {
     @Override
     public void loadReferences(ContentService contentService) throws ContentNotFoundException {
         super.loadReferences(contentService);
-        ContentUtil.loadReferences(contentService, statistics);
+        ContentUtil.loadReferencedPage(contentService, statistics);
     }
 }

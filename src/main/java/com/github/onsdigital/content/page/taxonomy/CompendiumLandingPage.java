@@ -9,7 +9,6 @@ import com.github.onsdigital.content.page.taxonomy.base.TaxonomyPage;
 public class CompendiumLandingPage extends TaxonomyPage {
     //TODO: Complete compendium object model. Content not quite clear yet
 
-
     @Override
     public PageType getType() {
         return PageType.compendium_landing_page;
