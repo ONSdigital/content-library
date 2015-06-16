@@ -9,7 +9,7 @@ import java.net.URI;
  */
 public class ContentConstants {
 
-    public static final String JSON_DATE_PATTERN = DateFormatUtils.ISO_DATETIME_TIME_ZONE_FORMAT.getPattern();
+    public static final String JSON_DATE_PATTERN = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
     public  static final URI HOME_URI = URI.create("/");
     public  static final String HOME_TITLE = "Home";
 
