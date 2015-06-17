@@ -3,6 +3,9 @@ package com.github.onsdigital.content.page.taxonomy;
 import com.github.onsdigital.content.link.PageReference;
 import com.github.onsdigital.content.page.base.PageDescription;
 import com.github.onsdigital.content.page.base.PageType;
+import com.github.onsdigital.content.page.statistics.dataset.DatasetDescription;
+import com.github.onsdigital.content.page.statistics.document.article.ArticleDescription;
+import com.github.onsdigital.content.page.statistics.document.bulletin.BulletinDescription;
 import com.github.onsdigital.content.page.taxonomy.base.TaxonomyPage;
 import com.github.onsdigital.content.service.ContentNotFoundException;
 import com.github.onsdigital.content.service.ContentService;
@@ -25,9 +28,9 @@ public class ProductPage extends TaxonomyPage {
     public void loadReferences(ContentService contentService) throws ContentNotFoundException {
         super.loadReferences(contentService);
         ContentUtil.loadReferencedPages(contentService, items);
-        ContentUtil.loadReferencedPages(contentService, datasets);
-        ContentUtil.loadReferencedPages(contentService, statsBulletins);
-        ContentUtil.loadReferencedPages(contentService, relatedArticles);
+        ContentUtil.loadReferencedPageDescription(contentService, datasets);
+        ContentUtil.loadReferencedPageDescription(contentService, statsBulletins);
+        ContentUtil.loadReferencedPageDescription(contentService, relatedArticles);
     }
 
     @Override
@@ -60,4 +63,12 @@ public class ProductPage extends TaxonomyPage {
         this.statsBulletins = statsBulletins;
     }
 
+
+    public List<PageReference> getRelatedArticles() {
+        return relatedArticles;
+    }
+
+    public void setRelatedArticles(List<PageReference> relatedArticles) {
+        this.relatedArticles = relatedArticles;
+    }
 }

@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * Created by bren on 04/06/15.
  */
-public class Article extends StatisticalDocument {
+public class Article extends StatisticalDocument<ArticleDescription> {
 
     /*Body*/
     private List<PageReference> relatedArticles;
@@ -27,15 +27,6 @@ public class Article extends StatisticalDocument {
     @Override
     public PageType getType() {
         return PageType.article;
-    }
-
-    @Override
-    public ArticleDescription getDescription() {
-        return (ArticleDescription) super.getDescription();
-    }
-
-    public void setDescription(ArticleDescription description) {
-        super.setDescription(description);
     }
 
 }

@@ -1,7 +1,5 @@
 package com.github.onsdigital.content.util;
 
-import org.apache.commons.lang3.time.DateFormatUtils;
-
 import java.net.URI;
 
 /**

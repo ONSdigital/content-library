@@ -1,7 +1,6 @@
 package com.github.onsdigital.content.page.base;
 
-import com.github.onsdigital.content.base.Content;
-import com.github.onsdigital.content.partial.Contact;
+import com.github.onsdigital.content.base.ContentDescription;
 
 import java.util.List;
 
@@ -11,7 +10,7 @@ import java.util.List;
  *  Represents description of any page type with minimal fields.
  * <p>
  */
-public class PageDescription  extends Content implements Comparable<PageDescription>  {
+public class PageDescription  extends ContentDescription implements Comparable<PageDescription>  {
 
     //Index is used for ordering if set
     private Integer index;

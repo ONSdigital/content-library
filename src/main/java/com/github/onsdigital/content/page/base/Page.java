@@ -1,6 +1,7 @@
 package com.github.onsdigital.content.page.base;
 
 import com.github.onsdigital.content.base.Content;
+import com.github.onsdigital.content.base.ContentDescription;
 import com.github.onsdigital.content.link.PageReference;
 import com.github.onsdigital.content.partial.navigation.Navigation;
 import com.github.onsdigital.content.service.ContentNotFoundException;
@@ -19,13 +20,13 @@ import java.util.List;
  * Page on the website forms a logical hierarchy with homepage being the root of this hierarchy.
  * The hierarchy is shown as a breadcrumb on every page.
  */
-public abstract class Page extends Content {
+public abstract class Page<T extends PageDescription> extends Content {
 
     private PageType type;
     private URI uri;
     private List<PageReference> breadcrumb;
 
-    private PageDescription description;
+    private T description;
 
     //Every page on the website has navigation, but this is generated on runtime. No need to serialise it into json files
     private transient Navigation navigation;
@@ -46,17 +47,17 @@ public abstract class Page extends Content {
     @Override
     public void loadReferences(ContentService contentService) throws ContentNotFoundException {
         super.loadReferences(contentService);
-        ContentUtil.loadReferencedPages(contentService, breadcrumb);
+        ContentUtil.loadReferencedPageDescription(contentService, breadcrumb);
     }
 
     public abstract PageType getType();
 
-    public PageDescription getDescription() {
+    public T getDescription() {
         return description;
     }
 
-    protected void setDescription(PageDescription description) {
-        this.description = description;
+    public void setDescription(T description) {
+        this.description = (T) description;
     }
 
     public URI getUri() {

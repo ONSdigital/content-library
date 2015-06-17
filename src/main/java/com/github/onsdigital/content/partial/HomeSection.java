@@ -45,5 +45,6 @@ public class HomeSection extends Content implements Comparable<HomeSection> {
     public void loadReferences(ContentService contentService) throws ContentNotFoundException {
         super.loadReferences(contentService);
         ContentUtil.loadReferencedPage(contentService, statistics);
+        ContentUtil.loadReferencedPageDescription(contentService,theme);
     }
 }

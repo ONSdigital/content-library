@@ -12,6 +12,6 @@ import java.util.Date;
  * <p>
  * Represents statistics pages that gets released periodically. Bulletin, Article, Timeseries, Dataset, etc.
  */
-public abstract class Statistics extends Page {
+public abstract class Statistics<T extends StatisticsDescription> extends Page<T> {
 
 }

@@ -24,7 +24,7 @@ public class TaxonomyLandingPage extends TaxonomyPage {
     @Override
     public void loadReferences(ContentService contentService) throws ContentNotFoundException {
         super.loadReferences(contentService);
-        ContentUtil.loadReferencedPages(contentService, sections);
+        ContentUtil.loadReferencedPageDescription(contentService, sections);
     }
 
     @Override

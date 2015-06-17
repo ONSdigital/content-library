@@ -4,6 +4,9 @@ import com.github.onsdigital.content.link.PageReference;
 import com.github.onsdigital.content.page.base.PageDescription;
 import com.github.onsdigital.content.page.statistics.base.Statistics;
 import com.github.onsdigital.content.page.statistics.base.StatisticsDescription;
+import com.github.onsdigital.content.page.statistics.dataset.DatasetDescription;
+import com.github.onsdigital.content.page.statistics.document.base.StatisticalDocument;
+import com.github.onsdigital.content.partial.markdown.MarkdownSection;
 import com.github.onsdigital.content.service.ContentNotFoundException;
 import com.github.onsdigital.content.service.ContentService;
 import com.github.onsdigital.content.util.ContentUtil;
@@ -13,10 +16,11 @@ import java.util.List;
 /**
  * Created by bren on 05/06/15.
  */
-public abstract class StatisticalData extends Statistics {
+public abstract class StatisticalData<T extends StatisticalDataDescription> extends Statistics<T> {
 
     /*Body*/
     private List<PageReference> relatedDatasets;
+    private MarkdownSection section; //Explanatory section
     private List<String> notes;//Markdown
     private List<PageReference> relatedDocuments;
     private List<PageReference> methodology;
@@ -27,15 +31,6 @@ public abstract class StatisticalData extends Statistics {
         ContentUtil.loadReferencedPageDescription(contentService, relatedDatasets);
         ContentUtil.loadReferencedPageDescription(contentService, relatedDocuments);
         ContentUtil.loadReferencedPageDescription(contentService, methodology);
-    }
-
-    @Override
-    public StatisticalDataDescription getDescription() {
-        return (StatisticalDataDescription) super.getDescription();
-    }
-
-    public void setDescription(StatisticalDataDescription description) {
-        super.setDescription(description);
     }
 
     public List<PageReference> getRelatedDocuments() {
@@ -52,5 +47,13 @@ public abstract class StatisticalData extends Statistics {
 
     public void setNotes(List<String> notes) {
         this.notes = notes;
+    }
+
+    public MarkdownSection getSection() {
+        return section;
+    }
+
+    public void setSection(MarkdownSection section) {
+        this.section = section;
     }
 }

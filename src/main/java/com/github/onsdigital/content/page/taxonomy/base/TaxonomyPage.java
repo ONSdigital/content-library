@@ -11,7 +11,7 @@ import com.github.onsdigital.content.page.base.PageDescription;
  * @author david
  * @author bren
  */
-public abstract class TaxonomyPage extends Page implements Comparable<TaxonomyPage>  {
+public abstract class TaxonomyPage extends Page<PageDescription> implements Comparable<TaxonomyPage>  {
 
     private Integer index;
 
@@ -29,10 +29,5 @@ public abstract class TaxonomyPage extends Page implements Comparable<TaxonomyPa
 
     public void setIndex(Integer index) {
         this.index = index;
-    }
-
-    @Override
-    public void setDescription(PageDescription description) {
-        super.setDescription(description);
     }
 }

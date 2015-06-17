@@ -9,7 +9,7 @@ import java.text.ParseException;
 import java.util.*;
 import java.util.regex.Pattern;
 
-public class TimeSeries extends StatisticalData implements  Comparable<TimeSeries> {
+public class TimeSeries extends StatisticalData<TimeseriesDescription> implements  Comparable<TimeSeries> {
 
     // Regexes (what might the plural be?)
     public static Pattern year = Pattern.compile("\\d{4}");
@@ -129,15 +129,6 @@ public class TimeSeries extends StatisticalData implements  Comparable<TimeSerie
     @Override
     public PageType getType() {
         return PageType.timeseries;
-    }
-
-    @Override
-    public TimeseriesDescription getDescription() {
-        return (TimeseriesDescription) super.getDescription();
-    }
-
-    public void setDescription(TimeseriesDescription description) {
-        super.setDescription(description);
     }
 
     public String getCdid() {

@@ -8,13 +8,14 @@ import com.github.onsdigital.content.service.ContentNotFoundException;
 import com.github.onsdigital.content.service.ContentService;
 import com.github.onsdigital.content.util.ContentUtil;
 
+import java.lang.reflect.ParameterizedType;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by bren on 04/06/15.
  */
-public class Bulletin extends StatisticalDocument {
+public class Bulletin extends StatisticalDocument<BulletinDescription> {
 
     private List<PageReference> relatedBulletins = new ArrayList<>();
 
@@ -30,21 +31,16 @@ public class Bulletin extends StatisticalDocument {
         return PageType.bulletin;
     }
 
-
-    @Override
-    public BulletinDescription getDescription() {
-        return (BulletinDescription) super.getDescription();
-    }
-
-    public void setDescription(BulletinDescription description) {
-        super.setDescription(description);
-    }
-
     public List<PageReference> getRelatedBulletins() {
         return relatedBulletins;
     }
 
     public void setRelatedBulletins(List<PageReference> relatedBulletins) {
         this.relatedBulletins = relatedBulletins;
+    }
+
+
+    public static void main(String args[]) {
+        Bulletin bulletin = new Bulletin();
     }
 }

@@ -1,7 +1,9 @@
 package com.github.onsdigital.content.page.methodology;
 
 import com.github.onsdigital.content.page.base.Page;
+import com.github.onsdigital.content.page.base.PageDescription;
 import com.github.onsdigital.content.page.base.PageType;
+import com.github.onsdigital.content.page.statistics.data.base.StatisticalDataDescription;
 import com.github.onsdigital.content.partial.Contact;
 import com.github.onsdigital.content.link.PageReference;
 import com.github.onsdigital.content.partial.markdown.MarkdownSection;

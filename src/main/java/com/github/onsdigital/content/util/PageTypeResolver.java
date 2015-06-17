@@ -36,8 +36,8 @@ class PageTypeResolver implements JsonDeserializer<Page> {
 
         try {
             PageType contentType = PageType.valueOf(type);
-            Class<Page> contentClass = contentClasses.get(contentType);
-            Page content = context.deserialize(json, contentClass);
+            Class<Page> pageClass = contentClasses.get(contentType);
+            Page content = context.deserialize(json, pageClass);
             return content;
         } catch (IllegalArgumentException e) {
             throw new RuntimeException("Could find content object for " + type);

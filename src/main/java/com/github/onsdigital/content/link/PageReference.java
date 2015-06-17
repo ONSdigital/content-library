@@ -20,7 +20,7 @@ public class PageReference extends Content implements Comparable<PageReference> 
     //Index used for ordering
     private Integer index;
     //Description or full page may be lazy loaded
-    private PageDescription pageDescription;
+    private PageDescription description;
     private Page data;
 
 
@@ -61,12 +61,12 @@ public class PageReference extends Content implements Comparable<PageReference> 
         this.uri = uri;
     }
 
-    public PageDescription getPageDescription() {
-        return pageDescription;
+    public PageDescription getDescription() {
+        return description;
     }
 
-    public void setPageDescription(PageDescription pageDescription) {
-        this.pageDescription = pageDescription;
+    public void setDescription(PageDescription description) {
+        this.description = description;
     }
 
     public Page getData() {

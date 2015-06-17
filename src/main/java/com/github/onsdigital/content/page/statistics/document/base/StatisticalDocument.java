@@ -2,29 +2,28 @@ package com.github.onsdigital.content.page.statistics.document.base;
 
 import com.github.onsdigital.content.link.PageReference;
 import com.github.onsdigital.content.page.statistics.base.Statistics;
+import com.github.onsdigital.content.page.statistics.base.StatisticsDescription;
+import com.github.onsdigital.content.page.statistics.data.base.StatisticalData;
+import com.github.onsdigital.content.page.statistics.data.base.StatisticalDataDescription;
 import com.github.onsdigital.content.partial.markdown.MarkdownSection;
 import com.github.onsdigital.content.page.base.PageDescription;
 import com.github.onsdigital.content.service.ContentNotFoundException;
 import com.github.onsdigital.content.service.ContentService;
 import com.github.onsdigital.content.util.ContentUtil;
 
+import java.lang.reflect.ParameterizedType;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by bren on 06/06/15.
  */
-public abstract class StatisticalDocument extends Statistics {
+public abstract class StatisticalDocument<T extends StatisticsDescription> extends Statistics<T> {
 
     /*Body*/
     private List<MarkdownSection> sections = new ArrayList<>();
     private List<MarkdownSection> accordion = new ArrayList<>();
     private PageReference relatedData;//Link to data in the article
-
-    /*Migration Data*/
-    public transient String theme;
-    public transient String level2;
-    public transient String level3;
 
     @Override
     public void loadReferences(ContentService contentService) throws ContentNotFoundException {
@@ -47,4 +46,6 @@ public abstract class StatisticalDocument extends Statistics {
     public void setAccordion(List<MarkdownSection> accordion) {
         this.accordion = accordion;
     }
+
+
 }

@@ -100,7 +100,7 @@ public class ContentUtil {
      * @param contentService
      * @param pageReferences
      */
-    public static void loadReferencedPageDescription(ContentService contentService, List<PageReference> pageReferences) {
+    public static void  loadReferencedPageDescription(ContentService contentService, List<PageReference> pageReferences) {
         if (pageReferences == null) {
             return;
         }
@@ -108,6 +108,27 @@ public class ContentUtil {
             loadReferencedPageDescription(contentService, reference);
         }
     }
+
+
+    /**
+     * Loads descriptions of referenced page into reference object. This will not load whole page data, but only description of referenced page
+     *
+     * @param contentService
+     * @param pageReference
+     */
+    public static void loadReferencedPageDescription(ContentService contentService, PageReference pageReference) {
+        if (pageReference == null) {
+            return;
+        }
+        try {
+            Page page = ContentUtil.deserialisePage(getJson(contentService, pageReference));
+            pageReference.setDescription(page.getDescription());
+        } catch (ContentNotFoundException e) {
+            //TODO: If reference not found it will not load. Is that ok ?
+            e.printStackTrace();
+        }
+    }
+
 
     /**
      * Loads data of referenced pages into reference objects. This will load whole page data including description
@@ -125,24 +146,6 @@ public class ContentUtil {
     }
 
     /**
-     * Loads descriptions of referenced page into reference object. This will not load whole page data, but only description of referenced page
-     *
-     * @param contentService
-     * @param pageReference
-     */
-    public static void loadReferencedPageDescription(ContentService contentService, PageReference pageReference) {
-        if (pageReference == null) {
-            return;
-        }
-        try {
-            pageReference.setPageDescription(ContentUtil.deserialise(getJson(contentService, pageReference), PageDescription.class));
-        } catch (ContentNotFoundException e) {
-            //TODO: If reference not found it will not load. Is that ok ?
-            e.printStackTrace();
-        }
-    }
-
-    /**
      * Loads data of referenced page into reference object. This will load whole page data including description
      *
      * @param contentService
@@ -154,6 +157,9 @@ public class ContentUtil {
         }
         try {
             pageReference.setData(ContentUtil.deserialisePage(getJson(contentService, pageReference)));
+
+            //Clear uri as it is already in data, it will be replaced with data in json
+            pageReference.setUri(null);
         } catch (ContentNotFoundException e) {
             //TODO: If reference not found it will not load. Is that ok ?
             e.printStackTrace();
@@ -176,7 +182,6 @@ public class ContentUtil {
 
     private static GsonBuilder createBuilder(String datePattern) {
         GsonBuilder builder = new GsonBuilder().setPrettyPrinting();
-        builder.serializeNulls();
         if (StringUtils.isNotBlank(datePattern)) {
             builder.setDateFormat(datePattern);
         } else {

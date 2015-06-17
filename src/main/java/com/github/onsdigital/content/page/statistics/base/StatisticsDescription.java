@@ -12,6 +12,12 @@ public class StatisticsDescription extends PageDescription {
     private String nextRelease;
     private String language;
 
+
+    /*Migration Data*/
+    public transient String theme;
+    public transient String level2;
+    public transient String level3;
+
     public boolean isNationalStatistic() {
         return nationalStatistic;
     }
