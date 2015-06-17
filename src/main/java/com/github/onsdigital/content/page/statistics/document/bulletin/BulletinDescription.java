@@ -1,11 +1,11 @@
 package com.github.onsdigital.content.page.statistics.document.bulletin;
 
-import com.github.onsdigital.content.page.statistics.base.StatisticsDescription;
+import com.github.onsdigital.content.page.statistics.document.base.StatisticalDocumentDescription;
 
 /**
  * Created by bren on 16/06/15.
  */
-public class BulletinDescription extends StatisticsDescription {
+public class BulletinDescription extends StatisticalDocumentDescription {
 
     private String headline1;
     private String headline2;

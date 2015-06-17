@@ -3,12 +3,10 @@ package com.github.onsdigital.content.page.statistics.document.bulletin;
 import com.github.onsdigital.content.link.PageReference;
 import com.github.onsdigital.content.page.base.PageType;
 import com.github.onsdigital.content.page.statistics.document.base.StatisticalDocument;
-import com.github.onsdigital.content.page.base.PageDescription;
 import com.github.onsdigital.content.service.ContentNotFoundException;
 import com.github.onsdigital.content.service.ContentService;
 import com.github.onsdigital.content.util.ContentUtil;
 
-import java.lang.reflect.ParameterizedType;
 import java.util.ArrayList;
 import java.util.List;
 
