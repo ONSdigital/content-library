@@ -24,6 +24,7 @@ public abstract class StatisticalData<T extends StatisticalDataDescription> exte
     private List<String> notes;//Markdown
     private List<PageReference> relatedDocuments;
     private List<PageReference> methodology;
+    private List<PageReference> relatedData;
 
     @Override
     public void loadReferences(ContentService contentService) throws ContentNotFoundException {
@@ -55,5 +56,21 @@ public abstract class StatisticalData<T extends StatisticalDataDescription> exte
 
     public void setSection(MarkdownSection section) {
         this.section = section;
+    }
+
+    public List<PageReference> getMethodology() {
+        return methodology;
+    }
+
+    public void setMethodology(List<PageReference> methodology) {
+        this.methodology = methodology;
+    }
+
+    public List<PageReference> getRelatedData() {
+        return relatedData;
+    }
+
+    public void setRelatedData(List<PageReference> relatedData) {
+        this.relatedData = relatedData;
     }
 }
