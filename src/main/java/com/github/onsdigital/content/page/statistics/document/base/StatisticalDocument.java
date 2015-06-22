@@ -3,6 +3,7 @@ package com.github.onsdigital.content.page.statistics.document.base;
 import com.github.onsdigital.content.link.PageReference;
 import com.github.onsdigital.content.page.statistics.base.Statistics;
 import com.github.onsdigital.content.page.statistics.base.StatisticsDescription;
+import com.github.onsdigital.content.partial.FigureSection;
 import com.github.onsdigital.content.partial.markdown.MarkdownSection;
 import com.github.onsdigital.content.service.ContentNotFoundException;
 import com.github.onsdigital.content.service.ContentService;
@@ -20,6 +21,8 @@ public abstract class StatisticalDocument<T extends StatisticsDescription> exten
     private List<MarkdownSection> sections = new ArrayList<>();
     private List<MarkdownSection> accordion = new ArrayList<>();
     private List<PageReference> relatedData = new ArrayList<>();//Link to data in the article
+    private List<FigureSection> charts = new ArrayList<>();
+    private List<FigureSection> tables = new ArrayList<>();
 
     @Override
     public void loadReferences(ContentService contentService) throws ContentNotFoundException {
@@ -50,4 +53,12 @@ public abstract class StatisticalDocument<T extends StatisticsDescription> exten
     public void setRelatedData(List<PageReference> relatedData) {
         this.relatedData = relatedData;
     }
+
+    public List<FigureSection> getCharts() { return charts; }
+
+    public void setCharts(List<FigureSection> charts) { this.charts = charts; }
+
+    public List<FigureSection> getTables() { return tables; }
+
+    public void setTables(List<FigureSection> tables) { this.tables = tables; }
 }
