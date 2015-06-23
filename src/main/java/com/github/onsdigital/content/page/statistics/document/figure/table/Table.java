@@ -1,5 +1,4 @@
-package com.github.onsdigital.content.page.statistics.document.tmp;
-
+package com.github.onsdigital.content.page.statistics.document.figure.table;
 import com.github.onsdigital.content.page.base.Page;
 import com.github.onsdigital.content.page.base.PageType;
 

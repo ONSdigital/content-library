@@ -1,7 +1,8 @@
-package com.github.onsdigital.content.page.statistics.document.tmp;
+package com.github.onsdigital.content.page.statistics.document.figure.chart;
 
 import com.github.onsdigital.content.page.base.Page;
 import com.github.onsdigital.content.page.base.PageType;
+import com.github.onsdigital.content.page.statistics.document.tmp.ChartDescription;
 
 public class Chart extends Page<ChartDescription> {
 
