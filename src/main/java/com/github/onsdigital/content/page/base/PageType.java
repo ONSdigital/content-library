@@ -32,6 +32,8 @@ public enum PageType {
     release,
     release_calendar,
     list_page, //???
+    chart,
+    table,
     unknown; //TODO:To be changed with complex pages. Keeping in for alpha content temporarily
 
     //TODO: Add all content types
