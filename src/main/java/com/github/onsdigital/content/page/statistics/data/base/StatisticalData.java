@@ -73,4 +73,12 @@ public abstract class StatisticalData<T extends StatisticalDataDescription> exte
     public void setRelatedData(List<PageReference> relatedData) {
         this.relatedData = relatedData;
     }
+
+    public List<PageReference> getRelatedDatasets() {
+        return relatedDatasets;
+    }
+
+    public void setRelatedDatasets(List<PageReference> relatedDatasets) {
+        this.relatedDatasets = relatedDatasets;
+    }
 }

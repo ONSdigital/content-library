@@ -21,6 +21,7 @@ public class Dataset extends Statistics<DatasetDescription> {
     private List<PageReference> relatedMethodology;
     private MarkdownSection section;
     private List<MarkdownSection> notes;
+    private List<PageReference> relatedDatasets;
 
     @Override
     public PageType getType() {
@@ -57,5 +58,13 @@ public class Dataset extends Statistics<DatasetDescription> {
 
     public void setRelatedMethodology(List<PageReference> relatedMethodology) {
         this.relatedMethodology = relatedMethodology;
+    }
+
+    public List<PageReference> getRelatedDatasets() {
+        return relatedDatasets;
+    }
+
+    public void setRelatedDatasets(List<PageReference> relatedDatasets) {
+        this.relatedDatasets = relatedDatasets;
     }
 }
