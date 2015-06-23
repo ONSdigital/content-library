@@ -23,7 +23,7 @@ public abstract class StatisticalData<T extends StatisticalDataDescription> exte
     private MarkdownSection section; //Explanatory section
     private List<String> notes;//Markdown
     private List<PageReference> relatedDocuments;
-    private List<PageReference> methodology;
+    private List<PageReference> relatedMethodology;
     private List<PageReference> relatedData;
 
     @Override
@@ -31,7 +31,7 @@ public abstract class StatisticalData<T extends StatisticalDataDescription> exte
         super.loadReferences(contentService);
         ContentUtil.loadReferencedPageDescription(contentService, relatedDatasets);
         ContentUtil.loadReferencedPageDescription(contentService, relatedDocuments);
-        ContentUtil.loadReferencedPageDescription(contentService, methodology);
+        ContentUtil.loadReferencedPageDescription(contentService, relatedMethodology);
     }
 
     public List<PageReference> getRelatedDocuments() {
@@ -58,12 +58,12 @@ public abstract class StatisticalData<T extends StatisticalDataDescription> exte
         this.section = section;
     }
 
-    public List<PageReference> getMethodology() {
-        return methodology;
+    public List<PageReference> getRelatedMethodology() {
+        return relatedMethodology;
     }
 
-    public void setMethodology(List<PageReference> methodology) {
-        this.methodology = methodology;
+    public void setRelatedMethodology(List<PageReference> methodology) {
+        this.relatedMethodology = methodology;
     }
 
     public List<PageReference> getRelatedData() {

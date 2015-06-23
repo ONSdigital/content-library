@@ -1,5 +1,6 @@
 package com.github.onsdigital.content.page.statistics.dataset;
 
+import com.github.onsdigital.content.link.PageReference;
 import com.github.onsdigital.content.page.base.PageType;
 import com.github.onsdigital.content.page.statistics.base.Statistics;
 import com.github.onsdigital.content.partial.DownloadSection;
@@ -17,6 +18,7 @@ public class Dataset extends Statistics<DatasetDescription> {
 
     /*Body*/
     private List<DownloadSection> downloads = new ArrayList<DownloadSection>();
+    private List<PageReference> relatedMethodology;
     private MarkdownSection section;
     private List<MarkdownSection> notes;
 
@@ -47,5 +49,13 @@ public class Dataset extends Statistics<DatasetDescription> {
 
     public void setSection(MarkdownSection section) {
         this.section = section;
+    }
+
+    public List<PageReference> getRelatedMethodology() {
+        return relatedMethodology;
+    }
+
+    public void setRelatedMethodology(List<PageReference> relatedMethodology) {
+        this.relatedMethodology = relatedMethodology;
     }
 }
