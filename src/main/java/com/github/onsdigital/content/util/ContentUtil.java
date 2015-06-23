@@ -34,6 +34,16 @@ public class ContentUtil {
 
 
     /**
+     * Returns json string for given object using a custom date format
+     *
+     * @return json string
+     */
+    public static String serialise(Object object, String datePattern) {
+        return gson(datePattern).toJson(object);
+    }
+
+
+    /**
      * Deserialises json string into given Object type
      *
      * @param json json to be deserialised
@@ -42,6 +52,18 @@ public class ContentUtil {
      */
     public static <O extends Object> O deserialise(String json, Class<O> type) {
         return gson().fromJson(json, type);
+    }
+
+
+    /**
+     * Deserialises json string into given Object type using given date pattern
+     *
+     * @param json json to be deserialised
+     * @param type
+     * @return
+     */
+    public static <O extends Object> O deserialise(String json, Class<O> type, String datePattern) {
+        return gson(datePattern).fromJson(json, type);
     }
 
 
@@ -60,6 +82,20 @@ public class ContentUtil {
 
 
     /**
+     * Deserialises json stream into given Object type
+     *
+     * @param stream json stream to be deserialised
+     * @param type
+     * @param datePattern
+     * @return
+     */
+
+
+    public static <O extends Object> O deserialise(InputStream stream, Class<O> type, String datePattern) {
+        return gson(datePattern).fromJson(new InputStreamReader(stream), type);
+    }
+
+    /**
      * Resolves page type and deserializes automatically to that implementation. Use if you do not need to know actual class implementation
      *
      * @param stream json stream
@@ -71,6 +107,18 @@ public class ContentUtil {
 
 
     /**
+     * Resolves page type and deserializes automatically to that implementation. Use if you do not need to know actual class implementation,
+     *
+     * @param stream json stream
+     * @param datePattern date pattern to be used when deserialising
+     * @return
+     */
+    public static Page deserialisePage(InputStream stream, String datePattern) {
+        return createBuilder(datePattern).registerTypeAdapter(Page.class, new PageTypeResolver()).create().fromJson(new InputStreamReader(stream), Page.class);
+    }
+
+
+    /**
      * Resolves page type and deserializes automatically to that implementation. Use if you do not need to know actual class implementation
      *
      * @param json
@@ -78,6 +126,17 @@ public class ContentUtil {
      */
     public static Page deserialisePage(String json) {
         return createBuilder(ContentConstants.JSON_DATE_PATTERN).registerTypeAdapter(Page.class, new PageTypeResolver()).create().fromJson(json, Page.class);
+    }
+
+    /**
+     * Resolves page type and deserializes automatically to that implementation. Use if you do not need to know actual class implementation
+     *
+     * @param json
+     * @param datePattern
+     * @return
+     */
+    public static Page deserialisePage(String json, String datePattern) {
+        return createBuilder(datePattern).registerTypeAdapter(Page.class, new PageTypeResolver()).create().fromJson(json, Page.class);
     }
 
 
