@@ -32,6 +32,8 @@ public abstract class StatisticalData<T extends StatisticalDataDescription> exte
         ContentUtil.loadReferencedPageDescription(contentService, relatedDatasets);
         ContentUtil.loadReferencedPageDescription(contentService, relatedDocuments);
         ContentUtil.loadReferencedPageDescription(contentService, relatedMethodology);
+        ContentUtil.loadReferencedPageDescription(contentService, relatedData);
+
     }
 
     public List<PageReference> getRelatedDocuments() {
