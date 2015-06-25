@@ -24,7 +24,7 @@ public enum PageType {
     methodology_landing_page,
     methodology,
     qmi,
-    about_us_browse_page,
+    about_us_landing_page,
     about_us,
     foi,
     adhoc,

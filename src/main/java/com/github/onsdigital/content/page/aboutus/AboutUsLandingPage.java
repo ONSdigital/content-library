@@ -6,11 +6,11 @@ import com.github.onsdigital.content.page.base.PageType;
 /**
  * Created by bren on 04/06/15.
  */
-public class AboutUsBrowsePage extends Page {
+public class AboutUsLandingPage extends Page {
 
     @Override
     public PageType getType() {
-        return PageType.about_us_browse_page;
+        return PageType.about_us_landing_page;
     }
 
 }

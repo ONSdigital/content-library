@@ -75,4 +75,12 @@ public abstract class Page<T extends PageDescription> extends Content {
     public void setNavigation(Navigation navigation) {
         this.navigation = navigation;
     }
+
+    public List<PageReference> getBreadcrumb() {
+        return breadcrumb;
+    }
+
+    public void setBreadcrumb(List<PageReference> breadcrumb) {
+        this.breadcrumb = breadcrumb;
+    }
 }
