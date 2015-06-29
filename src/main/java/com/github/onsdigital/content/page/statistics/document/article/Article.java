@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * Created by bren on 04/06/15.
  */
-public class Article extends StatisticalDocument<StatisticalDocumentDescription> {
+public class Article extends StatisticalDocument<ArticleDescription> {
 
     /*Body*/
     private List<PageReference> relatedArticles;

@@ -1,13 +1,14 @@
 package com.github.onsdigital.content.page.statistics.document.article;
 
 import com.github.onsdigital.content.page.statistics.base.StatisticsDescription;
+import com.github.onsdigital.content.page.statistics.document.base.StatisticalDocumentDescription;
 
 import java.util.List;
 
 /**
  * Created by bren on 16/06/15.
  */
-public class ArticleDescription extends StatisticsDescription {
+public class ArticleDescription extends StatisticalDocumentDescription {
 
     private String _abstract;
     private List<String> authors;
