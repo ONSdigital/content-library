@@ -2,7 +2,6 @@ package com.github.onsdigital.content.util;
 
 import com.github.onsdigital.content.link.PageReference;
 import com.github.onsdigital.content.page.base.Page;
-import com.github.onsdigital.content.page.base.PageDescription;
 import com.github.onsdigital.content.service.ContentNotFoundException;
 import com.github.onsdigital.content.service.ContentService;
 import com.google.gson.Gson;
@@ -12,6 +11,7 @@ import org.apache.commons.lang3.StringUtils;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -242,11 +242,10 @@ public class ContentUtil {
     private static GsonBuilder createBuilder(String datePattern) {
         GsonBuilder builder = new GsonBuilder().setPrettyPrinting();
         if (StringUtils.isNotBlank(datePattern)) {
-            builder.setDateFormat(datePattern);
+            builder.registerTypeAdapter(Date.class, new IsoDateSerializer(datePattern));
         } else {
-            builder.setDateFormat(ContentConstants.JSON_DATE_PATTERN);
+            builder.registerTypeAdapter(Date.class, new IsoDateSerializer(ContentConstants.JSON_DATE_PATTERN));
         }
         return builder;
     }
-
 }
