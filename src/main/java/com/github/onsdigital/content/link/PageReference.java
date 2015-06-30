@@ -23,6 +23,13 @@ public class PageReference extends Content implements Comparable<PageReference> 
     private PageDescription description;
     private Page data;
 
+    /**
+     * Initialise only the URI to be resolved
+     * @param uri
+     */
+    public PageReference(URI uri) {
+        this.uri = uri;
+    }
 
     /**
      * Creates the reference and initializes all necessary fields with given page
