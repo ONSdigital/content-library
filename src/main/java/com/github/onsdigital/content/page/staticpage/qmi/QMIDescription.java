@@ -1,15 +1,14 @@
-package com.github.onsdigital.content.page.methodology;
+package com.github.onsdigital.content.page.staticpage.qmi;
 
-import com.github.onsdigital.content.page.base.Page;
-import com.github.onsdigital.content.page.base.PageType;
+import com.github.onsdigital.content.page.base.PageDescription;
 import com.github.onsdigital.content.partial.Contact;
 
 import java.util.Date;
 
 /**
- * Created by bren on 04/06/15.
+ * Created by bren on 30/06/15.
  */
-public class QMI extends Page {
+public class QMIDescription extends PageDescription {
     private Contact contact;
     private String surveyName;
     private String frequency;
@@ -18,10 +17,6 @@ public class QMI extends Page {
     private int sampleSize;
     private Date lastRevised;
 
-    @Override
-    public PageType getType() {
-        return PageType.qmi;
-    }
 
     public Contact getContact() {
         return contact;

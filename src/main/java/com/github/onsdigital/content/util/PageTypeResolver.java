@@ -37,10 +37,13 @@ class PageTypeResolver implements JsonDeserializer<Page> {
         try {
             PageType contentType = PageType.valueOf(type);
             Class<Page> pageClass = contentClasses.get(contentType);
+            if(pageClass == null) {
+                throw new RuntimeException("Could find content object for " + type);
+            }
             Page content = context.deserialize(json, pageClass);
             return content;
         } catch (IllegalArgumentException e) {
-            throw new RuntimeException("Could find content object for " + type);
+            throw new RuntimeException(e);
         }
     }
 
@@ -60,8 +63,8 @@ class PageTypeResolver implements JsonDeserializer<Page> {
                     System.out.println("Skipping registering abstract content type " + className);
                     continue;
                 }
-                System.out.println("Registering content type: " + className);
                 Page contentInstance = contentClass.newInstance();
+                System.out.println("Registering content type, Page type : " +  contentInstance.getType()  + ":" +  className);
                 contentClasses.put(contentInstance.getType(), contentClass);
             }
         } catch (Exception e) {

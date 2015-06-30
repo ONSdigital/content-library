@@ -159,7 +159,7 @@ public class ContentUtil {
      * @param contentService
      * @param pageReferences
      */
-    public static void  loadReferencedPageDescription(ContentService contentService, List<PageReference> pageReferences) {
+    public static <T extends PageReference> void loadReferencedPageDescription(ContentService contentService, List<T> pageReferences) {
         if (pageReferences == null) {
             return;
         }
@@ -175,7 +175,7 @@ public class ContentUtil {
      * @param contentService
      * @param pageReference
      */
-    public static void loadReferencedPageDescription(ContentService contentService, PageReference pageReference) {
+    public static <T extends PageReference>  void loadReferencedPageDescription(ContentService contentService, T pageReference) {
         if (pageReference == null) {
             return;
         }

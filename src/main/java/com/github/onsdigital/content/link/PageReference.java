@@ -76,4 +76,12 @@ public class PageReference extends Content implements Comparable<PageReference> 
     public void setData(Page data) {
         this.data = data;
     }
+
+    public Integer getIndex() {
+        return index;
+    }
+
+    public void setIndex(Integer index) {
+        this.index = index;
+    }
 }

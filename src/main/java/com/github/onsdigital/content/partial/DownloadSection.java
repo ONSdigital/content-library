@@ -7,14 +7,10 @@ import java.util.List;
 /**
  * Represents a section in a dataset for downloading
  */
-
-//TODO: Get rid of old Alpha sections (Almost time to think about resources ( pdf,csv etc ).)
 public class DownloadSection extends Content {
     private String title;
     private List<String> cdids;
-    private String xls;
-    private String csv;
-
+    private String file;
 
     public String getTitle() {
         return title;
@@ -32,19 +28,12 @@ public class DownloadSection extends Content {
         this.cdids = cdids;
     }
 
-    public String getXls() {
-        return xls;
+    public String getFile() {
+        return file;
     }
 
-    public void setXls(String xls) {
-        this.xls = xls;
+    public void setFile(String file) {
+        this.file = file;
     }
 
-    public String getCsv() {
-        return csv;
-    }
-
-    public void setCsv(String csv) {
-        this.csv = csv;
-    }
 }
