@@ -1,5 +1,6 @@
 package com.github.onsdigital.content.page.staticpage;
 
+import com.github.onsdigital.content.link.Link;
 import com.github.onsdigital.content.page.base.Page;
 import com.github.onsdigital.content.page.base.PageDescription;
 import com.github.onsdigital.content.page.base.PageType;
@@ -18,6 +19,8 @@ import java.util.List;
 public class StaticLandingPage extends Page<PageDescription> {
 
     private List<StaticPageSection> sections;
+    private List<Link> links;
+
 
     @Override
     public void loadReferences(ContentService contentService) throws ContentNotFoundException {
@@ -30,4 +33,19 @@ public class StaticLandingPage extends Page<PageDescription> {
         return PageType.static_landing_page;
     }
 
+    public List<StaticPageSection> getSections() {
+        return sections;
+    }
+
+    public void setSections(List<StaticPageSection> sections) {
+        this.sections = sections;
+    }
+
+    public List<Link> getLinks() {
+        return links;
+    }
+
+    public void setLinks(List<Link> links) {
+        this.links = links;
+    }
 }
