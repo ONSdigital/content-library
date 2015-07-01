@@ -6,14 +6,14 @@ import java.util.List;
 
 public class SearchResult {
 
-    private int numberOfResults;
+    private long numberOfResults;
     private List<PageReference> results;
 
-    public int getNumberOfResults() {
+    public long getNumberOfResults() {
         return numberOfResults;
     }
 
-    public void setNumberOfResults(int numberOfResults) {
+    public void setNumberOfResults(long numberOfResults) {
         this.numberOfResults = numberOfResults;
     }
 

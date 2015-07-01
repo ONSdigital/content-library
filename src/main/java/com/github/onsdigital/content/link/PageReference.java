@@ -3,6 +3,7 @@ package com.github.onsdigital.content.link;
 import com.github.onsdigital.content.base.Content;
 import com.github.onsdigital.content.page.base.Page;
 import com.github.onsdigital.content.page.base.PageDescription;
+import com.github.onsdigital.content.page.base.PageType;
 
 import java.net.URI;
 
@@ -22,6 +23,7 @@ public class PageReference extends Content implements Comparable<PageReference> 
     //Description or full page may be lazy loaded
     private PageDescription description;
     private Page data;
+    private PageType type;
 
     /**
      * Initialise only the URI to be resolved
@@ -90,5 +92,13 @@ public class PageReference extends Content implements Comparable<PageReference> 
 
     public void setIndex(Integer index) {
         this.index = index;
+    }
+
+    public PageType getType() {
+        return type;
+    }
+
+    public void setType(PageType type) {
+        this.type = type;
     }
 }
