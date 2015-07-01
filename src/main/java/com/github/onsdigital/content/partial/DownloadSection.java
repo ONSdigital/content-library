@@ -11,6 +11,7 @@ public class DownloadSection extends Content {
     private String title;
     private List<String> cdids;
     private String file;
+    private String fileDescription; //Markdown
 
     public String getTitle() {
         return title;
@@ -36,4 +37,11 @@ public class DownloadSection extends Content {
         this.file = file;
     }
 
+    public String getFileDescription() {
+        return fileDescription;
+    }
+
+    public void setFileDescription(String fileDescription) {
+        this.fileDescription = fileDescription;
+    }
 }

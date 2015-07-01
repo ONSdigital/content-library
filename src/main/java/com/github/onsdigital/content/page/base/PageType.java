@@ -27,13 +27,15 @@ public enum PageType {
     static_qmi,
     static_foi,
     static_adhoc,
-    dataset,
+    dataset,//TODO:To be changed with complex pages. Keeping in for alpha content temporarily
+    reference_tables,
     release,
     release_calendar,
     list_page, //???
     chart,
     table,
-    unknown; //TODO:To be changed with complex pages. Keeping in for alpha content temporarily
+    search_results_page,
+    unknown;
 
     //TODO: Add all content types
 }

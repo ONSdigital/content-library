@@ -1,10 +1,7 @@
-package com.github.onsdigital.content.search;
+package com.github.onsdigital.content.page.search;
 
 import com.github.onsdigital.content.base.Content;
 import com.github.onsdigital.content.link.PageReference;
-import com.github.onsdigital.content.page.base.Page;
-import com.github.onsdigital.content.page.base.PageDescription;
-import com.github.onsdigital.content.page.base.PageType;
 
 import java.util.List;
 
@@ -31,4 +28,5 @@ public class SearchResult extends Content {
     public void setNumberOfResults(int numberOfResults) {
         this.numberOfResults = numberOfResults;
     }
+
 }

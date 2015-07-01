@@ -24,7 +24,6 @@ public class Dataset extends Statistics<DatasetDescription> {
     private List<PageReference> relatedDatasets;
     private List<PageReference> relatedDocuments;
 
-
     @Override
     public PageType getType() {
         return PageType.dataset;
@@ -77,4 +76,5 @@ public class Dataset extends Statistics<DatasetDescription> {
     public void setRelatedDocuments(List<PageReference> relatedDocuments) {
         this.relatedDocuments = relatedDocuments;
     }
+
 }
