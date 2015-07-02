@@ -5,6 +5,9 @@ import com.github.onsdigital.content.page.base.PageType;
 import com.github.onsdigital.content.page.statistics.base.Statistics;
 import com.github.onsdigital.content.partial.DownloadSection;
 import com.github.onsdigital.content.partial.markdown.MarkdownSection;
+import com.github.onsdigital.content.service.ContentNotFoundException;
+import com.github.onsdigital.content.service.ContentService;
+import com.github.onsdigital.content.util.ContentUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -77,4 +80,11 @@ public class Dataset extends Statistics<DatasetDescription> {
         this.relatedDocuments = relatedDocuments;
     }
 
+    @Override
+    public void loadReferences(ContentService contentService) throws ContentNotFoundException {
+        super.loadReferences(contentService);
+        ContentUtil.loadReferencedPageDescription(contentService, relatedMethodology);
+        ContentUtil.loadReferencedPageDescription(contentService, relatedDatasets);
+        ContentUtil.loadReferencedPageDescription(contentService, relatedDocuments);
+    }
 }
