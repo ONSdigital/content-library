@@ -25,6 +25,7 @@ public class SearchResultsPage extends Page {
     private long numberOfResults;
     private ProductPage headlinePage;
     private long numberOfPages;
+    private String[] types;
 
     public SearchResult getTaxonomySearchResult() {
         return taxonomySearchResult;
@@ -101,5 +102,13 @@ public class SearchResultsPage extends Page {
 
     public void setNumberOfPages(long numberOfPages) {
         this.numberOfPages = numberOfPages;
+    }
+
+    public String[] getTypes() {
+        return types;
+    }
+
+    public void setTypes(String[] types) {
+        this.types = types;
     }
 }
