@@ -1,13 +1,10 @@
 package com.github.onsdigital.content.page.search;
 
-import com.github.onsdigital.content.link.PageReference;
 import com.github.onsdigital.content.page.base.Page;
 import com.github.onsdigital.content.page.base.PageType;
-import com.github.onsdigital.content.page.statistics.data.base.StatisticalData;
 import com.github.onsdigital.content.page.taxonomy.ProductPage;
 import com.github.onsdigital.content.partial.SearchResult;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -22,6 +19,9 @@ public class SearchResultsPage extends Page {
     private boolean suggestionBased;
     private String suggestion;
     private int currentPage;
+    private int startPage;
+    private int endPage;
+    private List<Integer> pages;
     private long numberOfResults;
     private ProductPage headlinePage;
     private long numberOfPages;
@@ -120,5 +120,29 @@ public class SearchResultsPage extends Page {
 
     public void setIncludeStatics(boolean includeStatics) {
         this.includeStatics = includeStatics;
+    }
+
+    public int getStartPage() {
+        return startPage;
+    }
+
+    public void setStartPage(int startPage) {
+        this.startPage = startPage;
+    }
+
+    public int getEndPage() {
+        return endPage;
+    }
+
+    public void setEndPage(int endPage) {
+        this.endPage = endPage;
+    }
+
+    public List<Integer> getPages() {
+        return pages;
+    }
+
+    public void setPages(List<Integer> pages) {
+        this.pages = pages;
     }
 }
