@@ -26,6 +26,8 @@ public class SearchResultsPage extends Page {
     private ProductPage headlinePage;
     private long numberOfPages;
     private String[] types;
+    private boolean includeStatics;
+
 
     public SearchResult getTaxonomySearchResult() {
         return taxonomySearchResult;
@@ -110,5 +112,13 @@ public class SearchResultsPage extends Page {
 
     public void setTypes(String[] types) {
         this.types = types;
+    }
+
+    public boolean isIncludeStatics() {
+        return includeStatics;
+    }
+
+    public void setIncludeStatics(boolean includeStatics) {
+        this.includeStatics = includeStatics;
     }
 }
