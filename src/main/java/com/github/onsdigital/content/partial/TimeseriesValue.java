@@ -80,7 +80,7 @@ public class TimeseriesValue extends Content implements Comparable<TimeseriesVal
 			} else if (TimeSeries.month.matcher(standardised).matches()) {
 				result = new SimpleDateFormat("yyyy MMM").parse(standardised);
 			} else if (TimeSeries.monthNumVal.matcher(standardised).matches()) {
-				result = new SimpleDateFormat("yyyy MMM").parse(standardised);
+				result = new SimpleDateFormat("yyyy MM").parse(standardised);
 			} else if (TimeSeries.quarter.matcher(standardised).matches()) {
 				Date parsed = new SimpleDateFormat("yyyy").parse(standardised);
 				Calendar calendar = Calendar.getInstance(Locale.UK);

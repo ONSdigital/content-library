@@ -10,7 +10,7 @@ public class Compendium extends Statistics {
     //TODO: Complete compendium object model. Content not quite clear yet
     @Override
     public PageType getType() {
-        return PageType.compendium;
+        return PageType.compendium_chapter;
     }
 
 
