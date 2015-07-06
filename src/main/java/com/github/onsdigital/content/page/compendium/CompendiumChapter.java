@@ -15,10 +15,10 @@ import java.util.List;
 /**
  * Created by bren on 04/06/15.
  */
-public class CompendiumChapter extends StatisticalDocument<ArticleDescription> {
+public class CompendiumChapter extends StatisticalDocument<CompendiumDescription> {
 
-    public List<PageReference> relatedDocuments;
-    public PageReference parent;
+    private List<PageReference> relatedDocuments;
+    private PageReference parent;
 
     @Override
     public void loadReferences(ContentService contentService) throws ContentNotFoundException {
@@ -49,4 +49,5 @@ public class CompendiumChapter extends StatisticalDocument<ArticleDescription> {
     public void setParent(PageReference parent) {
         this.parent = parent;
     }
+
 }

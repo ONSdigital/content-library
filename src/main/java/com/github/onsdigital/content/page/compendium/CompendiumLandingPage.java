@@ -4,6 +4,7 @@ import com.github.onsdigital.content.link.PageReference;
 import com.github.onsdigital.content.page.base.Page;
 import com.github.onsdigital.content.page.base.PageType;
 import com.github.onsdigital.content.page.statistics.base.StatisticsDescription;
+import com.github.onsdigital.content.page.statistics.document.base.StatisticalDocumentDescription;
 import com.github.onsdigital.content.page.taxonomy.base.TaxonomyPage;
 import com.github.onsdigital.content.service.ContentNotFoundException;
 import com.github.onsdigital.content.service.ContentService;
@@ -14,7 +15,7 @@ import java.util.List;
 /**
  * Created by bren on 04/06/15.
  */
-public class CompendiumLandingPage extends Page<StatisticsDescription> {
+public class CompendiumLandingPage extends Page<CompendiumDescription> {
 
     private List<PageReference> datasets;
     private List<PageReference> chapters;
