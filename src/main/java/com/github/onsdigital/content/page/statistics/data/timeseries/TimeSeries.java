@@ -17,6 +17,7 @@ public class TimeSeries extends StatisticalData<TimeseriesDescription> implement
     public static Pattern yearInterval = Pattern.compile("\\d{4}-\\d{2,4}");
     public static Pattern yearPair = Pattern.compile("\\d{4}/\\d{2}");
     public static Pattern month = Pattern.compile("\\d{4} \\w{3}");
+    public static Pattern monthNumVal = Pattern.compile("\\d{4} \\d{2}"); //e.g. 2012 02 for february
     public static Pattern quarter = Pattern.compile("\\d{4} \\w[1-4]");
 
 
