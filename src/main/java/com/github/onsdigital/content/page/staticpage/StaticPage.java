@@ -9,7 +9,7 @@ import com.github.onsdigital.content.page.staticpage.base.BaseStaticPage;
  *
  * Simple static page with only markdown content
  */
-public class StaticPage extends BaseStaticPage<PageDescription> {
+public class StaticPage extends BaseStaticPage {
     @Override
     public PageType getType() {
         return PageType.static_page;

@@ -17,8 +17,6 @@ import java.util.List;
  */
 public class Dataset extends Statistics {
 
-    //TODO: Currently using mostly the same fields as Alpha. Workout complex data pages
-
     /*Body*/
     private List<DownloadSection> downloads = new ArrayList<DownloadSection>();
     private List<PageReference> relatedMethodology;

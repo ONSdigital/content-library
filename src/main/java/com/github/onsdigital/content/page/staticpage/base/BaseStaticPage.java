@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Created by bren on 29/06/15.
  */
-public abstract class BaseStaticPage<T extends  PageDescription> extends Page {
+public abstract class BaseStaticPage extends Page {
 
     private List<Link> downloads;
 

@@ -47,4 +47,11 @@ public class CompendiumChapter extends StatisticalDocument {
         this.parent = parent;
     }
 
+    public List<PageReference> getRelatedDocuments() {
+        return relatedDocuments;
+    }
+
+    public void setRelatedDocuments(List<PageReference> relatedDocuments) {
+        this.relatedDocuments = relatedDocuments;
+    }
 }

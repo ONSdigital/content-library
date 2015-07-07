@@ -1,7 +1,6 @@
 package com.github.onsdigital.content.page.base;
 
 import com.github.onsdigital.content.base.Content;
-import com.github.onsdigital.content.base.ContentDescription;
 import com.github.onsdigital.content.link.PageReference;
 import com.github.onsdigital.content.partial.navigation.Navigation;
 import com.github.onsdigital.content.service.ContentNotFoundException;
