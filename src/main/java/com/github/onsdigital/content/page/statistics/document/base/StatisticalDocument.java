@@ -28,12 +28,23 @@ public abstract class StatisticalDocument extends Statistics {
     private List<FigureSection> charts = new ArrayList<>();
     private List<FigureSection> tables = new ArrayList<>();
 
+    private URI latestReleaseUri;
+    private URI previousReleasesUri;
+
     @Override
     public void loadReferences(ContentService contentService) throws ContentNotFoundException {
         super.loadReferences(contentService);
         ContentUtil.loadReferencedPageDescription(contentService, relatedData);
-        this.getDescription().setLatestRelease(isLatestRelease(contentService));
+        populate(contentService);
     }
+
+    public URI getLatestReleaseUri() { return latestReleaseUri; }
+
+    public void setLatestReleaseUri(URI latestReleaseUri) { this.latestReleaseUri = latestReleaseUri; }
+
+    public URI getPreviousReleasesUri() { return previousReleasesUri; }
+
+    public void setPreviousReleasesUri(URI previousReleasesUri) { this.previousReleasesUri = previousReleasesUri; }
 
     public List<MarkdownSection> getSections() {
         return sections;
@@ -67,23 +78,27 @@ public abstract class StatisticalDocument extends Statistics {
 
     public void setTables(List<FigureSection> tables) { this.tables = tables; }
 
-    private boolean isLatestRelease(ContentService contentService) throws ContentNotFoundException {
+    private void populate(ContentService contentService) throws ContentNotFoundException {
 
+        boolean isLatestRelease = false;
         URI uri = this.getUri();
         URI parent = uri.getPath().endsWith("/") ? uri.resolve("..") : uri.resolve(".");
         String path = StringUtils.removeStart(parent.toString(), "/");
         DirectoryListing listing = contentService.readDirectory(path);
 
-        if (listing.folders.isEmpty()) { return true; }
+        this.setPreviousReleasesUri(parent.resolve("previousreleases"));
+        this.setLatestReleaseUri(parent.resolve("latest"));
+
+        if (listing.folders.isEmpty()) { isLatestRelease = true; }
 
         List<String> folders = new ArrayList<>(listing.folders.keySet());
         Collections.sort(folders, Collections.reverseOrder());
         String release = new File(uri.getPath()).getName();
 
         if (release.equals(folders.get(0))) {
-            return true;
+            isLatestRelease = true;
         }
 
-        return false;
+        this.getDescription().setLatestRelease(isLatestRelease);
     }
 }
