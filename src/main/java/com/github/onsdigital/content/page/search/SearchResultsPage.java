@@ -26,6 +26,7 @@ public class SearchResultsPage extends Page {
     private ProductPage headlinePage;
     private long numberOfPages;
     private String[] types;
+    private boolean includeAllData;
     private boolean includeStatics;
 
 
@@ -144,5 +145,13 @@ public class SearchResultsPage extends Page {
 
     public void setPages(List<Integer> pages) {
         this.pages = pages;
+    }
+
+    public boolean isIncludeAllData() {
+        return includeAllData;
+    }
+
+    public void setIncludeAllData(boolean includeAllData) {
+        this.includeAllData = includeAllData;
     }
 }
