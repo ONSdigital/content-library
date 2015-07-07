@@ -3,7 +3,6 @@ package com.github.onsdigital.content.page.taxonomy;
 import com.github.onsdigital.content.link.PageReference;
 import com.github.onsdigital.content.page.base.PageType;
 import com.github.onsdigital.content.page.taxonomy.base.TaxonomyPage;
-import com.github.onsdigital.content.page.base.PageDescription;
 import com.github.onsdigital.content.service.ContentNotFoundException;
 import com.github.onsdigital.content.service.ContentService;
 import com.github.onsdigital.content.util.ContentUtil;

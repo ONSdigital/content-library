@@ -2,7 +2,6 @@ package com.github.onsdigital.content.page.staticpage;
 
 import com.github.onsdigital.content.link.Link;
 import com.github.onsdigital.content.page.base.Page;
-import com.github.onsdigital.content.page.base.PageDescription;
 import com.github.onsdigital.content.page.base.PageType;
 import com.github.onsdigital.content.page.staticpage.base.StaticPageSection;
 import com.github.onsdigital.content.service.ContentNotFoundException;
@@ -16,7 +15,7 @@ import java.util.List;
  * Landing page showing links to other static pages
  *
  */
-public class StaticLandingPage extends Page<PageDescription> {
+public class StaticLandingPage extends Page {
 
     private List<StaticPageSection> sections;
     private List<Link> links;

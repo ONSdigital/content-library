@@ -2,7 +2,6 @@ package com.github.onsdigital.content.page.statistics.document.base;
 
 import com.github.onsdigital.content.link.PageReference;
 import com.github.onsdigital.content.page.statistics.base.Statistics;
-import com.github.onsdigital.content.page.statistics.base.StatisticsDescription;
 import com.github.onsdigital.content.partial.FigureSection;
 import com.github.onsdigital.content.partial.markdown.MarkdownSection;
 import com.github.onsdigital.content.service.ContentNotFoundException;
@@ -15,7 +14,7 @@ import java.util.List;
 /**
  * Created by bren on 06/06/15.
  */
-public abstract class StatisticalDocument<T extends StatisticsDescription> extends Statistics<T> {
+public abstract class StatisticalDocument extends Statistics {
 
     /*Body*/
     private List<MarkdownSection> sections = new ArrayList<>();

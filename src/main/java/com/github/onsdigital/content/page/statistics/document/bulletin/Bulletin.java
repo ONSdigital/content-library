@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * Created by bren on 04/06/15.
  */
-public class Bulletin extends StatisticalDocument<BulletinDescription> {
+public class Bulletin extends StatisticalDocument {
 
     private List<PageReference> relatedBulletins = new ArrayList<>();
 

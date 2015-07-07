@@ -3,9 +3,6 @@ package com.github.onsdigital.content.page.compendium;
 import com.github.onsdigital.content.link.PageReference;
 import com.github.onsdigital.content.page.base.Page;
 import com.github.onsdigital.content.page.base.PageType;
-import com.github.onsdigital.content.page.statistics.base.StatisticsDescription;
-import com.github.onsdigital.content.page.statistics.document.base.StatisticalDocumentDescription;
-import com.github.onsdigital.content.page.taxonomy.base.TaxonomyPage;
 import com.github.onsdigital.content.service.ContentNotFoundException;
 import com.github.onsdigital.content.service.ContentService;
 import com.github.onsdigital.content.util.ContentUtil;
@@ -15,7 +12,7 @@ import java.util.List;
 /**
  * Created by bren on 04/06/15.
  */
-public class CompendiumLandingPage extends Page<CompendiumDescription> {
+public class CompendiumLandingPage extends Page {
 
     private List<PageReference> datasets;
     private List<PageReference> chapters;

@@ -1,10 +1,7 @@
 package com.github.onsdigital.content.page.compendium;
 
 import com.github.onsdigital.content.link.PageReference;
-import com.github.onsdigital.content.page.base.Page;
 import com.github.onsdigital.content.page.base.PageType;
-import com.github.onsdigital.content.page.statistics.base.Statistics;
-import com.github.onsdigital.content.page.statistics.document.article.ArticleDescription;
 import com.github.onsdigital.content.page.statistics.document.base.StatisticalDocument;
 import com.github.onsdigital.content.service.ContentNotFoundException;
 import com.github.onsdigital.content.service.ContentService;
@@ -15,7 +12,7 @@ import java.util.List;
 /**
  * Created by bren on 04/06/15.
  */
-public class CompendiumChapter extends StatisticalDocument<CompendiumDescription> {
+public class CompendiumChapter extends StatisticalDocument {
 
     private List<PageReference> relatedDocuments;
     private PageReference parent;

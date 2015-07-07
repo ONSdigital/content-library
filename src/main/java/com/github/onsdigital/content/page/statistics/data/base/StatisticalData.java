@@ -3,9 +3,6 @@ package com.github.onsdigital.content.page.statistics.data.base;
 import com.github.onsdigital.content.link.PageReference;
 import com.github.onsdigital.content.page.base.PageDescription;
 import com.github.onsdigital.content.page.statistics.base.Statistics;
-import com.github.onsdigital.content.page.statistics.base.StatisticsDescription;
-import com.github.onsdigital.content.page.statistics.dataset.DatasetDescription;
-import com.github.onsdigital.content.page.statistics.document.base.StatisticalDocument;
 import com.github.onsdigital.content.partial.markdown.MarkdownSection;
 import com.github.onsdigital.content.service.ContentNotFoundException;
 import com.github.onsdigital.content.service.ContentService;
@@ -16,7 +13,7 @@ import java.util.List;
 /**
  * Created by bren on 05/06/15.
  */
-public abstract class StatisticalData<T extends StatisticalDataDescription> extends Statistics<T> {
+public abstract class StatisticalData<T extends PageDescription> extends Statistics {
 
     /*Body*/
     private List<PageReference> relatedDatasets;

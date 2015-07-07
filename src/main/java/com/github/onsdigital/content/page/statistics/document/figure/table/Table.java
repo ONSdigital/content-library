@@ -2,7 +2,7 @@ package com.github.onsdigital.content.page.statistics.document.figure.table;
 import com.github.onsdigital.content.page.base.Page;
 import com.github.onsdigital.content.page.base.PageType;
 
-public class Table extends Page<TableDescription> {
+public class Table extends Page {
 
     private String title;
     private String html;

@@ -1,5 +1,6 @@
 package com.github.onsdigital.content.page.statistics.data.timeseries;
 
+import com.github.onsdigital.content.page.base.PageDescription;
 import com.github.onsdigital.content.page.base.PageType;
 import com.github.onsdigital.content.page.statistics.data.base.StatisticalData;
 import com.github.onsdigital.content.partial.TimeseriesValue;
@@ -9,7 +10,7 @@ import java.text.ParseException;
 import java.util.*;
 import java.util.regex.Pattern;
 
-public class TimeSeries extends StatisticalData<TimeseriesDescription> implements  Comparable<TimeSeries> {
+public class TimeSeries extends StatisticalData implements  Comparable<TimeSeries> {
 
     // Regexes (what might the plural be?)
     public static Pattern year = Pattern.compile("\\d{4}");
@@ -81,7 +82,7 @@ public class TimeSeries extends StatisticalData<TimeseriesDescription> implement
 
     public void setCdid(String cdid) {
         if (getDescription() == null) {
-            setDescription(new TimeseriesDescription());
+            setDescription(new PageDescription());
         }
         getDescription().setCdid(StringUtils.trim(cdid));
     }
@@ -133,7 +134,7 @@ public class TimeSeries extends StatisticalData<TimeseriesDescription> implement
     }
 
     public String getCdid() {
-        TimeseriesDescription description = getDescription();
+        PageDescription description = getDescription();
         if (description != null) {
             return description.getCdid();
         }

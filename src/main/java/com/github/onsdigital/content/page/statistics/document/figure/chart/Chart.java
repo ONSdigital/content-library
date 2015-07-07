@@ -3,7 +3,7 @@ package com.github.onsdigital.content.page.statistics.document.figure.chart;
 import com.github.onsdigital.content.page.base.Page;
 import com.github.onsdigital.content.page.base.PageType;
 
-public class Chart extends Page<ChartDescription> {
+public class Chart extends Page {
 
     private String title;
     private String subtitle;

@@ -20,13 +20,13 @@ import java.util.List;
  * Page on the website forms a logical hierarchy with homepage being the root of this hierarchy.
  * The hierarchy is shown as a breadcrumb on every page.
  */
-public abstract class Page<T extends PageDescription> extends Content {
+public abstract class Page extends Content {
 
     private PageType type;
     private URI uri;
     private List<PageReference> breadcrumb;
 
-    private T description;
+    private PageDescription description;
 
     //Every page on the website has navigation, but this is generated on runtime. No need to serialise it into json files
     private transient Navigation navigation;
@@ -52,12 +52,12 @@ public abstract class Page<T extends PageDescription> extends Content {
 
     public abstract PageType getType();
 
-    public T getDescription() {
+    public PageDescription getDescription() {
         return description;
     }
 
-    public void setDescription(T description) {
-        this.description = (T) description;
+    public void setDescription(PageDescription description) {
+        this.description = description;
     }
 
     public URI getUri() {

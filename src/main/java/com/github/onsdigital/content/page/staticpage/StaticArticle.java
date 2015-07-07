@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * Created by bren on 29/06/15.
  */
-public class StaticArticle extends Page<StaticArticleDescription> {
+public class StaticArticle extends Page {
 
     private List<PageReference> relatedData;
     private List<PageReference> relatedDocuments;

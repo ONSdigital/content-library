@@ -15,7 +15,7 @@ import java.util.List;
 /**
  * Created by bren on 04/06/15.
  */
-public class Dataset extends Statistics<DatasetDescription> {
+public class Dataset extends Statistics {
 
     //TODO: Currently using mostly the same fields as Alpha. Workout complex data pages
 
