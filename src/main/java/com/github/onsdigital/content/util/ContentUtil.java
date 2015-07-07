@@ -1,5 +1,6 @@
 package com.github.onsdigital.content.util;
 
+import com.github.onsdigital.content.DirectoryListing;
 import com.github.onsdigital.content.link.PageReference;
 import com.github.onsdigital.content.page.base.Page;
 import com.github.onsdigital.content.service.ContentNotFoundException;
@@ -9,8 +10,12 @@ import com.google.gson.GsonBuilder;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.nio.file.DirectoryStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.Date;
 import java.util.List;
 
@@ -84,7 +89,7 @@ public class ContentUtil {
     /**
      * Deserialises json stream into given Object type
      *
-     * @param stream json stream to be deserialised
+     * @param stream      json stream to be deserialised
      * @param type
      * @param datePattern
      * @return
@@ -175,7 +180,7 @@ public class ContentUtil {
      * @param contentService
      * @param pageReference
      */
-    public static <T extends PageReference>  void loadReferencedPageDescription(ContentService contentService, T pageReference) {
+    public static <T extends PageReference> void loadReferencedPageDescription(ContentService contentService, T pageReference) {
         if (pageReference == null) {
             return;
         }
@@ -223,6 +228,30 @@ public class ContentUtil {
             //TODO: If reference not found it will not load. Is that ok ?
             e.printStackTrace();
         }
+    }
+
+    /**
+     * Populate a list of files / folders for a given path.
+     *
+     * @param path
+     * @return
+     * @throws IOException
+     */
+    public static DirectoryListing listDirectory(Path path) throws IOException {
+        DirectoryListing listing = new DirectoryListing();
+        try (DirectoryStream<Path> stream = Files
+                .newDirectoryStream(path)) {
+            for (Path directory : stream) {
+                if (Files.isDirectory(directory)) {
+                    listing.folders.put(directory.getFileName().toString(),
+                            directory.toString());
+                } else {
+                    listing.files.put(directory.getFileName().toString(),
+                            directory.toString());
+                }
+            }
+        }
+        return listing;
     }
 
     private static InputStream getJson(ContentService contentService, PageReference pageReference) throws ContentNotFoundException {
