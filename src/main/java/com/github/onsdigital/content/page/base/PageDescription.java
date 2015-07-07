@@ -28,6 +28,7 @@ public class PageDescription extends ContentDescription implements Comparable<Pa
 
     /*Statistics Description*/
     private boolean nationalStatistic;
+    private boolean latestRelease;
     private Contact contact;
     private Date releaseDate;
     private String nextRelease;
@@ -144,6 +145,10 @@ public class PageDescription extends ContentDescription implements Comparable<Pa
     public void setNationalStatistic(boolean nationalStatistic) {
         this.nationalStatistic = nationalStatistic;
     }
+
+    public boolean isLatestRelease() { return latestRelease; }
+
+    public void setLatestRelease(boolean latestRelease) { this.latestRelease = latestRelease; }
 
     public Contact getContact() {
         return contact;

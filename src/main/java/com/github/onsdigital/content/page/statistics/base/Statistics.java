@@ -8,6 +8,6 @@ import com.github.onsdigital.content.page.base.Page;
  * <p>
  * Represents statistics pages that gets released periodically. Bulletin, Article, Timeseries, Dataset, etc.
  */
-public abstract class Statistics<T extends StatisticsDescription> extends Page<T> {
+public abstract class Statistics extends Page {
 
 }
