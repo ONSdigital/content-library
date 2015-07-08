@@ -37,7 +37,9 @@ public enum PageType {
     chart,
     table,
     search_results_page,
-    unknown;
+    unknown,
+    error404,
+    error500;
 
     //TODO: Add all content types
 }
