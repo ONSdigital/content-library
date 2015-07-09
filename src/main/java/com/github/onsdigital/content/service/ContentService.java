@@ -12,4 +12,6 @@ public interface ContentService {
     InputStream readData(String uri) throws ContentNotFoundException;
 
     DirectoryListing readDirectory(String path) throws ContentNotFoundException;
+
+    InputStream readPage(String uri) throws ContentNotFoundException;
 }

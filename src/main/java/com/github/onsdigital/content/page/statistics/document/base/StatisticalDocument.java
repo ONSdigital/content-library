@@ -8,9 +8,12 @@ import com.github.onsdigital.content.partial.markdown.MarkdownSection;
 import com.github.onsdigital.content.service.ContentNotFoundException;
 import com.github.onsdigital.content.service.ContentService;
 import com.github.onsdigital.content.util.ContentUtil;
+import com.github.onsdigital.content.util.markdown.ChartTagReplacer;
+import com.github.onsdigital.content.util.markdown.TableTagReplacer;
 import org.apache.commons.lang3.StringUtils;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -20,6 +23,9 @@ import java.util.List;
  * Created by bren on 06/06/15.
  */
 public abstract class StatisticalDocument extends Statistics {
+
+    private static TableTagReplacer tableTagReplacer = new TableTagReplacer();
+    private static ChartTagReplacer chartTagReplacer = new ChartTagReplacer();
 
     /*Body*/
     private List<MarkdownSection> sections = new ArrayList<>();
@@ -80,15 +86,36 @@ public abstract class StatisticalDocument extends Statistics {
 
     private void populate(ContentService contentService) throws ContentNotFoundException {
 
-        boolean isLatestRelease = false;
         URI uri = this.getUri();
         URI parent = uri.getPath().endsWith("/") ? uri.resolve("..") : uri.resolve(".");
-        String path = StringUtils.removeStart(parent.toString(), "/");
-        DirectoryListing listing = contentService.readDirectory(path);
 
         this.setPreviousReleasesUri(parent.resolve("previousreleases"));
         this.setLatestReleaseUri(parent.resolve("latest"));
 
+        boolean isLatestRelease = isLatestRelease(contentService, uri, parent);
+        this.getDescription().setLatestRelease(isLatestRelease);
+
+        ReplaceCustomMarkdownTags(contentService);
+    }
+
+    private void ReplaceCustomMarkdownTags(ContentService contentService) {
+        for (MarkdownSection section : sections) {
+            String markdown = section.getMarkdown();
+            try {
+
+                markdown = tableTagReplacer.replaceAll(markdown, contentService);
+                markdown = chartTagReplacer.replaceAll(markdown, contentService);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            section.setMarkdown(markdown);
+        }
+    }
+
+    private boolean isLatestRelease(ContentService contentService, URI uri, URI parent) throws ContentNotFoundException {
+        boolean isLatestRelease = false;
+        String path = StringUtils.removeStart(parent.toString(), "/");
+        DirectoryListing listing = contentService.readDirectory(path);
         if (listing.folders.isEmpty()) { isLatestRelease = true; }
 
         List<String> folders = new ArrayList<>(listing.folders.keySet());
@@ -98,7 +125,6 @@ public abstract class StatisticalDocument extends Statistics {
         if (release.equals(folders.get(0))) {
             isLatestRelease = true;
         }
-
-        this.getDescription().setLatestRelease(isLatestRelease);
+        return isLatestRelease;
     }
 }
