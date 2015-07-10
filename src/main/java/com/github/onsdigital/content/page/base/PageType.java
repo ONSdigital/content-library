@@ -29,7 +29,7 @@ public enum PageType {
     static_qmi,
     static_foi,
     static_adhoc,
-    dataset,//TODO:To be changed with complex pages. Keeping in for alpha content temporarily
+    dataset,
     reference_tables,
     release,
     release_calendar,
@@ -41,5 +41,4 @@ public enum PageType {
     error404,
     error500;
 
-    //TODO: Add all content types
 }
