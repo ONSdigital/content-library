@@ -6,11 +6,15 @@ import com.github.onsdigital.content.page.statistics.base.Statistics;
 import com.github.onsdigital.content.partial.FigureSection;
 import com.github.onsdigital.content.partial.markdown.MarkdownSection;
 import com.github.onsdigital.content.service.ContentNotFoundException;
+import com.github.onsdigital.content.service.ContentRenderingService;
 import com.github.onsdigital.content.service.ContentService;
 import com.github.onsdigital.content.util.ContentUtil;
+import com.github.onsdigital.content.util.markdown.ChartTagReplacer;
+import com.github.onsdigital.content.util.markdown.TableTagReplacer;
 import org.apache.commons.lang3.StringUtils;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -100,5 +104,17 @@ public abstract class StatisticalDocument extends Statistics {
         }
 
         this.getDescription().setLatestRelease(isLatestRelease);
+    }
+
+    @Override
+    public void processContent(ContentService contentService, ContentRenderingService contentRenderingService) throws IOException {
+        super.processContent(contentService, contentRenderingService);
+
+        for (MarkdownSection markdownSection : this.getSections()) {
+            String markdown = markdownSection.getMarkdown();
+            markdown = new TableTagReplacer().replaceCustomTags(markdown, contentRenderingService);
+            markdown = new ChartTagReplacer().replaceCustomTags(markdown, contentRenderingService);
+            markdownSection.setMarkdown(markdown);
+        }
     }
 }

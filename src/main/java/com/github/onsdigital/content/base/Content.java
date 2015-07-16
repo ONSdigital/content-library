@@ -1,8 +1,11 @@
 package com.github.onsdigital.content.base;
 
 import com.github.onsdigital.content.service.ContentNotFoundException;
+import com.github.onsdigital.content.service.ContentRenderingService;
 import com.github.onsdigital.content.service.ContentService;
 import com.github.onsdigital.content.util.ContentUtil;
+
+import java.io.IOException;
 
 /**
  * Created by bren on 10/06/15.
@@ -30,7 +33,12 @@ public abstract class Content implements Cloneable {
      *
      * @param contentService
      */
-    public void loadReferences(ContentService contentService) throws ContentNotFoundException {
+    public void loadReferences(ContentService contentService) throws ContentNotFoundException { }
 
-    }
+    /**
+     * Allow custom processing of content. Allow data / rendered HTML to be injected.
+     * @param contentService
+     * @param contentRenderingService
+     */
+    public void processContent(ContentService contentService, ContentRenderingService contentRenderingService) throws IOException {}
 }
