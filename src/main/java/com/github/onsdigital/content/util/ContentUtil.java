@@ -187,8 +187,9 @@ public class ContentUtil {
         try {
             Page page = ContentUtil.deserialisePage(getJson(contentService, pageReference));
             pageReference.setDescription(page.getDescription());
-        } catch (ContentNotFoundException e) {
-            //TODO: If reference not found it will not load. Is that ok ?
+        } catch (Exception e) {
+            // If reference can not be resolved in any way it will not load.
+            System.err.println("loadReferencedPageDescription(): !!!!!!!!!Warning: Related page description load failed: " + pageReference.getUri() + "!!!!!!!!!!");
             e.printStackTrace();
         }
     }
@@ -224,8 +225,9 @@ public class ContentUtil {
 
             //Clear uri as it is already in data, it will be replaced with data in json
             pageReference.setUri(null);
-        } catch (ContentNotFoundException e) {
-            //TODO: If reference not found it will not load. Is that ok ?
+        } catch (Exception e) {
+            // If reference can not be resolved in any way it will not load.
+            System.err.println("loadReferencedPage():  !!!!!!!!!Warning: Related page data load failed: " + pageReference.getUri() + "!!!!!!!!!!");
             e.printStackTrace();
         }
     }
