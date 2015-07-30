@@ -3,6 +3,8 @@ package com.github.onsdigital.content.page.statistics.document.figure.chart;
 import com.github.onsdigital.content.page.base.Page;
 import com.github.onsdigital.content.page.base.PageType;
 
+import java.util.Map;
+
 public class Chart extends Page {
 
     private String title;
@@ -11,6 +13,16 @@ public class Chart extends Page {
     private String source;
     private String notes;
     private String altText;
+
+    private String chartType;
+    private String aspectRatio;
+    private String[] series;
+    private String[] categories;
+    private Map<String, String>[] data;
+    private Map<String, String> chartTypes;
+    private String[][] groups;
+    private String decimalPlaces;
+    private String labelInterval;
 
     @Override
     public PageType getType() {
@@ -63,5 +75,77 @@ public class Chart extends Page {
 
     public void setAltText(String altText) {
         this.altText = altText;
+    }
+
+    public String getChartType() {
+        return chartType;
+    }
+
+    public void setChartType(String chartType) {
+        this.chartType = chartType;
+    }
+
+    public String getAspectRatio() {
+        return aspectRatio;
+    }
+
+    public void setAspectRatio(String aspectRatio) {
+        this.aspectRatio = aspectRatio;
+    }
+
+    public String[] getSeries() {
+        return series;
+    }
+
+    public void setSeries(String[] series) {
+        this.series = series;
+    }
+
+    public String[] getCategories() {
+        return categories;
+    }
+
+    public void setCategories(String[] categories) {
+        this.categories = categories;
+    }
+
+    public Map<String, String>[] getData() {
+        return data;
+    }
+
+    public void setData(Map<String, String>[] data) {
+        this.data = data;
+    }
+
+    public String getDecimalPlaces() {
+        return decimalPlaces;
+    }
+
+    public void setDecimalPlaces(String decimalPlaces) {
+        this.decimalPlaces = decimalPlaces;
+    }
+
+    public String getLabelInterval() {
+        return labelInterval;
+    }
+
+    public void setLabelInterval(String labelInterval) {
+        this.labelInterval = labelInterval;
+    }
+
+    public Map<String, String> getChartTypes() {
+        return chartTypes;
+    }
+
+    public void setChartTypes(Map<String, String> chartTypes) {
+        this.chartTypes = chartTypes;
+    }
+
+    public String[][] getGroups() {
+        return groups;
+    }
+
+    public void setGroups(String[][] groups) {
+        this.groups = groups;
     }
 }
