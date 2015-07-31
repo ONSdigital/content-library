@@ -10,6 +10,7 @@ public class Chart extends Page {
     private String title;
     private String subtitle;
     private String filename;
+    private String unit;
     private String source;
     private String notes;
     private String altText;
@@ -28,6 +29,10 @@ public class Chart extends Page {
     public PageType getType() {
         return PageType.chart;
     }
+
+    public String getUnit() { return unit; }
+
+    public void setUnit(String unit) { this.unit = unit; }
 
     public String getTitle() {
         return title;
@@ -148,4 +153,8 @@ public class Chart extends Page {
     public void setGroups(String[][] groups) {
         this.groups = groups;
     }
+
+    // helper methods to encapsulate string configurations
+    public boolean isRotated() { return getChartType().equals("rotated"); }
+    public boolean isBarLine() { return getChartType().equals("barline"); }
 }
