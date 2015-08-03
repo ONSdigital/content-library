@@ -111,10 +111,18 @@ public abstract class StatisticalDocument extends Statistics {
         super.processContent(contentService, contentRenderingService);
 
         for (MarkdownSection markdownSection : this.getSections()) {
-            String markdown = markdownSection.getMarkdown();
-            markdown = new TableTagReplacer().replaceCustomTags(markdown, contentRenderingService);
-            markdown = new ChartTagReplacer().replaceCustomTags(markdown, contentRenderingService);
-            markdownSection.setMarkdown(markdown);
+            processMarkdownSection(contentRenderingService, markdownSection);
         }
+
+        for (MarkdownSection markdownSection : this.getAccordion()) {
+            processMarkdownSection(contentRenderingService, markdownSection);
+        }
+    }
+
+    private void processMarkdownSection(ContentRenderingService contentRenderingService, MarkdownSection markdownSection) throws IOException {
+        String markdown = markdownSection.getMarkdown();
+        markdown = new TableTagReplacer().replaceCustomTags(markdown, contentRenderingService);
+        markdown = new ChartTagReplacer().replaceCustomTags(markdown, contentRenderingService);
+        markdownSection.setMarkdown(markdown);
     }
 }
