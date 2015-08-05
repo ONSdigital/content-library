@@ -18,6 +18,7 @@ public class ProductPage extends TaxonomyPage {
     private List<PageReference> datasets;
     private List<PageReference> statsBulletins;
     private List<PageReference> relatedArticles;
+    private List<PageReference> relatedMethodology;
 
 
     @Override
@@ -27,6 +28,7 @@ public class ProductPage extends TaxonomyPage {
         ContentUtil.loadReferencedPageDescription(contentService, datasets);
         ContentUtil.loadReferencedPageDescription(contentService, statsBulletins);
         ContentUtil.loadReferencedPageDescription(contentService, relatedArticles);
+        ContentUtil.loadReferencedPageDescription(contentService, relatedMethodology);
     }
 
     @Override
@@ -66,5 +68,13 @@ public class ProductPage extends TaxonomyPage {
 
     public void setRelatedArticles(List<PageReference> relatedArticles) {
         this.relatedArticles = relatedArticles;
+    }
+
+    public List<PageReference> getRelatedMethodology() {
+        return relatedMethodology;
+    }
+
+    public void setRelatedMethodology(List<PageReference> relatedMethodology) {
+        this.relatedMethodology = relatedMethodology;
     }
 }

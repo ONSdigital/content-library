@@ -3,6 +3,7 @@ package com.github.onsdigital.content.page.staticpage.base;
 import com.github.onsdigital.content.link.Link;
 import com.github.onsdigital.content.page.base.Page;
 import com.github.onsdigital.content.page.base.PageDescription;
+import com.github.onsdigital.content.partial.DownloadSection;
 
 import java.util.List;
 
@@ -11,7 +12,7 @@ import java.util.List;
  */
 public abstract class BaseStaticPage extends Page {
 
-    private List<Link> downloads;
+    private List<DownloadSection> downloads;
 
     /**
      *Body of this static page in markdown format
@@ -39,11 +40,11 @@ public abstract class BaseStaticPage extends Page {
         this.links = links;
     }
 
-    public List<Link> getDownloads() {
+    public List<DownloadSection> getDownloads() {
         return downloads;
     }
 
-    public void setDownloads(List<Link> downloads) {
+    public void setDownloads(List<DownloadSection> downloads) {
         this.downloads = downloads;
     }
 }
