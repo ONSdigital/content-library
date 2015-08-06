@@ -20,24 +20,23 @@ public enum PageType {
     timeseries,
     data_slice,
     compendium_landing_page,
-    compendium_chapter,//Resolve parent
+    compendium_chapter,
     compendium_data,
     static_landing_page,
-    static_article, //With table of contents
+    static_article,
     static_methodology,
-    static_page, //Pure markdown
+    static_page,
     static_qmi,
     static_foi,
     static_adhoc,
     dataset,
     reference_tables,
     release,
-    release_calendar,
-    list_page, //???
+    release_list,
+    list_page,
     chart,
     table,
     search_results_page,
-    unknown,
     error404,
     error500;
 
