@@ -3,6 +3,9 @@ package com.github.onsdigital.content.page.staticpage.qmi;
 import com.github.onsdigital.content.link.PageReference;
 import com.github.onsdigital.content.page.base.PageType;
 import com.github.onsdigital.content.page.staticpage.base.BaseStaticPage;
+import com.github.onsdigital.content.service.ContentNotFoundException;
+import com.github.onsdigital.content.service.ContentService;
+import com.github.onsdigital.content.util.ContentUtil;
 
 import java.util.List;
 
@@ -33,5 +36,13 @@ public class QMI extends BaseStaticPage {
 
     public void setRelatedDocuments(List<PageReference> relatedDocuments) {
         this.relatedDocuments = relatedDocuments;
+    }
+
+
+    @Override
+    public void loadReferences(ContentService contentService) throws ContentNotFoundException {
+        super.loadReferences(contentService);
+        ContentUtil.loadReferencedPageDescription(contentService, relatedDatasets);
+        ContentUtil.loadReferencedPageDescription(contentService, relatedDocuments);
     }
 }
