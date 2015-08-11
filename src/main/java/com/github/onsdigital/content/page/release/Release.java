@@ -1,30 +1,27 @@
 package com.github.onsdigital.content.page.release;
 
-import com.github.onsdigital.content.link.PageReference;
-import com.github.onsdigital.content.page.base.Page;
 import com.github.onsdigital.content.page.base.PageType;
+import com.github.onsdigital.content.page.statistics.document.base.StatisticalDocument;
+import com.github.onsdigital.content.partial.markdown.MarkdownSection;
 import com.github.onsdigital.content.service.ContentNotFoundException;
 import com.github.onsdigital.content.service.ContentService;
-import com.github.onsdigital.content.util.ContentUtil;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by bren on 04/06/15.
  */
-public class Release extends Page {
+public class Release extends StatisticalDocument {
 
-    private List<PageReference> articles = new ArrayList<>();
-    private List<PageReference> bulletins = new ArrayList<>();
-    private List<PageReference> datasets = new ArrayList<>();
+    private MarkdownSection preRelease;
+
+    private List<ReleaseDateChange> dateChanges;
+
+
 
     @Override
     public void loadReferences(ContentService contentService) throws ContentNotFoundException {
         super.loadReferences(contentService);
-        ContentUtil.loadReferencedPageDescription(contentService, articles);
-        ContentUtil.loadReferencedPageDescription(contentService, bulletins);
-        ContentUtil.loadReferencedPageDescription(contentService, datasets);
     }
 
     @Override
@@ -32,29 +29,19 @@ public class Release extends Page {
         return PageType.release;
     }
 
-
-    public List<PageReference> getArticles() {
-        return articles;
+    public List<ReleaseDateChange> getDateChanges() {
+        return dateChanges;
     }
 
-    public void setArticles(List<PageReference> articles) {
-        this.articles = articles;
+    public void setDateChanges(List<ReleaseDateChange> dateChanges) {
+        this.dateChanges = dateChanges;
     }
 
-    public List<PageReference> getBulletins() {
-        return bulletins;
+    public MarkdownSection getPreRelease() {
+        return preRelease;
     }
 
-    public void setBulletins(List<PageReference> bulletins) {
-        this.bulletins = bulletins;
+    public void setPreRelease(MarkdownSection preRelease) {
+        this.preRelease = preRelease;
     }
-
-    public List<PageReference> getDatasets() {
-        return datasets;
-    }
-
-    public void setDatasets(List<PageReference> datasets) {
-        this.datasets = datasets;
-    }
-
 }
