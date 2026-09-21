@@ -81,10 +81,31 @@
 
             <!-- Disable deploy. We do not deploy to maven central or anywhere. Prevents release perform failure-->
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-deploy-plugin</artifactId>
+                <groupId>org.sonatype.ossindex.maven</groupId>
+                <artifactId>ossindex-maven-plugin</artifactId>
+                <version>3.2.0</version>
+                <executions>
+                    <execution>
+                        <id>audit-dependencies-critical</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>audit</goal>
+                        </goals>
+                        <!-- configuration for mvn validate -->
+                        <configuration>
+                            <!-- if CVSS >= 9.0 (critical) then ERROR else WARN -->
+                            <fail>true</fail>
+                            <cvssScoreThreshold>9.0</cvssScoreThreshold>
+                        </configuration>
+                    </execution>
+                </executions>
+                <!-- configuration for mvn ossindex:audit -->
                 <configuration>
-                    <skip>true</skip>
+                    <authId>ossindex</authId>
+                    <!-- if CVSS >= 7.0 (high or critical) then ERROR else WARN -->
+                    <fail>true</fail>
+                    <cvssScoreThreshold>7.0</cvssScoreThreshold>
+
                 </configuration>
             </plugin>
 
