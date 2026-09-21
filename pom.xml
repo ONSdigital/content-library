@@ -71,7 +71,6 @@
                 <version>2.5.2</version>
             </plugin>
 
-            <!-- Disable deploy. We do not deploy to maven central or anywhere. Prevents release perform failure-->
             <plugin>
                 <groupId>org.sonatype.ossindex.maven</groupId>
                 <artifactId>ossindex-maven-plugin</artifactId>
